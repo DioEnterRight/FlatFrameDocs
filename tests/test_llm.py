@@ -112,7 +112,7 @@ def test_text_roles_only_use_the_router_and_judge_only_ready_vision_models(cfg):
     api = FakeAPI(["gemini-3-flash-preview", "some-text-model", "gpt-oss-120b"], {"auto:smart": ['{"ok": true}']})
     s = llm.Session(cfg, 0, http=api)
     for role in ("ideator", "critic", "research", "writer", "director"):
-        assert set(s.candidates[role]) <= {"auto:smart", "fusion", "auto"} and s.candidates[role][-1] == "auto", role
+        assert set(s.candidates[role]) <= {"auto:smart", "fusion", "auto"} and "auto" in s.candidates[role], role
     assert s.candidates["judge"] == ["gemini-3-flash-preview"]
     obj, _ = s.json("writer", "sys", "user")
     assert obj == {"ok": True} and api.calls == ["auto:smart"]
@@ -154,3 +154,13 @@ def test_real_upstream_errors_still_count(cfg):
     assert llm.refused_locally(502, "upstream_error") is None
     assert llm.refused_locally(429, "rate limit from provider") is None
     assert llm.refused_locally(404, "Every routed provider reports the model as not found") == "dead"
+
+
+def test_router_502_moves_to_the_next_alias_without_repeating(cfg):
+    bad = urllib.error.HTTPError("u", 502, "x", {}, io.BytesIO(b'{"error":{"message":"All 2 routed attempt(s) failed"}}'))
+    api = FakeAPI([], {"auto:smart": [bad], "auto": ['{"ok": true}']})
+    api.models = ["x"]
+    s = llm.Session(cfg, 0, http=api)
+    s.candidates["research"] = ["auto:smart", "auto"]
+    s.json("research", "sys", "user")
+    assert api.calls == ["auto:smart", "auto"]

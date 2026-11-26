@@ -247,6 +247,8 @@ class Session:
                         break
                     if e.code not in RETRY or "quota" in detail.lower():
                         break
+                    if e.code >= 500 and model.startswith(("auto", "fusion")):
+                        break   # the router already tried its alternatives ("All N routed attempt(s) failed"): next alias
                 except (urllib.error.URLError, TimeoutError, KeyError, IndexError, ValueError, json.JSONDecodeError) as e:
                     errors.append(f"{model}: {e!r}"[:200])
                 i += 1

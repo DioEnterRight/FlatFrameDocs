@@ -141,21 +141,21 @@ render:
 # ------------------------------------------------------------
 freellm:
   # Only models YOUR keys can reach: FreeLLMAPI's own router answers "auto:smart" with the strongest model that has a
-  # healthy key under its rate limits right now, "fusion" fans one prompt out to several free models and has a judge
-  # model merge their answers, and "auto" takes any working one. The bot never names a model itself, so a model that
+  # healthy key under its rate limits right now, "auto" takes any working one, and "fusion" (several free models + a
+  # judge model) is only a backup: one fusion call spends 3-5 requests and ~20k tokens of your daily free quotas. The bot never names a model itself, so a model that
   # was removed upstream or has no key is simply never picked.
   roles:
-    ideator:  {models: ["auto:smart", "fusion", "auto"], temperature: 1.0}
-    critic:   {models: ["fusion", "auto:smart", "auto"], temperature: 0.2}    # several models + a judge model: the strictest reviewer we can get free
-    research: {models: ["auto:smart", "auto"], temperature: 0.0}
-    writer:   {models: ["auto:smart", "fusion", "auto"], temperature: 0.85}
-    director: {models: ["fusion", "auto:smart", "auto"], temperature: 0.5}
+    ideator:  {models: ["auto:smart", "auto", "fusion"], temperature: 1.0}
+    critic:   {models: ["auto:smart", "fusion", "auto"], temperature: 0.2}
+    research: {models: ["auto:smart", "auto", "fusion"], temperature: 0.0}
+    writer:   {models: ["auto:smart", "auto", "fusion"], temperature: 0.85}
+    director: {models: ["auto:smart", "fusion", "auto"], temperature: 0.5}
     # the judge looks at a picture, so it needs a model known to see; only those your keys list as ready are tried,
     # and with none the measured QA gates decide alone
     judge:    {vision: ["gemini-3", "gemini-2.5-flash", "gemini-2.0-flash", "llama-4", "qwen2.5-vl", "pixtral"], temperature: 0.1}
   deny: ["claude", "anthropic", "gpt-4o", "gpt-4.1", "gpt-5", "o1-", "o3-", "o4-"]   # never paid / never Claude
   max_tokens: 8000
-  timeout_seconds: 240
+  timeout_seconds: 150
   max_calls_per_video: 48     # hard cap on requests that reach a provider, one video, all roles together
   max_tokens_per_video: 400000
   monthly_token_cap: 50000000 # counted in data/freellm_usage.json; past it no model is called until next month

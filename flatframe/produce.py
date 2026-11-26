@@ -14,6 +14,7 @@ is tried, and if none survives the slot is simply skipped. Quality over schedule
 import argparse
 import shutil
 import sys
+import time
 
 from . import director, ideas, llm, metadata, qa, render, research, schedule, sound, voice, writer
 from .common import (OUT, SAMPLES, StageError, load_config, load_history, log, now_ist, read_json, save_history,
@@ -138,6 +139,7 @@ def produce_real(cfg, args):
         except llm.LLMUnavailable as e:
             print(f"::warning::Idea stage stopped: {e}")
             return 0
+    model_failures = 0
     for idea in candidates:
         P = OUT / (args.resume or f"{now:%Y%m%d-%H%M%S}-{slugify(idea['title'], 32)}")
         P.mkdir(parents=True, exist_ok=True)
@@ -167,8 +169,13 @@ def produce_real(cfg, args):
             history["rejected"] = history["rejected"][-100:]
             save_history(history)
         except llm.LLMUnavailable as e:
-            print(f"::warning::Free models ran out mid-video ({e}); stopping without publishing. Saved stages: {P}")
-            return 0
+            out_of_budget = "cap reached" in str(e)
+            model_failures += 1
+            if out_of_budget or model_failures >= 2:
+                print(f"::warning::Free models ran out ({str(e)[:300]}); stopping without publishing. Saved stages: {P}")
+                return 0
+            log(f"free models failed on '{idea['title']}' ({str(e)[:200]}); waiting 45 s, then the next topic", "WARN")
+            time.sleep(45)
         except Exception as e:  # noqa: BLE001  (a bug or bad model output on one topic: log it, try the next topic)
             import traceback
             log(f"topic failed with an error: {idea['title']}: {e!r}\n{traceback.format_exc()[-1500:]}", "ERROR")
