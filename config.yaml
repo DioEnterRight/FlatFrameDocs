@@ -165,7 +165,7 @@ publish:
   instagram_max_attempts: 2   # then a "post it by hand" issue and the queue moves on
 
   # YouTube safety controller (flatframe/yt_guard.py). See SECURITY.md "YouTube upload safety".
-  youtube_mode: api           # api | manual (issue with file + title) | off
+  youtube_mode: manual        # api | manual (issue with file + title) | off. manual until the YouTube API audit is done + YT_* secrets are set
   youtube_channel_id: ""      # optional: the UC... id this repo may upload to; any other authenticated channel = refuse
   youtube_channel_daily_cap: 1          # successful uploads per rolling 24 h. Conservative start, NOT YouTube's official limit.
   youtube_api_daily_insert_cap: 100     # videos.insert calls per Pacific-time day (Google's default allowance, Nov 2026)

@@ -58,6 +58,7 @@ def test_outage_never_bursts(cfg, fakes):
 
 
 def test_upload_limit_stops_youtube_and_keeps_video(cfg, fakes, monkeypatch):
+    cfg["publish"]["youtube_mode"] = "api"
     h = hist(2, created=dt.datetime(2026, 11, 26, 9, 0, tzinfo=IST))
 
     def boom(yt, path, meta):
@@ -77,6 +78,7 @@ def test_upload_limit_stops_youtube_and_keeps_video(cfg, fakes, monkeypatch):
 
 
 def test_one_upload_per_rolling_day(cfg, fakes, monkeypatch):
+    cfg["publish"]["youtube_mode"] = "api"
     h = hist(3)
     monkeypatch.setattr(publish.youtube, "upload", lambda yt, p, m: (fakes.__setitem__("upload", fakes["upload"] + 1), ("vid" + str(fakes["upload"]), "public"))[1])
     now = dt.datetime(2026, 11, 26, 10, 0, tzinfo=IST)
@@ -106,3 +108,13 @@ def test_instagram_daily_cap(cfg, fakes):
     h["videos"][0].update(slot="2026-11-26 07:30", ig_state="posted", ig_posted_at="2026-11-26T07:31+05:30")
     publish.instagram_step(cfg, h, dt.datetime(2026, 11, 26, 10, 35, tzinfo=IST), False)
     assert fakes["ig"] == 0 and h["videos"][1]["ig_state"] == "skipped"
+
+
+def test_manual_youtube_mode_opens_a_post_issue_and_never_calls_the_api(cfg, fakes, monkeypatch):
+    cfg["publish"]["youtube_mode"] = "manual"
+    h = hist(1)
+    notes = []
+    monkeypatch.setattr(publish.youtube, "notify_manual", lambda meta, tag: notes.append(tag))
+    monkeypatch.setattr(publish.youtube, "client", lambda: (_ for _ in ()).throw(AssertionError("API used in manual mode")))
+    assert publish.youtube_step(cfg, h, dt.datetime(2026, 11, 26, 10, 0, tzinfo=IST)) is None
+    assert len(notes) == 1 and h["videos"][0]["yt_state"] == "manual_notified"
