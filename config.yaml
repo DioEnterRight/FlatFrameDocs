@@ -66,6 +66,7 @@ brand:
 ideas:
   candidates: 10              # concepts pitched per brainstorm (good unused ones are banked in data/ideas.json)
   research_attempts: 4        # shortlisted ideas tried in research before the run gives up
+  use_curated: true           # try the hand-picked topics in prompts/curated_topics.json before brainstorming
   min_score: 7.0              # weighted critic score (1-10) an idea needs before research
   similarity_threshold: 0.42  # 0-1 word overlap with past titles/questions above which an idea counts as a repeat
   recent_categories_blocked: 2  # do not reuse the category of the last N videos
@@ -138,14 +139,15 @@ render:
 # ------------------------------------------------------------
 freellm:
   # Only models YOUR keys can reach: FreeLLMAPI's own router answers "auto:smart" with the strongest model that has a
-  # healthy key under its rate limits right now, and "auto" with any working one. The bot never names a model itself,
-  # so a model that was removed upstream or has no key is simply never picked.
+  # healthy key under its rate limits right now, "fusion" fans one prompt out to several free models and has a judge
+  # model merge their answers, and "auto" takes any working one. The bot never names a model itself, so a model that
+  # was removed upstream or has no key is simply never picked.
   roles:
-    ideator:  {models: ["auto:smart", "auto"], temperature: 1.0}
-    critic:   {models: ["auto:smart", "auto"], temperature: 0.2}
+    ideator:  {models: ["auto:smart", "fusion", "auto"], temperature: 1.0}
+    critic:   {models: ["fusion", "auto:smart", "auto"], temperature: 0.2}    # several models + a judge model: the strictest reviewer we can get free
     research: {models: ["auto:smart", "auto"], temperature: 0.0}
-    writer:   {models: ["auto:smart", "auto"], temperature: 0.85}
-    director: {models: ["auto:smart", "auto"], temperature: 0.5}
+    writer:   {models: ["auto:smart", "fusion", "auto"], temperature: 0.85}
+    director: {models: ["fusion", "auto:smart", "auto"], temperature: 0.5}
     # the judge looks at a picture, so it needs a model known to see; only those your keys list as ready are tried,
     # and with none the measured QA gates decide alone
     judge:    {vision: ["gemini-3", "gemini-2.5-flash", "gemini-2.0-flash", "llama-4", "qwen2.5-vl", "pixtral"], temperature: 0.1}

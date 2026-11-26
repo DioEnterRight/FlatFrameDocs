@@ -15,7 +15,9 @@ holds the free-tier keys you give it and fails over between them. Same architect
 | director | storyboard (+1 revision) | 1-2 |
 | judge | vision check of the contact sheet (skipped when no free vision model is ready) | 0-1 |
 
-Text roles never name a model: they ask FreeLLMAPI's router for `auto:smart` (the strongest model that has a
+Text roles never name a model. The critic and the director ask for `fusion` first (FreeLLMAPI sends the prompt to
+several free models and a judge model merges the answers: the strongest free reviewer/storyboarder). The others ask
+for `auto:smart` (the strongest model that has a
 healthy key under its rate limits right now), then `auto`. So only models **your** keys can reach are ever used, and a
 model that was removed upstream is never picked. The judge needs a model that can see a picture, so it tries only the
 ready models whose names match `roles.judge.vision`; with none, the measured QA gates decide alone. FreeLLMAPI
@@ -53,3 +55,10 @@ run `python -m flatframe.llm --check` with `FREELLM_BASE_URL` / `FREELLM_API_KEY
 
 `freellmapi.lock` holds the image. Use **Actions → Pin FreeLLMAPI** with a release tag; it resolves the digest, starts
 the exact image, checks `/api/ping`, and opens a PR. See SECURITY.md.
+
+## Hand-picked topics
+
+`prompts/curated_topics.json` holds ~40 hand-picked documentary stories, chosen because each has its own Wikipedia
+article and wide independent coverage (so research can verify it). The idea stage uses them before brainstorming
+(`ideas.use_curated`). They get no shortcut: research verifies every fact exactly like a brainstormed idea, and a topic
+that fails is never tried again. When the list runs out, the free models brainstorm as before.

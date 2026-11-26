@@ -1,4 +1,5 @@
 """Schedule, research verification, script gates, voice helpers, the beat compiler, ideas."""
+import json
 import datetime as dt
 
 import pytest
@@ -341,3 +342,21 @@ def test_wikipedia_outage_rejects_the_topic_instead_of_crashing(cfg):
             raise ConnectionError("wikipedia down")
     with pytest.raises(research.StageError, match="did not answer"):
         research.research(cfg, FakeSession([]), {"title": "X", "question": "q", "wikipedia_title": "X"}, web=Down("", {}))
+
+
+def test_curated_topics_are_valid_and_used_before_brainstorming(cfg, monkeypatch, tmp_path):
+    from flatframe import ideas
+    data = json.loads(ideas.CURATED.read_text(encoding="utf-8"))
+    p = ideas.past({"videos": []})
+    assert len(data["topics"]) >= 30
+    for t in data["topics"]:
+        assert ideas.filter_reason(cfg, t, p) is None, t["title"]
+    monkeypatch.setattr(ideas, "BANK", tmp_path / "ideas.json")
+
+    class NoModel:
+        def json(self, *a, **k):
+            raise AssertionError("brainstorm should not run while curated topics are left")
+    ranked = ideas.shortlist(cfg, NoModel(), {"videos": []})
+    assert len(ranked) >= int(cfg["ideas"]["research_attempts"]) and ranked[0]["pitched_by"] == "curated"
+    used = {"videos": [{"title": ranked[0]["title"], "question": ranked[0]["question"], "article": ranked[0]["wikipedia_title"]}]}
+    assert ranked[0]["title"] not in [i["title"] for i in ideas.shortlist(cfg, NoModel(), used)]

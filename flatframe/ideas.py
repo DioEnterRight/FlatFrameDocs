@@ -13,9 +13,11 @@ import datetime as dt
 import json
 import re
 
-from .common import DATA, content_words, fill, jaccard, log, prompt, read_json, write_json
+from .common import DATA, ROOT, content_words, fill, jaccard, log, prompt, read_json, write_json
 
 BANK = DATA / "ideas.json"
+CURATED = ROOT / "prompts" / "curated_topics.json"
+CURATED_SCORE = {"curiosity": 9, "uniqueness": 8.5, "hook": 9, "suspense": 8.5, "visual": 9, "payoff": 9, "reliability": 9.5}
 CRITERIA = ("curiosity", "uniqueness", "hook", "suspense", "visual", "payoff", "reliability", "variety")
 PATTERNS = ("impossible situation", "contradiction", "unexpected consequence", "bizarre fact", "question", "strange event")
 BANNED_OPENERS = re.compile(r"^(hi|hey|hello|welcome|today|in this video|did you know|let's|lets|have you ever)\b", re.I)
@@ -110,6 +112,7 @@ def shortlist(cfg, session, history):
     bank = read_json(BANK, {"bank": []})
     fresh_cut = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=21)).isoformat()
     banked = [i for i in bank["bank"] if i.get("banked_at", "") >= fresh_cut and not filter_reason(cfg, i, p)]
+    banked += curated(cfg, p, bank)
     pool, model = [], None
     if len(banked) < int(cfg["ideas"]["research_attempts"]):
         raw, model = generate(cfg, session, history, p["titles"] + [i["title"] for i in banked])
@@ -131,12 +134,26 @@ def shortlist(cfg, session, history):
     return ranked
 
 
+def curated(cfg, p, bank):
+    """Hand-picked, well-documented topics (prompts/curated_topics.json) that were not made or rejected before.
+    They skip the brainstorm, never research: every fact is still verified like any other idea."""
+    if not cfg["ideas"].get("use_curated", True) or not CURATED.exists():
+        return []
+    gone = {r["title"] for r in bank.get("rejected", [])} | {i["title"] for i in bank["bank"]}
+    out = []
+    for t in read_json(CURATED, {"topics": []})["topics"]:
+        if t["title"] in gone or filter_reason(cfg, t, p):
+            continue
+        out.append({**t, "scores": dict(CURATED_SCORE), "pitched_by": "curated", "scored_by": "curated"})
+    return out
+
+
 def bank_unused(ranked, used_title):
     now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     bank = read_json(BANK, {"bank": []})
     titles = {i["title"] for i in bank["bank"]}
     for i in ranked:
-        if i["title"] != used_title and i["title"] not in titles and not i.get("rejected"):
+        if i["title"] != used_title and i["title"] not in titles and not i.get("rejected") and i.get("pitched_by") != "curated":
             bank["bank"].append({**i, "banked_at": i.get("banked_at", now)})
     bank["bank"] = [i for i in bank["bank"] if i["title"] != used_title][-40:]
     write_json(BANK, bank)

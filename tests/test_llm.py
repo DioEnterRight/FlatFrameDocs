@@ -112,7 +112,7 @@ def test_text_roles_only_use_the_router_and_judge_only_ready_vision_models(cfg):
     api = FakeAPI(["gemini-3-flash-preview", "some-text-model", "gpt-oss-120b"], {"auto:smart": ['{"ok": true}']})
     s = llm.Session(cfg, 0, http=api)
     for role in ("ideator", "critic", "research", "writer", "director"):
-        assert s.candidates[role] == ["auto:smart", "auto"], role
+        assert set(s.candidates[role]) <= {"auto:smart", "fusion", "auto"} and s.candidates[role][-1] == "auto", role
     assert s.candidates["judge"] == ["gemini-3-flash-preview"]
     obj, _ = s.json("writer", "sys", "user")
     assert obj == {"ok": True} and api.calls == ["auto:smart"]

@@ -1,0 +1,590 @@
+{
+ "_about": "Hand-picked documentary topics (written once, offline). Each is a true, widely documented story with its own English Wikipedia article and many independent sources, so research can verify it. Research still checks every fact; nothing here is ever narrated unverified.",
+ "topics": [
+  {
+   "title": "The Wave of Syrup That Flooded Boston",
+   "question": "How did a flood of molasses kill people in a city street?",
+   "hook": "A wave of syrup flattened a Boston street.",
+   "hook_pattern": "impossible situation",
+   "payoff": "A badly built, overfilled storage tank burst and released millions of gallons of molasses at once.",
+   "category": "engineering failures and successes",
+   "wikipedia_title": "Great Molasses Flood",
+   "search": "Great Molasses Flood 1919 Boston",
+   "why_visual": "A giant brown wave rolling through tiny cartoon streets and trains.",
+   "visual_metaphors": [
+    "a cracked tank leaking like a juice box",
+    "people stuck like flies on flypaper"
+   ]
+  },
+  {
+   "title": "The Summer When People Danced Until They Collapsed",
+   "question": "Why did hundreds of people in Strasbourg dance for weeks?",
+   "hook": "One woman started dancing. Then she couldn't stop.",
+   "hook_pattern": "strange event",
+   "payoff": "Historians link it to mass psychogenic illness in a town crushed by famine and disease.",
+   "category": "unusual human behaviour",
+   "wikipedia_title": "Dancing plague of 1518",
+   "search": "dancing plague 1518 Strasbourg",
+   "why_visual": "A packed medieval square of dancers, musicians hired to keep them going.",
+   "visual_metaphors": [
+    "dancers like wind-up toys",
+    "a town council scratching its head"
+   ]
+  },
+  {
+   "title": "The Explosion That Flattened a City Before the Bomb",
+   "question": "How did one ship collision destroy half of Halifax?",
+   "hook": "Two ships bumped. A city disappeared.",
+   "hook_pattern": "unexpected consequence",
+   "payoff": "A French ship packed with wartime explosives caught fire after the collision and detonated in the harbour.",
+   "category": "forgotten stories that changed the world",
+   "wikipedia_title": "Halifax Explosion",
+   "search": "Halifax Explosion 1917 Mont-Blanc",
+   "why_visual": "Two small ships nudging, then a giant white mushroom over a harbour town.",
+   "visual_metaphors": [
+    "ships as bumper cars",
+    "a city map torn in half"
+   ]
+  },
+  {
+   "title": "The Blast That Flattened a Forest With No Crater",
+   "question": "What knocked down millions of trees in Siberia without leaving a hole?",
+   "hook": "Eighty million trees fell. Nothing hit the ground.",
+   "hook_pattern": "contradiction",
+   "payoff": "A space rock most likely exploded in the air several kilometres up, so the shockwave did the damage.",
+   "category": "scientific mysteries with surprising explanations",
+   "wikipedia_title": "Tunguska event",
+   "search": "Tunguska event 1908",
+   "why_visual": "A forest of matchsticks lying flat in a giant butterfly pattern.",
+   "visual_metaphors": [
+    "trees as dominoes",
+    "a fireball popping like a balloon"
+   ]
+  },
+  {
+   "title": "The Year Summer Never Came",
+   "question": "Why did it snow in June across Europe and America in 1816?",
+   "hook": "It snowed in June. Crops died everywhere.",
+   "hook_pattern": "impossible situation",
+   "payoff": "The huge eruption of Mount Tambora a year earlier filled the sky with ash and cooled the planet.",
+   "category": "scientific mysteries with surprising explanations",
+   "wikipedia_title": "Year Without a Summer",
+   "search": "Year Without a Summer 1816 Tambora",
+   "why_visual": "Snow on summer fields, a volcano far away puffing a grey blanket around the globe.",
+   "visual_metaphors": [
+    "a sun wearing sunglasses of ash",
+    "farmers in coats holding dead corn"
+   ]
+  },
+  {
+   "title": "The Glowing Paint That Poisoned Its Painters",
+   "question": "Why were factory girls told to lick radium-paint brushes?",
+   "hook": "They were told to lick the glowing brushes.",
+   "hook_pattern": "bizarre fact",
+   "payoff": "Radium built up in their bones; their court fight changed worker safety law.",
+   "category": "forgotten stories that changed the world",
+   "wikipedia_title": "Radium Girls",
+   "search": "Radium Girls dial painters",
+   "why_visual": "Rows of workers painting glowing watch dials in a dark factory.",
+   "visual_metaphors": [
+    "green glow spreading like a stain",
+    "a judge's gavel lighting up"
+   ]
+  },
+  {
+   "title": "The Smell That Forced London to Rebuild",
+   "question": "How did one hot summer give London its sewers?",
+   "hook": "Parliament could not breathe inside its own building.",
+   "hook_pattern": "unexpected consequence",
+   "payoff": "The stench of the Thames in 1858 finally pushed Parliament to fund Joseph Bazalgette's sewer network.",
+   "category": "hidden systems behind everyday objects",
+   "wikipedia_title": "Great Stink",
+   "search": "Great Stink 1858 London Bazalgette",
+   "why_visual": "Politicians with clothespins on noses, a brown river, then giant brick tunnels.",
+   "visual_metaphors": [
+    "stink lines as cartoon ghosts",
+    "curtains soaked in lime"
+   ]
+  },
+  {
+   "title": "When One Flower Bulb Cost a House",
+   "question": "Did tulips really become more expensive than houses?",
+   "hook": "A single flower bulb cost a house.",
+   "hook_pattern": "contradiction",
+   "payoff": "Prices for rare bulbs in 1630s Holland spiked on futures contracts and then collapsed in 1637.",
+   "category": "unusual economic events",
+   "wikipedia_title": "Tulip mania",
+   "search": "Tulip mania 1637 Dutch",
+   "why_visual": "Traders in a tavern bidding on a striped tulip, a price chart shooting up then crashing.",
+   "visual_metaphors": [
+    "a tulip on a golden throne",
+    "a chart like a rollercoaster"
+   ]
+  },
+  {
+   "title": "The Soda Company That Changed Its Recipe and Panicked",
+   "question": "Why did Coca-Cola bring back the old formula in 79 days?",
+   "hook": "Coca-Cola changed its taste. America revolted.",
+   "hook_pattern": "unexpected consequence",
+   "payoff": "Blind tests liked the new taste, but fans felt their old Coke was taken away, so Coca-Cola Classic returned.",
+   "category": "weird business decisions and their consequences",
+   "wikipedia_title": "New Coke",
+   "search": "New Coke 1985",
+   "why_visual": "Protest signs, hotline phones ringing, a can swapped back on a shelf.",
+   "visual_metaphors": [
+    "a can wearing a disguise",
+    "a phone melting from calls"
+   ]
+  },
+  {
+   "title": "The Bridge That Danced Itself Apart",
+   "question": "How did gentle wind destroy a brand-new steel bridge?",
+   "hook": "A gentle wind tore a steel bridge apart.",
+   "hook_pattern": "contradiction",
+   "payoff": "Wind made the thin, flexible deck twist in a self-feeding flutter until it broke.",
+   "category": "engineering failures and successes",
+   "wikipedia_title": "Tacoma Narrows Bridge (1940)",
+   "search": "Galloping Gertie Tacoma Narrows 1940",
+   "why_visual": "A bridge waving like a ribbon, a car abandoned in the middle.",
+   "visual_metaphors": [
+    "the bridge as a jump rope",
+    "engineers holding rulers that bend"
+   ]
+  },
+  {
+   "title": "The Fake Skull That Fooled Science for Forty Years",
+   "question": "How did a forged fossil fool experts for decades?",
+   "hook": "The missing link was a painted fake.",
+   "hook_pattern": "bizarre fact",
+   "payoff": "In 1953 tests showed a human skull and an orangutan jaw stained to look ancient.",
+   "category": "historical misunderstandings",
+   "wikipedia_title": "Piltdown Man",
+   "search": "Piltdown Man hoax 1953",
+   "why_visual": "Scientists in a gravel pit, a skull and jaw that don't match, a fluorine test tube.",
+   "visual_metaphors": [
+    "a jaw with a fake moustache",
+    "a museum label peeling off"
+   ]
+  },
+  {
+   "title": "The War Named After a Sailor's Ear",
+   "question": "How did one cut-off ear start a war?",
+   "hook": "A captain carried his own ear to Parliament.",
+   "hook_pattern": "bizarre fact",
+   "payoff": "Robert Jenkins' story became fuel for Britain's trade quarrel with Spain, which turned into open war in 1739.",
+   "category": "strange but documented historical events",
+   "wikipedia_title": "War of Jenkins' Ear",
+   "search": "War of Jenkins' Ear 1739",
+   "why_visual": "A sailor holding up a jar, politicians gasping, ships firing.",
+   "visual_metaphors": [
+    "an ear in a jar like a pickle",
+    "a map split by a sword"
+   ]
+  },
+  {
+   "title": "The Pig That Almost Started a War",
+   "question": "How did one shot pig bring two empires to the brink?",
+   "hook": "A farmer shot a pig. Two empires mobilised.",
+   "hook_pattern": "unexpected consequence",
+   "payoff": "The 1859 standoff on San Juan Island ended without a battle, and the only casualty was the pig.",
+   "category": "strange but documented historical events",
+   "wikipedia_title": "Pig War (1859)",
+   "search": "Pig War San Juan Island 1859",
+   "why_visual": "A pig in a potato patch, soldiers and warships facing off on a tiny island.",
+   "visual_metaphors": [
+    "the pig on a war map",
+    "cannons pointing at a potato"
+   ]
+  },
+  {
+   "title": "The Ship Found Sailing With Nobody Aboard",
+   "question": "What happened to the crew of the Mary Celeste?",
+   "hook": "The ship was fine. Everyone was gone.",
+   "hook_pattern": "impossible situation",
+   "payoff": "Nobody knows for sure; the leading idea is that the crew fled in the lifeboat fearing a problem, and was lost.",
+   "category": "events that seemed impossible but have a factual explanation",
+   "wikipedia_title": "Mary Celeste",
+   "search": "Mary Celeste 1872",
+   "why_visual": "An empty ship drifting, sailors from another ship climbing aboard.",
+   "visual_metaphors": [
+    "a ghostly outline at the wheel",
+    "a lifeboat-shaped gap"
+   ]
+  },
+  {
+   "title": "The Man Who Survived an Iron Rod Through His Head",
+   "question": "How did Phineas Gage live after a rod went through his skull?",
+   "hook": "An iron rod flew through his skull. He talked.",
+   "hook_pattern": "impossible situation",
+   "payoff": "The rod missed vital areas; his changed behaviour helped science link brain regions to personality.",
+   "category": "unusual survival and achievement stories",
+   "wikipedia_title": "Phineas Gage",
+   "search": "Phineas Gage tamping iron 1848",
+   "why_visual": "A railway worker, a rod shooting upward, a doctor's notebook.",
+   "visual_metaphors": [
+    "the rod as a giant arrow",
+    "a brain map lighting up"
+   ]
+  },
+  {
+   "title": "The Mightiest Warship That Sank on Its First Trip",
+   "question": "Why did Sweden's mightiest warship sink on its maiden voyage?",
+   "hook": "The mightiest warship set sail. Then it sank.",
+   "hook_pattern": "contradiction",
+   "payoff": "The Vasa was too top-heavy for its narrow hull, and a gust of wind tipped it over.",
+   "category": "engineering failures and successes",
+   "wikipedia_title": "Vasa (ship)",
+   "search": "Vasa ship 1628 sinking",
+   "why_visual": "A gilded ship leaving harbour, tilting, crowds on shore.",
+   "visual_metaphors": [
+    "the ship as a tall wobbly cake",
+    "a king's crown falling in water"
+   ]
+  },
+  {
+   "title": "The Space Probe Lost to a Units Mix-Up",
+   "question": "How did a missing unit conversion destroy a Mars probe?",
+   "hook": "A Mars probe died from a math mistake.",
+   "hook_pattern": "bizarre fact",
+   "payoff": "One team's software used imperial units while another expected metric, so the orbiter flew too low into Mars.",
+   "category": "engineering failures and successes",
+   "wikipedia_title": "Mars Climate Orbiter",
+   "search": "Mars Climate Orbiter metric imperial",
+   "why_visual": "Two offices with different rulers, a probe skimming too close to a red planet.",
+   "visual_metaphors": [
+    "a ruler in feet fighting a ruler in metres",
+    "the probe as a paper plane"
+   ]
+  },
+  {
+   "title": "The Jet That Ran Out of Fuel Over Canada and Landed Anyway",
+   "question": "How did an airliner with empty tanks land safely?",
+   "hook": "The airliner ran out of fuel. Everyone survived.",
+   "hook_pattern": "impossible situation",
+   "payoff": "A fuel calculation mixed up pounds and kilograms; the pilots glided to a former airbase at Gimli.",
+   "category": "unusual survival and achievement stories",
+   "wikipedia_title": "Gimli Glider",
+   "search": "Gimli Glider Air Canada 143",
+   "why_visual": "A silent jet gliding over fields, a drag strip with racing cars below.",
+   "visual_metaphors": [
+    "the jet as a paper glider",
+    "a fuel gauge with an empty sad face"
+   ]
+  },
+  {
+   "title": "The Giant Airship That Burned in Seconds",
+   "question": "What destroyed the Hindenburg so fast?",
+   "hook": "The giant airship burned in seconds.",
+   "hook_pattern": "strange event",
+   "payoff": "Its hydrogen caught fire, most likely from a static spark near leaking gas, as it landed in New Jersey.",
+   "category": "engineering failures and successes",
+   "wikipedia_title": "Hindenburg disaster",
+   "search": "Hindenburg disaster 1937 Lakehurst",
+   "why_visual": "A huge silver airship over a mooring mast, then fire racing along it.",
+   "visual_metaphors": [
+    "the airship as a cigar",
+    "a spark like a tiny firefly"
+   ]
+  },
+  {
+   "title": "The Toads Sent to Eat Beetles That Ate Australia Instead",
+   "question": "How did a pest-control plan become Australia's pest?",
+   "hook": "They brought toads to save sugar cane.",
+   "hook_pattern": "unexpected consequence",
+   "payoff": "The cane toads ignored the beetles, multiplied fast, and spread across northern Australia, poisoning predators.",
+   "category": "unexpected origins of familiar things",
+   "wikipedia_title": "Cane toads in Australia",
+   "search": "cane toads Australia 1935",
+   "why_visual": "A crate of toads becoming a carpet of toads across a map.",
+   "visual_metaphors": [
+    "toads as a marching army",
+    "a beetle laughing on a cane stalk"
+   ]
+  },
+  {
+   "title": "The War on Sparrows That Brought Locusts",
+   "question": "How did killing sparrows lead to a famine of crops?",
+   "hook": "A country declared war on sparrows.",
+   "hook_pattern": "bizarre fact",
+   "payoff": "With the sparrows gone, insects like locusts boomed and ate the crops, worsening the Great Chinese Famine.",
+   "category": "forgotten stories that changed the world",
+   "wikipedia_title": "Four Pests campaign",
+   "search": "Four Pests campaign sparrows China 1958",
+   "why_visual": "Crowds banging pots to keep birds flying, then clouds of insects.",
+   "visual_metaphors": [
+    "exhausted birds dropping from the sky",
+    "locusts in tiny bibs"
+   ]
+  },
+  {
+   "title": "The Mould That Grew on a Forgotten Dish",
+   "question": "How did a messy lab bench give the world antibiotics?",
+   "hook": "He came back from holiday to a mouldy dish.",
+   "hook_pattern": "unexpected consequence",
+   "payoff": "Alexander Fleming noticed the mould killed bacteria around it: penicillin.",
+   "category": "unbelievable inventions and discoveries",
+   "wikipedia_title": "History of penicillin",
+   "search": "Fleming penicillin discovery 1928",
+   "why_visual": "A cluttered lab, a petri dish with a clean ring around fuzzy mould.",
+   "visual_metaphors": [
+    "bacteria running from the mould",
+    "a dish wearing a superhero cape"
+   ]
+  },
+  {
+   "title": "The Walk in the Woods That Invented Velcro",
+   "question": "How did burrs on a dog become a fastener?",
+   "hook": "His dog came home covered in burrs.",
+   "hook_pattern": "unexpected consequence",
+   "payoff": "George de Mestral studied the burrs' tiny hooks and copied them into hook-and-loop fastener.",
+   "category": "unexpected origins of familiar things",
+   "wikipedia_title": "Hook-and-loop fastener",
+   "search": "George de Mestral burrs Velcro",
+   "why_visual": "A dog in a field, a microscope showing hooks, a shoe strap closing.",
+   "visual_metaphors": [
+    "burrs as tiny grappling hooks",
+    "a dog annoyed in a burr coat"
+   ]
+  },
+  {
+   "title": "The Chocolate Bar That Melted in a Radar Lab",
+   "question": "How did radar research lead to the microwave oven?",
+   "hook": "A chocolate bar melted in his pocket.",
+   "hook_pattern": "bizarre fact",
+   "payoff": "Engineer Percy Spencer realised the radar magnetron's microwaves heated food, and Raytheon built the first microwave oven.",
+   "category": "unexpected origins of familiar things",
+   "wikipedia_title": "Microwave oven",
+   "search": "Percy Spencer microwave oven invention",
+   "why_visual": "A lab of glowing tubes, a gooey pocket, popcorn exploding.",
+   "visual_metaphors": [
+    "the chocolate bar sweating",
+    "popcorn as fireworks"
+   ]
+  },
+  {
+   "title": "The Officials Thrown Out of a Castle Window",
+   "question": "Why did throwing men from a window start a thirty-year war?",
+   "hook": "They threw the officials out the window.",
+   "hook_pattern": "strange event",
+   "payoff": "The 1618 Defenestration of Prague sparked the revolt that grew into the Thirty Years' War; the men survived the fall.",
+   "category": "strange but documented historical events",
+   "wikipedia_title": "Defenestrations of Prague",
+   "search": "Defenestration of Prague 1618",
+   "why_visual": "A castle window, men falling into a dung heap, armies gathering.",
+   "visual_metaphors": [
+    "officials as tossed laundry",
+    "a map of Europe catching fire"
+   ]
+  },
+  {
+   "title": "The Beer Tsunami That Hit a London Street",
+   "question": "How did beer flood a London neighbourhood?",
+   "hook": "A wave of beer swept through London.",
+   "hook_pattern": "impossible situation",
+   "payoff": "A huge vat at the Meux brewery burst in 1814 and knocked over others, releasing a flood of beer.",
+   "category": "engineering failures and successes",
+   "wikipedia_title": "London Beer Flood",
+   "search": "London Beer Flood 1814 Meux",
+   "why_visual": "Giant wooden vats, a foamy wave crashing through brick houses.",
+   "visual_metaphors": [
+    "a hoop popping off a barrel",
+    "foam like snow drifts"
+   ]
+  },
+  {
+   "title": "The Tower That Started Leaning Before It Was Finished",
+   "question": "Why does the Tower of Pisa lean, and why hasn't it fallen?",
+   "hook": "It started leaning before it was finished.",
+   "hook_pattern": "contradiction",
+   "payoff": "Its foundation sits on soft soil; builders compensated for centuries, and modern engineers stabilised it by removing soil.",
+   "category": "engineering failures and successes",
+   "wikipedia_title": "Leaning Tower of Pisa",
+   "search": "Leaning Tower of Pisa soil stabilisation",
+   "why_visual": "A white tower tilting floor by floor, engineers pulling soil out.",
+   "visual_metaphors": [
+    "the tower as a stack of plates",
+    "a giant tilting at a café table"
+   ]
+  },
+  {
+   "title": "The Iceman Who Was Murdered 5,000 Years Ago",
+   "question": "How did hikers find a 5,000-year-old murder victim?",
+   "hook": "Hikers found a body. It was 5,300 years old.",
+   "hook_pattern": "bizarre fact",
+   "payoff": "Ötzi was preserved in Alpine ice, and scans later found an arrowhead in his shoulder.",
+   "category": "events that seemed impossible but have a factual explanation",
+   "wikipedia_title": "Ötzi",
+   "search": "Ötzi iceman arrowhead",
+   "why_visual": "Hikers on a glacier, a scanner revealing an arrowhead.",
+   "visual_metaphors": [
+    "the iceman in a freezer of time",
+    "an X-ray with a tiny arrow"
+   ]
+  },
+  {
+   "title": "The Ancient Computer Pulled From a Shipwreck",
+   "question": "What was a bronze gear machine doing in a 2,000-year-old wreck?",
+   "hook": "Divers found a computer older than Rome's emperors.",
+   "hook_pattern": "contradiction",
+   "payoff": "The Antikythera mechanism was a hand-cranked Greek device that predicted eclipses and planet positions.",
+   "category": "unbelievable inventions and discoveries",
+   "wikipedia_title": "Antikythera mechanism",
+   "search": "Antikythera mechanism gears eclipse",
+   "why_visual": "Sponge divers, a corroded lump, glowing gears and a sky map.",
+   "visual_metaphors": [
+    "gears like a clock's skeleton",
+    "planets on strings"
+   ]
+  },
+  {
+   "title": "The Dead Man Who Fooled Hitler's Spies",
+   "question": "How did a corpse with fake papers change the invasion of Sicily?",
+   "hook": "A dead man carried the war's biggest lie.",
+   "hook_pattern": "bizarre fact",
+   "payoff": "British intelligence planted fake invasion plans on a body, and Germany moved forces away from Sicily.",
+   "category": "strange but documented historical events",
+   "wikipedia_title": "Operation Mincemeat",
+   "search": "Operation Mincemeat 1943",
+   "why_visual": "A briefcase chained to a body, spies reading letters, troops moving the wrong way.",
+   "visual_metaphors": [
+    "a map with a giant fake arrow",
+    "spies with magnifying glasses"
+   ]
+  },
+  {
+   "title": "The Army Made of Inflatable Tanks",
+   "question": "How did artists with balloons fool an army?",
+   "hook": "Two men lifted a tank over their heads.",
+   "hook_pattern": "impossible situation",
+   "payoff": "The Ghost Army used inflatable tanks, sound trucks and fake radio traffic to mislead German forces.",
+   "category": "strange but documented historical events",
+   "wikipedia_title": "Ghost Army",
+   "search": "Ghost Army inflatable tanks WWII",
+   "why_visual": "Soldiers carrying a rubber tank, speakers blasting fake engine noise.",
+   "visual_metaphors": [
+    "a tank deflating with a squeak",
+    "a pump labelled 'army'"
+   ]
+  },
+  {
+   "title": "The Town That Blew Up a Whale",
+   "question": "Why did Oregon use dynamite to remove a dead whale?",
+   "hook": "They used dynamite to move a dead whale.",
+   "hook_pattern": "bizarre fact",
+   "payoff": "Engineers expected the blast to blow it to tiny pieces for gulls; instead chunks rained on the crowd and a car.",
+   "category": "strange laws and documented incidents",
+   "wikipedia_title": "Exploding whale",
+   "search": "Exploding whale Florence Oregon 1970",
+   "why_visual": "A beach crowd, a big boom, blubber falling like rain, a squashed car.",
+   "visual_metaphors": [
+    "seagulls with napkins",
+    "a car roof with a dent"
+   ]
+  },
+  {
+   "title": "The Plot to Blow Up Parliament With Hidden Barrels",
+   "question": "How was the Gunpowder Plot discovered hours before the blast?",
+   "hook": "Thirty-six barrels sat under Parliament.",
+   "hook_pattern": "strange event",
+   "payoff": "An anonymous warning letter led a search that found Guy Fawkes guarding the gunpowder.",
+   "category": "strange but documented historical events",
+   "wikipedia_title": "Gunpowder Plot",
+   "search": "Gunpowder Plot 1605 Monteagle letter",
+   "why_visual": "A dark cellar of barrels, a lantern, a letter changing hands.",
+   "visual_metaphors": [
+    "barrels hiding under a rug",
+    "a letter as a paper bird"
+   ]
+  },
+  {
+   "title": "The Fire That Started in a Bakery and Took London",
+   "question": "How did one bakery fire burn most of the City of London?",
+   "hook": "A bakery fire burned down a city.",
+   "hook_pattern": "unexpected consequence",
+   "payoff": "Dry timber houses, strong wind and slow decisions let the 1666 fire spread for four days.",
+   "category": "forgotten stories that changed the world",
+   "wikipedia_title": "Great Fire of London",
+   "search": "Great Fire of London 1666 Pudding Lane",
+   "why_visual": "A tiny oven spark, wooden streets, flames jumping rooftops, St Paul's dome.",
+   "visual_metaphors": [
+    "flames as running cartoon figures",
+    "a mayor shrugging"
+   ]
+  },
+  {
+   "title": "The Moon Mission Saved by Duct Tape",
+   "question": "How did Apollo 13's crew get home after an explosion?",
+   "hook": "Their oxygen tank exploded halfway to the Moon.",
+   "hook_pattern": "impossible situation",
+   "payoff": "The crew used the lunar module as a lifeboat and a taped-together air filter until they swung around the Moon and home.",
+   "category": "unusual survival and achievement stories",
+   "wikipedia_title": "Apollo 13",
+   "search": "Apollo 13 lunar module lifeboat CO2 filter",
+   "why_visual": "A spacecraft venting gas, astronauts in a cramped module, a square filter in a round hole.",
+   "visual_metaphors": [
+    "a square peg in a round hole",
+    "the Moon as a giant slingshot"
+   ]
+  },
+  {
+   "title": "The Investment Craze That Made a Company Worth More Than a Country",
+   "question": "How did the South Sea Company's shares soar and crash in one year?",
+   "hook": "Isaac Newton lost a fortune on one stock.",
+   "hook_pattern": "bizarre fact",
+   "payoff": "Hype and insider deals pushed South Sea shares up in 1720 until they collapsed, ruining many investors.",
+   "category": "unusual economic events",
+   "wikipedia_title": "South Sea Company",
+   "search": "South Sea Bubble 1720 Newton",
+   "why_visual": "A coffee house of shouting traders, a soap bubble with a ship inside, then pop.",
+   "visual_metaphors": [
+    "share certificates as paper planes",
+    "a bubble with a price tag"
+   ]
+  },
+  {
+   "title": "The Missile That Destroyed Itself Over a Number",
+   "question": "How did one software number make a rocket self-destruct?",
+   "hook": "A rocket destroyed itself over one number.",
+   "hook_pattern": "bizarre fact",
+   "payoff": "Ariane 5 reused old code where a value overflowed, so guidance failed and the rocket self-destructed in 1996.",
+   "category": "engineering failures and successes",
+   "wikipedia_title": "Ariane flight V88",
+   "search": "Ariane 5 flight 501 overflow 1996",
+   "why_visual": "A rocket lifting off, a tiny number too big for its box, a puff of smoke.",
+   "visual_metaphors": [
+    "a number squeezing into a tiny box",
+    "the rocket doing a confused U-turn"
+   ]
+  },
+  {
+   "title": "The Meat That Fell From a Clear Sky",
+   "question": "What made chunks of meat rain down on Kentucky in 1876?",
+   "hook": "It rained meat in Kentucky.",
+   "hook_pattern": "impossible situation",
+   "payoff": "The leading explanation is that vultures threw up their food while flying overhead.",
+   "category": "events that seemed impossible but have a factual explanation",
+   "wikipedia_title": "Kentucky meat shower",
+   "search": "Kentucky meat shower 1876",
+   "why_visual": "A farmyard, a sunny sky, flakes of red falling, vultures far above.",
+   "visual_metaphors": [
+    "a vulture looking guilty",
+    "a farmer holding an umbrella against meat"
+   ]
+  },
+  {
+   "title": "The Town Whose Ground Has Burned Since 1962",
+   "question": "Why has a Pennsylvania town's coal mine been burning since 1962?",
+   "hook": "This town's ground has burned since 1962.",
+   "hook_pattern": "impossible situation",
+   "payoff": "A fire spread into the coal seams under Centralia, and it has smouldered underground ever since, emptying the town.",
+   "category": "engineering failures and successes",
+   "wikipedia_title": "Centralia, Pennsylvania",
+   "search": "Centralia mine fire 1962",
+   "why_visual": "Smoke rising through cracked roads, empty houses, a map of glowing tunnels.",
+   "visual_metaphors": [
+    "the town on a stove",
+    "a road with a steam vent like a kettle"
+   ]
+  }
+ ]
+}
