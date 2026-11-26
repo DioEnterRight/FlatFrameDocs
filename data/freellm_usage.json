@@ -1,8 +1,8 @@
 {
   "2026-11": {
-    "calls": 16,
-    "prompt_tokens": 54797,
-    "completion_tokens": 50038,
+    "calls": 23,
+    "prompt_tokens": 94999,
+    "completion_tokens": 67359,
     "by_model": {
       "fusion(gemini-robotics-er-2-preview+nvidia/nemotron-3-ultra-550b-a55b+kilo-auto/free+nvidia/nemotron-3.5-lightning:free -> google/gemini-robotics-er-2-preview)": 1,
       "google/gemini-robotics-er-2-preview": 2,
@@ -14,14 +14,16 @@
       "ovh/Qwen3.6-27B": 1,
       "google/gemini-3.1-flash-lite": 1,
       "nvidia/z-ai/glm-5.3-flash": 1,
-      "nvidia/poolside/laguna-xs-2.1": 2,
+      "nvidia/poolside/laguna-xs-2.1": 3,
       "google/gemini-3.5-flash-lite": 1,
-      "ovh/Mistral-Small-3.2-24B-Instruct-2506": 1
+      "ovh/Mistral-Small-3.2-24B-Instruct-2506": 1,
+      "google/gemini-3.1-flash-lite-preview": 5,
+      "fusion(gemini-3.1-flash-lite-preview+z-ai/glm-5.3-flash+nvidia/nemotron-3-ultra-550b-a55b:free+gemini-robotics-er-2-preview -> google/gemini-3.1-flash-lite-preview)": 1
     },
     "by_role": {
-      "ideator": 3,
-      "critic": 3,
-      "research": 10
+      "ideator": 4,
+      "critic": 4,
+      "research": 15
     }
   }
 }
