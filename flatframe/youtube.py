@@ -1,6 +1,6 @@
 """YouTube Data API calls (the decisions live in yt_guard.py). Adapted from roblox-stories-bot/pipeline/youtube.py.
 
-Secrets: YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN (tools/youtube_auth.py prints them once).
+Secrets: YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN (tools/add_tokens.py --youtube stores them).
 Quota use per post run: channels.list (1) + playlistItems.list (1) for reconciliation; videos.insert only when the
 guard clears an upload. An insert is attempted ONCE per run; only the resumable transfer of that same upload retries
 on 5xx. Errors are classified by yt_guard.classify().

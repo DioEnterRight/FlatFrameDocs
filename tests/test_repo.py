@@ -94,3 +94,15 @@ def test_merge_driver_adds_counters_and_keeps_both_sides(tmp_path):
     subprocess.run([sys.executable, str(ROOT / "tools" / "merge_state.py"), *paths], check=True)
     out = json.loads(pathlib.Path(paths[1]).read_text())
     assert [v["id"] for v in out["videos"]] == ["a", "b"] and out["videos"][0]["status"] == "published" and out["n"] == 4
+
+
+def test_token_adder_covers_every_workflow_secret():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("add_tokens", ROOT / "tools" / "add_tokens.py")
+    add_tokens = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(add_tokens)
+    used = set()
+    for f in (ROOT / ".github" / "workflows").glob("*.yml"):
+        used |= set(re.findall(r"secrets\.([A-Z_]+)", f.read_text(encoding="utf-8")))
+    used.discard("GITHUB_TOKEN")
+    assert used == set(add_tokens.NAMES)

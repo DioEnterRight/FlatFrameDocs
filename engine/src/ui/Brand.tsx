@@ -7,7 +7,7 @@ import { INK, PAL, W, clamp01, easeOut, settle } from "../theme";
 export const CornerTag: React.FC<{ text: string }> = ({ text }) => {
   const w = text.length * 25 + 44;
   return (
-    <g transform={`translate(${W - 36 - w} 70)`} opacity={0.92}>
+    <g transform={`translate(${W - 100 - w} 70)`} opacity={0.92}>
       <rect width={w} height={66} rx={33} fill="#111" opacity={0.55} />
       <text x={w / 2} y={45} fontFamily="PermanentMarker" fontSize={36} fill="#fff" textAnchor="middle">{text}</text>
     </g>

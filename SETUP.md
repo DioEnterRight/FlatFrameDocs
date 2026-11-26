@@ -4,7 +4,8 @@ Everything runs on GitHub Actions. You only click in GitHub, Google Cloud and Me
 
 ## 1. Create the repository
 
-1. Create a **public** repository `DioEnterRight/FlatFrameDocs` (public = free Actions minutes and Instagram can fetch the video).
+1. Create a **public** repository `DioEnterRight/FlatFrameDocs` (public = free Actions minutes and Instagram can fetch the video;
+   a private repo burns the 2,000 free minutes/month in a few days and Instagram cannot download the video).
 2. Push this folder to it (PowerShell, inside the folder):
    ```powershell
    git init -b main
@@ -23,14 +24,27 @@ Everything runs on GitHub Actions. You only click in GitHub, Google Cloud and Me
 - **Settings → Branches**: optionally protect `main` and require the **CI** checks for pull requests. Leave direct pushes
   allowed for `github-actions` (the bot saves its state to `data/`).
 
-## 3. Secrets (Settings → Secrets and variables → Actions → New repository secret)
+## 3. Secrets: the token adder (any time later; until then scheduled runs just skip)
+
+```powershell
+pip install google-auth-oauthlib
+gh auth login
+python tools/add_tokens.py --list                          # what is set / missing
+python tools/add_tokens.py --youtube C:\path\client_secret.json   # YouTube sign-in + FreeLLMAPI + Instagram
+python tools/add_tokens.py                                 # later: add/replace FreeLLMAPI or Instagram only
+```
+
+It asks for each value hidden (Enter skips one) and stores it with `gh secret set`, so nothing lands in a file or
+your shell history.
 
 | Secret | What | Needed for |
 |---|---|---|
-| `FREELLMAPI_KEYS` | JSON list of your **free-tier** provider keys, same format as your other bots: `[{"platform":"google","key":"AIza..."},{"platform":"groq","key":"gsk_..."}]` | ideas, research, script, storyboard, judge |
+| `FREELLMAPI_KEYS` | JSON list of your **free-tier** provider keys, same format as your other bots: `[{"platform":"google","key":"AIza..."},{"platform":"groq","key":"gsk_..."}]` (the adder builds it for you) | ideas, research, script, storyboard, judge |
 | `IG_USER_ID` | Instagram professional account id | Instagram |
 | `IG_PAGE_TOKEN` | long-lived Facebook Page token | Instagram |
-| `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN` | from `python tools/youtube_auth.py client_secret.json` on your PC (once) | YouTube |
+| `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN` | `--youtube client_secret.json` signs in once and stores all three | YouTube |
+
+Until `FREELLMAPI_KEYS` is set, the hourly **Make video** run stops at its gate with a notice instead of failing.
 
 Include at least one Google AI Studio key: Gemini models are free, strong writers and the only common free **vision**
 model (the visual judge). See [FREE_MODELS.md](FREE_MODELS.md).
