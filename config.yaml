@@ -137,13 +137,18 @@ render:
 #  between videos. `deny` fragments are never called and a reply routed to one is discarded.
 # ------------------------------------------------------------
 freellm:
+  # Only models YOUR keys can reach: FreeLLMAPI's own router answers "auto:smart" with the strongest model that has a
+  # healthy key under its rate limits right now, and "auto" with any working one. The bot never names a model itself,
+  # so a model that was removed upstream or has no key is simply never picked.
   roles:
-    ideator:  {prefer: ["gemini-3", "qwen3", "glm-5", "gemini-2.5-pro", "deepseek-r1", "deepseek-v3", "qwen3-235b", "kimi-k2", "gpt-oss-120b", "llama-3.3-70b", "gemini-2.5-flash"], rotate_top: 4, temperature: 1.0}
-    critic:   {prefer: ["gemini-3", "qwen3", "glm-5", "gemini-2.5-pro", "deepseek-r1", "qwen3-235b", "gpt-oss-120b", "kimi-k2", "llama-3.3-70b", "gemini-2.5-flash"], rotate_top: 3, temperature: 0.2}
-    research: {prefer: ["gemini-3", "glm-5", "qwen3", "mistral-small", "gemini-2.5-flash", "gemini-2.5-pro", "deepseek-v3", "qwen3-235b", "gpt-oss-120b", "llama-3.3-70b"], rotate_top: 2, temperature: 0.0}
-    writer:   {prefer: ["gemini-3", "qwen3", "glm-5", "gemini-2.5-pro", "deepseek-r1", "deepseek-v3", "kimi-k2", "qwen3-235b", "gpt-oss-120b", "llama-3.3-70b"], rotate_top: 3, temperature: 0.85}
-    director: {prefer: ["gemini-3", "qwen3", "glm-5", "gemini-2.5-pro", "gemini-2.5-flash", "deepseek-v3", "qwen3-235b", "gpt-oss-120b", "kimi-k2"], rotate_top: 3, temperature: 0.5}
-    judge:    {prefer: ["gemini-3", "gemini-2.5-flash", "gemini-2.5-pro", "gemini-2.0-flash", "llama-4", "qwen2.5-vl", "pixtral"], rotate_top: 2, temperature: 0.1, vision: true}
+    ideator:  {models: ["auto:smart", "auto"], temperature: 1.0}
+    critic:   {models: ["auto:smart", "auto"], temperature: 0.2}
+    research: {models: ["auto:smart", "auto"], temperature: 0.0}
+    writer:   {models: ["auto:smart", "auto"], temperature: 0.85}
+    director: {models: ["auto:smart", "auto"], temperature: 0.5}
+    # the judge looks at a picture, so it needs a model known to see; only those your keys list as ready are tried,
+    # and with none the measured QA gates decide alone
+    judge:    {vision: ["gemini-3", "gemini-2.5-flash", "gemini-2.0-flash", "llama-4", "qwen2.5-vl", "pixtral"], temperature: 0.1}
   deny: ["claude", "anthropic", "gpt-4o", "gpt-4.1", "gpt-5", "o1-", "o3-", "o4-"]   # never paid / never Claude
   max_tokens: 8000
   timeout_seconds: 240

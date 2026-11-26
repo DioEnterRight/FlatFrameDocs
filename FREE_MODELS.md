@@ -9,14 +9,17 @@ holds the free-tier keys you give it and fails over between them. Same architect
 | Role | Used for | Calls per video (typical) |
 |---|---|---|
 | ideator | 10 documentary pitches | 1 |
-| critic | idea scores; script review (never the writer's/ideator's model) | 1 + 1-3 |
-| research | claim extraction from the article; quote verification | 2 per researched topic |
+| critic | idea scores; script review | 1 + 1-3 |
+| research | claim extraction from the article; quote verification (4 claims per call) | 2-4 per researched topic |
 | writer | script + rewrites + duration fix | 1-4 |
 | director | storyboard (+1 revision) | 1-2 |
 | judge | vision check of the contact sheet (skipped when no free vision model is ready) | 0-1 |
 
-Each role ranks the **ready** models by `prefer` (name fragments, best first) and rotates the top `rotate_top` between
-videos. `auto` is the last resort for text roles. Every reply records the model that actually answered
+Text roles never name a model: they ask FreeLLMAPI's router for `auto:smart` (the strongest model that has a
+healthy key under its rate limits right now), then `auto`. So only models **your** keys can reach are ever used, and a
+model that was removed upstream is never picked. The judge needs a model that can see a picture, so it tries only the
+ready models whose names match `roles.judge.vision`; with none, the measured QA gates decide alone. FreeLLMAPI
+refusals that never reached a provider (model gone, every route cooling down) do not count against the budget. Every reply records the model that actually answered
 (`X-Routed-Via`) in `out/<id>/models.json` and `data/freellm_usage.json`.
 
 ## Safety layers
@@ -25,7 +28,7 @@ videos. `auto` is the last resort for text roles. Every reply records the model 
 2. `freellm.deny` (`claude`, `anthropic`, `gpt-4o`, `gpt-4.1`, `gpt-5`, `o1-`, `o3-`, `o4-`) — removed from discovery
    **and** any reply routed to a denied model is discarded (it still counts against the budget). `config_check` refuses a
    deny list without `claude`.
-3. Per video: `max_calls_per_video` (32) and `max_tokens_per_video` (400k).
+3. Per video: `max_calls_per_video` (48) and `max_tokens_per_video` (400k).
 4. Per month (UTC): `monthly_token_cap` (50M) and `monthly_request_cap` (6,000), counted in `data/freellm_usage.json`.
 5. When anything runs out: `LLMUnavailable` → the run stops gracefully with a warning. No video is made from a
    fallback writer, because a documentary without research is not acceptable. (The offline storyboard director is the

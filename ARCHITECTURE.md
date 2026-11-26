@@ -31,7 +31,7 @@ if none survives the run ends without a video. `LLMUnavailable` (no free model /
 |---|---|
 | `common.py` | paths, config loading, redacted logging, atomic JSON writes |
 | `config_check.py` | validates every config key; refuses unsafe YouTube settings |
-| `llm.py` | FreeLLMAPI client: discovery, role ranking/rotation, deny list, failover, budgets, usage ledger |
+| `llm.py` | FreeLLMAPI client: auto:smart routing for text roles, vision-model discovery for the judge, deny list, failover, budgets, usage ledger |
 | `schedule.py`, `gate.py` | IST slot maths, make/post gates |
 | `ideas.py` | idea generation, filters, critic scoring, idea bank |
 | `sources.py`, `facts.py`, `research.py` | free web access, literal quote checks, numbers, corroboration, research record |

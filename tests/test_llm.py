@@ -108,12 +108,14 @@ def test_usage_ledger_counts(cfg, tmp_data):
     assert m["calls"] == 1 and m["prompt_tokens"] == 100 and m["by_role"]["writer"] == 1
 
 
-def test_critic_is_not_the_writer(cfg):
-    api = FakeAPI(["gemini-2.5-pro", "deepseek-r1", "qwen3-235b"], {})
-    for seed in range(6):
-        s = llm.Session(cfg, seed, http=api)
-        assert s.candidates["critic"][0] != s.candidates["writer"][0]
-
+def test_text_roles_only_use_the_router_and_judge_only_ready_vision_models(cfg):
+    api = FakeAPI(["gemini-3-flash-preview", "some-text-model", "gpt-oss-120b"], {"auto:smart": ['{"ok": true}']})
+    s = llm.Session(cfg, 0, http=api)
+    for role in ("ideator", "critic", "research", "writer", "director"):
+        assert s.candidates[role] == ["auto:smart", "auto"], role
+    assert s.candidates["judge"] == ["gemini-3-flash-preview"]
+    obj, _ = s.json("writer", "sys", "user")
+    assert obj == {"ok": True} and api.calls == ["auto:smart"]
 
 def test_vision_role_only_known_vision_models(cfg):
     s = llm.Session(cfg, 0, http=FakeAPI(["deepseek-r1", "gemini-2.5-flash"], {}))

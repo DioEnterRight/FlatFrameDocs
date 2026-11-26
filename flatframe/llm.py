@@ -6,6 +6,7 @@ Architecture reused from roblox-stories-bot/pipeline/llm.py (discovery, role ran
 tightened for FlatFrameDocs:
 
   * six roles: ideator, critic, research, writer, director, judge (vision)
+  * text roles ask FreeLLMAPI's router (auto:smart, then auto): only models the configured keys can reach are used
   * `freellm.deny` name fragments are filtered out of discovery AND checked against the X-Routed-Via header, so a
     reply that FreeLLMAPI routed to a denied model is thrown away (Claude and paid-only families are denied)
   * per-video caps on requests AND tokens, monthly caps on tokens AND requests (data/freellm_usage.json)
@@ -29,7 +30,6 @@ from .common import log
 
 RETRY = (408, 429, 500, 502, 503, 504)
 ROLES = ("ideator", "critic", "research", "writer", "director", "judge")
-FALLBACK = ["auto"]
 COOLDOWN = 120   # seconds a model is skipped after FreeLLMAPI reports all its routes on cooldown
 NOT_CHAT = ("embed", "whisper", "tts", "guard", "rerank", "moderation", "image-gen", "dall")
 
@@ -185,18 +185,13 @@ class Session:
         self.ready = ready
         roles = self.f.get("roles") or {}
         self.candidates = {}
-        for i, role in enumerate(ROLES):
+        for role in ROLES:
             rc = roles.get(role) or {}
-            prefer = rc.get("prefer") or []
-            order = rank(ready, prefer, self.seed + i * 7, int(rc.get("rotate_top", 3)))
             if rc.get("vision"):   # never send images to a model that is not known to see
-                order = [m for m in order if any(p.lower() in m.lower() for p in prefer)]
-                self.candidates[role] = order
+                self.candidates[role] = [m for m in rank(ready, rc["vision"], self.seed, top=1)
+                                         if any(v.lower() in m.lower() for v in rc["vision"])]
             else:
-                self.candidates[role] = order + FALLBACK
-        authors = {c[0] for c in (self.candidates["writer"][:1], self.candidates["ideator"][:1]) if c}
-        crit = self.candidates["critic"]
-        self.candidates["critic"] = [m for m in crit if m not in authors] + [m for m in crit if m in authors]
+                self.candidates[role] = list(rc.get("models") or ["auto:smart", "auto"])
         log("models this video: " + "; ".join(f"{r}={self.candidates[r][:3]}" for r in ROLES))
 
     def has(self, role):

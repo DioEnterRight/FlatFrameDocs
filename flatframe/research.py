@@ -142,10 +142,13 @@ def _verify_batch(session, claims, ok_srcs, items):
 def research(cfg, session, idea, web=None):
     rc = cfg["research"]
     web = web or sources.Web(cfg)
-    page = web.wiki_page(idea["wikipedia_title"])
-    if page is None:
-        hits = web.wiki_search(idea.get("search") or idea["title"])
-        page = web.wiki_page(hits[0]) if hits else None
+    try:
+        page = web.wiki_page(idea["wikipedia_title"])
+        if page is None:
+            hits = web.wiki_search(idea.get("search") or idea["title"])
+            page = web.wiki_page(hits[0]) if hits else None
+    except (OSError, ValueError) as e:   # requests' errors are OSErrors; a bad JSON reply is a ValueError
+        raise StageError(f"Wikipedia did not answer for '{idea['title']}': {str(e)[:120]}") from None
     if page is None or len(page["text"]) < 2500:
         raise StageError(f"no substantial Wikipedia article for '{idea['title']}'")
     log(f"research: '{page['title']}' ({len(page['text']):,} chars, {len(page['links'])} cited links)")

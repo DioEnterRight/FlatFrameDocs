@@ -333,3 +333,11 @@ def test_junk_and_duplicate_sources_are_skipped(cfg):
     pages = {"https://a.com/1": text, "https://b.com/2": text, "https://c.com/3": "tiny"}
     got = sources.fetch_sources(FakeWeb("", pages), list(pages), 10)
     assert [s["ok"] for s in got] == [True, False, False]
+
+
+def test_wikipedia_outage_rejects_the_topic_instead_of_crashing(cfg):
+    class Down(FakeWeb):
+        def wiki_page(self, title):
+            raise ConnectionError("wikipedia down")
+    with pytest.raises(research.StageError, match="did not answer"):
+        research.research(cfg, FakeSession([]), {"title": "X", "question": "q", "wikipedia_title": "X"}, web=Down("", {}))

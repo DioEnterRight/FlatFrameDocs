@@ -5,6 +5,10 @@ TIME = re.compile(r"([01]\d|2[0-3]):[0-5]\d")
 ROLES = ("ideator", "critic", "research", "writer", "director", "judge")
 
 
+def denied(model, deny):
+    return any(d.lower() in str(model).lower() for d in deny)
+
+
 class ConfigError(ValueError):
     pass
 
@@ -77,7 +81,9 @@ def validate(cfg):
     f = cfg["freellm"]
     for role in ROLES:
         rc = f.get("roles", {}).get(role)
-        _need(isinstance(rc, dict) and isinstance(rc.get("prefer"), list), f"freellm.roles.{role}.prefer must be a list")
+        key = "vision" if role == "judge" else "models"
+        _need(isinstance(rc, dict) and isinstance(rc.get(key), list) and rc[key], f"freellm.roles.{role}.{key} must be a non-empty list")
+        _need(not any(denied(m, f.get("deny") or []) for m in rc.get(key) or []), f"freellm.roles.{role} names a denied model")
     _need(isinstance(f.get("deny"), list) and any("claude" in d for d in f["deny"]), "freellm.deny must keep 'claude'")
     for k, hi in (("max_calls_per_video", 80), ("max_tokens_per_video", 2_000_000), ("monthly_token_cap", 2_000_000_000),
                   ("monthly_request_cap", 100_000)):
