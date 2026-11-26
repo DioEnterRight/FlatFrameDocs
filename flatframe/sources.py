@@ -90,8 +90,10 @@ class Web:
         r.raise_for_status()
         ctype = r.headers.get("Content-Type", "").lower()
         raw = r.raw.read(4_000_000, decode_content=True)
-        if "pdf" in ctype or url.lower().endswith(".pdf"):
+        if raw[:5] == b"%PDF-":
             return pdf_text(raw)[: self.max_chars]
+        if "pdf" in ctype and "html" not in ctype:
+            raise ValueError("says PDF but is not one")
         if "html" not in ctype and "text" not in ctype:
             raise ValueError(f"not a text page ({ctype or 'unknown type'})")
         enc = r.encoding or "utf-8"

@@ -30,6 +30,7 @@ from .common import log
 RETRY = (408, 429, 500, 502, 503, 504)
 ROLES = ("ideator", "critic", "research", "writer", "director", "judge")
 FALLBACK = ["auto"]
+COOLDOWN = 120   # seconds a model is skipped after FreeLLMAPI reports all its routes on cooldown
 NOT_CHAT = ("embed", "whisper", "tts", "guard", "rerank", "moderation", "image-gen", "dall")
 
 
@@ -80,6 +81,17 @@ def _http(f, path, body=None, timeout=60):
                                  headers={"Content-Type": "application/json", "Authorization": "Bearer " + f["key"]})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return json.loads(r.read()), r.headers.get("X-Routed-Via")
+
+
+def refused_locally(code, detail):
+    """FreeLLMAPI refusals that never reached a provider: 'dead' (model gone upstream / no key for it) or 'cooling'
+    (every route rate-limited or on cooldown). None for real upstream errors."""
+    d = detail.lower()
+    if code == 404 and ("not found" in d or "removed" in d):
+        return "dead"
+    if code == 429 and "all models exhausted" in d:
+        return "dead" if "no usable key" in d and "rate-limited" not in d else "cooling"
+    return None
 
 
 def denied(model, deny):
@@ -135,6 +147,10 @@ class Budget:
         self.calls_left -= 1
         self.month_calls_left -= 1
 
+    def refund_call(self):
+        self.calls_left += 1
+        self.month_calls_left += 1
+
     def spend_tokens(self, n):
         self.tokens_left -= n
         self.month_tokens_left -= n
@@ -153,6 +169,8 @@ class Session:
         self.seed = int(seed)
         self.used = {}
         self.tokens = {}
+        self.dead = set()      # FreeLLMAPI says "not found / removed upstream" or no usable key: skip for this video
+        self.cooling = {}      # model -> time.time() when FreeLLMAPI's own cooldown should be over
         self._http = http or _http
         if not configured(cfg):
             raise LLMUnavailable("FREELLM_BASE_URL / FREELLM_API_KEY are not set (the 'Start FreeLLMAPI' step did not run)")
@@ -189,6 +207,7 @@ class Session:
         temperature = float(rc.get("temperature", 0.7))
         errors = []
         order = [m for m in self.candidates.get(role, []) if m not in avoid] or self.candidates.get(role, [])
+        order = [m for m in order if m not in self.dead and self.cooling.get(m, 0) <= time.time()]
         for model in order:
             jm = json_mode
             i = 0
@@ -222,6 +241,15 @@ class Session:
                     errors.append(f"{model}: HTTP {e.code} {detail[:120]}")
                     if e.code in (401, 403):
                         raise LLMUnavailable(f"FreeLLMAPI refused the key (HTTP {e.code})") from None
+                    gone = refused_locally(e.code, detail)
+                    if gone:
+                        # FreeLLMAPI answered without asking any provider: no free-tier request was used
+                        self.budget.refund_call()
+                        if gone == "dead":
+                            self.dead.add(model)
+                        else:
+                            self.cooling[model] = time.time() + COOLDOWN
+                        break
                     if e.code not in RETRY or "quota" in detail.lower():
                         break
                 except (urllib.error.URLError, TimeoutError, KeyError, IndexError, ValueError, json.JSONDecodeError) as e:

@@ -147,7 +147,7 @@ freellm:
   deny: ["claude", "anthropic", "gpt-4o", "gpt-4.1", "gpt-5", "o1-", "o3-", "o4-"]   # never paid / never Claude
   max_tokens: 8000
   timeout_seconds: 240
-  max_calls_per_video: 32     # hard cap on requests for one video, all roles together
+  max_calls_per_video: 48     # hard cap on requests that reach a provider, one video, all roles together
   max_tokens_per_video: 400000
   monthly_token_cap: 50000000 # counted in data/freellm_usage.json; past it no model is called until next month
   monthly_request_cap: 6000

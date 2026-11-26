@@ -289,3 +289,32 @@ def test_volume_jump_check_ignores_speech_onsets_but_catches_bursts(tmp_path):
     wav(tmp_path / "quiet.wav", np.zeros_like(t))
     wav(tmp_path / "burst.wav", bed + np.where(t >= 1.0, 0.4 * np.sin(2 * np.pi * 90 * t), 0))  # a boom over the bed
     assert qa.short_term_jumps(tmp_path / "burst.wav", tmp_path / "quiet.wav") > 22
+
+
+def test_model_quote_with_small_slips_counts_as_the_shown_passage():
+    from flatframe import facts
+    passage = "In November 1944 the Japanese launched about 9,300 balloons toward North America."
+    assert facts.near_copy("In November 1944, the Japanese launched about 9,300 balloons towards North America.", passage)
+    assert not facts.near_copy("In November 1944 the Japanese launched about 12,000 balloons toward North America.", passage)
+    assert not facts.near_copy("Balloons were launched.", passage)
+
+
+def test_html_served_as_pdf_is_not_parsed_as_pdf(cfg, monkeypatch):
+    from flatframe import sources
+
+    class R:
+        headers = {"Content-Type": "application/pdf"}
+        encoding = "utf-8"
+
+        def raise_for_status(self):
+            pass
+
+        class raw:
+            @staticmethod
+            def read(n, decode_content=True):
+                return b"<html><body>nope</body></html>"
+
+    w = sources.Web(cfg)
+    monkeypatch.setattr(w.s, "get", lambda *a, **k: R())
+    with pytest.raises(ValueError, match="not one"):
+        w.fetch_text("https://example.com/report.pdf")

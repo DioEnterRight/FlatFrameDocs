@@ -124,3 +124,31 @@ def test_extract_json_handles_think_and_fences():
     assert llm.extract_json('<think>{"no": 1}</think> ok ```json {"yes": {"n": "}"}} ```') == {"yes": {"n": "}"}}
     with pytest.raises(ValueError):
         llm.extract_json('{"cut": ')
+
+
+def test_model_gone_upstream_is_skipped_for_the_video_and_not_counted(cfg):
+    gone = lambda: urllib.error.HTTPError("u", 404, "nf", {}, io.BytesIO(b'{"error":{"message":"Every routed provider reports the model as not found or removed upstream"}}'))
+    api = FakeAPI(["gemini-2.5-flash", "deepseek-r1"], {"gemini-2.5-flash": [gone(), gone()], "deepseek-r1": ['{"ok": true}', '{"ok": true}']})
+    s = llm.Session(cfg, 0, http=api)
+    s.candidates["writer"] = s.candidates["research"] = ["gemini-2.5-flash", "deepseek-r1"]
+    left = s.budget.calls_left
+    s.json("writer", "sys", "user")
+    s.json("research", "sys", "user")
+    assert api.calls.count("gemini-2.5-flash") == 1          # asked once, then skipped by every role
+    assert s.budget.calls_left == left - 2                    # only the two real answers count
+
+
+def test_cooldown_refusal_skips_the_model_for_a_while(cfg):
+    busy = urllib.error.HTTPError("u", 429, "rl", {}, io.BytesIO(b'{"error":{"message":"All models exhausted: 1 route checked (1 rate-limited or on cooldown)."}}'))
+    api = FakeAPI(["gpt-oss-120b", "deepseek-r1"], {"gpt-oss-120b": [busy], "deepseek-r1": ['{"ok": true}', '{"ok": true}']})
+    s = llm.Session(cfg, 0, http=api)
+    s.candidates["writer"] = ["gpt-oss-120b", "deepseek-r1"]
+    s.json("writer", "sys", "user")
+    s.json("writer", "sys", "user")
+    assert api.calls == ["gpt-oss-120b", "deepseek-r1", "deepseek-r1"] and "gpt-oss-120b" in s.cooling
+
+
+def test_real_upstream_errors_still_count(cfg):
+    assert llm.refused_locally(502, "upstream_error") is None
+    assert llm.refused_locally(429, "rate limit from provider") is None
+    assert llm.refused_locally(404, "Every routed provider reports the model as not found") == "dead"

@@ -47,6 +47,18 @@ def quote_in(quote, text):
     return True
 
 
+def near_copy(quote, passage, min_ratio=0.9):
+    """The quote is the passage (or a sentence of it) retyped with small slips: same numbers, >= 90 % similar."""
+    from difflib import SequenceMatcher
+    q = norm(quote)
+    if len(q) < 12 or not numbers(quote) <= numbers(passage):
+        return False
+    for cand in [passage] + sentences(passage):
+        if SequenceMatcher(None, q, norm(cand)).ratio() >= min_ratio:
+            return True
+    return False
+
+
 def _words_to_number(tokens):
     total, cur, seen = 0, 0, False
     for t in tokens:

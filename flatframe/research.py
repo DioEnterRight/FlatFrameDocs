@@ -92,11 +92,17 @@ def corroborate(session, claims, srcs, need):
                                           max_tokens=5000)
                 by_id = {c["id"]: c for c in claims}
                 src_by_id = {s["id"]: s for s in ok_srcs}
+                sent = {(it["claim_id"], p["source"]): p["passage"] for it in items for p in it["passages"]}
                 for v in obj.get("verdicts") or []:
                     c, s = by_id.get(v.get("claim_id")), src_by_id.get(v.get("source"))
                     q = str(v.get("quote", ""))
                     if not (c and s and v.get("supports") is True):
                         continue
+                    # models retype quotes with tiny slips: when it is (almost) the passage we showed, keep the
+                    # source's own sentence, never the model's wording
+                    shown = sent.get((c["id"], s["id"]))
+                    if shown and not facts.quote_in(q, s["text"]) and facts.near_copy(q, shown):
+                        q = shown
                     if any(x["site"] == s["site"] for x in c["support"]):
                         continue
                     nums_ok = facts.numbers(c["text"]) <= facts.numbers(q)
@@ -131,6 +137,8 @@ def research(cfg, session, idea, web=None):
     claims = corroborate(session, claims, srcs, need)
     verified = [c for c in claims if c["status"] == "verified"]
     roles = {c["role"] for c in verified}
+    log("research: sites per claim " + " ".join(f"{c['id']}:{len(c['sites'])}{'!' if c['status'] == 'disputed' else ''}" for c in claims)
+        + f" (need {need}; {len([s for s in srcs if s['ok']])} sources read)")
     record = {
         "idea": idea, "question": idea["question"],
         "article": {"title": page["title"], "url": page["url"], "revision": page.get("lastrevid"), "role": "discovery only"},
