@@ -389,3 +389,33 @@ def test_every_model_role_is_taught_from_the_skill():
         assert needle in text, role
         assert "Search the web" not in text and "End by asking" not in text
     assert "The Australian Army Lost a War to Emus" in lessons.for_role("writer")
+
+
+def test_wikipedia_plus_one_outside_site_verifies_when_enabled(cfg):
+    cfg["research"]["min_verified_claims"] = 1
+    pages = {"https://a.com/1": "Long page. " * 150 + "By 8 November the soldiers had fired 2,500 rounds at the emus."}
+    claims = [{"text": "The soldiers fired 2,500 rounds by 8 November.", "role": "payoff", "wiki_quote": "The soldiers fired 2,500 rounds by 8 November."},
+              {"text": "The emus scattered into small groups whenever the guns opened fire.", "role": "hook",
+               "wiki_quote": "The emus scattered into small groups whenever the guns opened fire."}]
+    idea = {"title": "Emu", "question": "q", "wikipedia_title": "Emu War"}
+    cfg["research"]["wikipedia_counts_as_source"] = True
+    rec = research.research(cfg, FakeSession(claims), idea, web=FakeWeb(ARTICLE, pages))
+    by = {c["text"]: c["status"] for c in rec["claims"]}
+    assert by["The soldiers fired 2,500 rounds by 8 November."] == "verified"
+    assert by["The emus scattered into small groups whenever the guns opened fire."] == "unverified"   # no outside site
+    cfg["research"]["wikipedia_counts_as_source"] = False
+    rec = research.research(cfg, FakeSession(claims), idea, web=FakeWeb(ARTICLE, pages))
+    assert all(c["status"] != "verified" for c in rec["claims"])
+
+
+def test_model_marks_passages_by_id_and_the_source_text_is_kept(cfg):
+    claims = [{"id": "C1", "text": "Meredith reported 986 emus killed.", "role": "payoff", "wiki_quote": "x", "support": [], "conflicts": []}]
+    srcs = [{"id": "S1", "site": "a.com", "ok": True, "text": "Long. " * 30 + "According to Major Meredith, 986 birds were killed by the guns."}]
+
+    class Judge:
+        def json(self, role, system, user, **k):
+            return {"supported": ["P1", "P99"]}, "judge-model"
+    items = [{"claim_id": "C1", "claim": claims[0]["text"],
+              "passages": [{"source": "S1", "passage": "According to Major Meredith, 986 birds were killed by the guns."}]}]
+    assert research._verify_batch(Judge(), claims, srcs, items)
+    assert claims[0]["support"] and claims[0]["support"][0]["quote"].startswith("According to Major Meredith")

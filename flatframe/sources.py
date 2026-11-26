@@ -146,4 +146,12 @@ def fetch_sources(web, links, limit):
             log(f"source {sid}: {site} ({len(text):,} chars)")
         except Exception as e:  # noqa: BLE001  (a dead link is normal; it is recorded, not fatal)
             out.append({"id": sid, "url": url, "site": site, "ok": False, "error": str(e)[:160]})
+    bad = [s for s in out if not s["ok"]]
+    if bad:
+        why = {}
+        for s in bad:
+            k = re.sub(r"\d{3,}|https?://\S+", "", s["error"])[:50]
+            why[k] = why.get(k, 0) + 1
+        log(f"sources: {len(out) - len(bad)} read, {len(bad)} unusable (" + "; ".join(f"{n}x {k}" for k, n in
+                                                                          sorted(why.items(), key=lambda x: -x[1])[:3]) + ")")
     return out

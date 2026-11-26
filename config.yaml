@@ -65,7 +65,7 @@ brand:
 # ------------------------------------------------------------
 ideas:
   candidates: 10              # concepts pitched per brainstorm (good unused ones are banked in data/ideas.json)
-  research_attempts: 4        # shortlisted ideas tried in research before the run gives up
+  research_attempts: 5        # shortlisted ideas tried in research before the run gives up
   curated: fallback           # prompts/curated_topics.json: fallback = the free models pitch their own ideas every run and
                               # one hand-picked topic is the last research try; first = hand-picked before brainstorming; off = never
   min_score: 7.0              # weighted critic score (1-10) an idea needs before research
@@ -94,8 +94,9 @@ ideas:
 # ------------------------------------------------------------
 research:
   wikipedia_lang: en
-  min_verified_claims: 5      # fewer verified claims = topic rejected (each one still needs 2+ independent sites)
-  min_sources_per_claim: 2    # independent sources (different sites) whose exact text supports the claim
+  min_verified_claims: 4      # fewer verified claims = topic rejected (the hook and the answer must be among them)
+  min_sources_per_claim: 2    # sources per claim, counting Wikipedia's own sentence when the next line is true
+  wikipedia_counts_as_source: true   # true: Wikipedia + 1 outside site = verified; false: 2 outside sites (stricter, fewer videos)
   max_source_fetches: 24      # cited pages read per topic (no model cost; more pages = more claims verified)
   max_source_chars: 60000
   request_timeout: 20
