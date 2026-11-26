@@ -1,1 +1,16 @@
-{}
+{
+  "2026-11": {
+    "calls": 3,
+    "prompt_tokens": 19556,
+    "completion_tokens": 19308,
+    "by_model": {
+      "fusion(gemini-robotics-er-2-preview+nvidia/nemotron-3-ultra-550b-a55b+kilo-auto/free+nvidia/nemotron-3.5-lightning:free -> google/gemini-robotics-er-2-preview)": 1,
+      "google/gemini-robotics-er-2-preview": 2
+    },
+    "by_role": {
+      "ideator": 1,
+      "critic": 1,
+      "research": 1
+    }
+  }
+}
