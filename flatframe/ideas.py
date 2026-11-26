@@ -13,6 +13,7 @@ import datetime as dt
 import json
 import re
 
+from . import lessons
 from .common import DATA, ROOT, content_words, fill, jaccard, log, prompt, read_json, write_json
 
 BANK = DATA / "ideas.json"
@@ -77,7 +78,7 @@ def generate(cfg, session, history, avoid_titles):
     user = fill(prompt("ideas.md"), n=str(ic["candidates"]), categories="\n".join(f"- {c}" for c in ic["categories"]),
                 avoid="\n".join(f"- {t}" for t in avoid_titles[-40:]) or "- (none yet)",
                 patterns=", ".join(PATTERNS), hook_words=str(cfg["writing"]["hook_max_words"]))
-    obj, model = session.json("ideator", prompt("ideas_system.md"), user, max_tokens=6000)
+    obj, model = session.json("ideator", lessons.system("ideas_system.md", "ideator", getattr(session, "seed", 0)), user, max_tokens=6000)
     ideas = [i for i in (obj.get("ideas") or []) if isinstance(i, dict)]
     for i in ideas:
         i["pitched_by"] = model
@@ -90,7 +91,7 @@ def score(cfg, session, ideas, avoid_model):
         return []
     listing = [{"n": k, **{f: i.get(f) for f in ("title", "question", "hook", "payoff", "category", "why_visual")}}
                for k, i in enumerate(ideas)]
-    obj, model = session.json("critic", prompt("critic_system.md"),
+    obj, model = session.json("critic", lessons.system("critic_system.md", "idea_critic", getattr(session, "seed", 0)),
                               fill(prompt("idea_critic.md"), ideas=json.dumps(listing, ensure_ascii=False, indent=1)),
                               max_tokens=5000, avoid=(avoid_model,))
     by_n = {int(s.get("n", -1)): s for s in obj.get("scores") or [] if isinstance(s, dict)}

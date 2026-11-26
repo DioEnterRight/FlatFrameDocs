@@ -380,3 +380,12 @@ def test_models_pitch_their_own_ideas_and_curated_is_only_the_last_try(cfg, monk
     k = int(cfg["ideas"]["research_attempts"])
     assert all(i["pitched_by"] == "model-a" for i in ranked[:k - 1])
     assert ranked[k - 1]["pitched_by"] == "curated"
+
+
+def test_every_model_role_is_taught_from_the_skill():
+    from flatframe import lessons
+    for role, needle in (("ideator", "Title rules"), ("writer", "Script DNA"), ("director", "Visual beats"), ("judge", "Rules that always hold")):
+        text = lessons.for_role(role, 3)
+        assert needle in text, role
+        assert "Search the web" not in text and "End by asking" not in text
+    assert "The Australian Army Lost a War to Emus" in lessons.for_role("writer")

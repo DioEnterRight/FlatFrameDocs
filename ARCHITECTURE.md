@@ -31,6 +31,7 @@ if none survives the run ends without a video. `LLMUnavailable` (no free model /
 |---|---|
 | `common.py` | paths, config loading, redacted logging, atomic JSON writes |
 | `config_check.py` | validates every config key; refuses unsafe YouTube settings |
+| `lessons.py` | Teaches every model role from the 2D Documentary Skill: the matching SKILL.md sections plus worked examples (hand-picked topics, the Emu War script and storyboard) appended to each system prompt |
 | `llm.py` | FreeLLMAPI client: auto:smart routing for text roles, vision-model discovery for the judge, deny list, failover, budgets, usage ledger |
 | `schedule.py`, `gate.py` | IST slot maths, make/post gates |
 | `ideas.py` | idea generation, filters, critic scoring, idea bank |

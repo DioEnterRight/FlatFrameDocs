@@ -5,7 +5,7 @@ available, the offline director (keywords -> sets and props) produces a plain bu
 """
 import json
 
-from . import beats, catalog as K
+from . import beats, catalog as K, lessons
 from .common import fill, log, prompt
 from .llm import LLMUnavailable
 
@@ -51,7 +51,7 @@ def direct(cfg, session, script, timing, claims, history, seed, video_id):
                     claims=json.dumps([{"id": c["id"], "fact": c["text"]} for c in claims], ensure_ascii=False),
                     catalog=catalog_text(), recent=json.dumps(recent))
         try:
-            board, model = session.json("director", prompt("director_system.md"), user, max_tokens=8000)
+            board, model = session.json("director", lessons.system("director_system.md", "director"), user, max_tokens=8000)
             board["directed_by"] = model
         except LLMUnavailable as e:
             log(f"director unavailable ({e}); using the offline director", "WARN")
@@ -63,7 +63,7 @@ def direct(cfg, session, script, timing, claims, history, seed, video_id):
         try:
             fix = (f"\n\n# REVISE\nYour storyboard:\n{json.dumps(board, ensure_ascii=False)[:12000]}\n\nAfter compiling, these rules "
                    "still fail. Return the whole corrected storyboard JSON:\n" + "\n".join(f"- {v}" for v in report["violations"]))
-            board2, model = session.json("director", prompt("director_system.md"), user + fix, max_tokens=8000)
+            board2, model = session.json("director", lessons.system("director_system.md", "director"), user + fix, max_tokens=8000)
             board2["directed_by"] = model
             plan2, report2 = beats.compile_plan(cfg, script, timing, board2, claims, seed, video_id)
             if len(report2["violations"]) < len(report["violations"]):

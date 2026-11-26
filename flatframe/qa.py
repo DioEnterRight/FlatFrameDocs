@@ -15,7 +15,7 @@ import subprocess
 import numpy as np
 from PIL import Image
 
-from . import render
+from . import lessons, render
 from .common import ffprobe, log, prompt
 
 
@@ -126,7 +126,7 @@ def make_judge(session):
 
     def judge(sheet):
         try:
-            obj, model = session.json("judge", prompt("judge_system.md"), prompt("judge.md"), images=[sheet], max_tokens=1500)
+            obj, model = session.json("judge", lessons.system("judge_system.md", "judge"), prompt("judge.md"), images=[sheet], max_tokens=1500)
             s = obj.get("scores") or {}
             vals = [max(0.0, min(10.0, float(x))) for x in s.values() if isinstance(x, (int, float))]
             return {"score": round(sum(vals) / len(vals), 2) if vals else 0.0, "scores": s,

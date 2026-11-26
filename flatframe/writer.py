@@ -5,7 +5,7 @@
 """
 import json
 
-from . import script_check
+from . import lessons, script_check
 from .common import StageError, fill, log, prompt
 
 
@@ -22,7 +22,7 @@ def _draft(cfg, session, idea, claims, fixes=None, previous=None, avoid=()):
     if fixes:
         user += ("\n\n# REWRITE\nYour previous draft:\n" + json.dumps(previous, ensure_ascii=False, indent=1) +
                  "\n\nFix ALL of these problems, keep what works:\n" + "\n".join(f"- {f}" for f in fixes))
-    obj, model = session.json("writer", prompt("writer_system.md"), user, max_tokens=5000, avoid=avoid)
+    obj, model = session.json("writer", lessons.system("writer_system.md", "writer"), user, max_tokens=5000, avoid=avoid)
     obj["written_by"] = model
     for l in obj.get("lines", []):
         l.setdefault("speaker", "narrator")
@@ -32,7 +32,7 @@ def _draft(cfg, session, idea, claims, fixes=None, previous=None, avoid=()):
 
 
 def _critique(cfg, session, script, claims, avoid):
-    obj, model = session.json("critic", prompt("critic_system.md"),
+    obj, model = session.json("critic", lessons.system("critic_system.md", "script_critic"),
                               fill(prompt("script_critic.md"), script=json.dumps(script, ensure_ascii=False, indent=1),
                                    claims=json.dumps(_claims_for_prompt(claims), ensure_ascii=False, indent=1)),
                               max_tokens=3000, avoid=avoid)
