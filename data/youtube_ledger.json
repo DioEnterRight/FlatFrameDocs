@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "channel_id": null,
+  "uploads": [],
+  "insert_calls": [],
+  "attempts": [],
+  "rejected": [],
+  "errors": [],
+  "pause": null,
+  "pending": null,
+  "last_reconcile": null
+}

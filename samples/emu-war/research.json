@@ -1,0 +1,455 @@
+{
+  "idea": {
+    "title": "The Australian Army Lost a War to Emus",
+    "question": "How did a flock of birds beat soldiers with machine guns?",
+    "hook": "In 1932, Australia sent machine guns after birds.",
+    "hook_pattern": "impossible situation",
+    "payoff": "The emus split into small groups and soaked up bullets like tanks: about 10 rounds per kill.",
+    "category": "strange but documented historical events",
+    "wikipedia_title": "Emu War",
+    "why_visual": "Soldiers, trucks and machine guns against a goofy army of emus in a wheat field.",
+    "visual_metaphors": [
+      "an emu in a tiny helmet",
+      "a scoreboard of bullets vs birds",
+      "a truck bouncing over furrows"
+    ]
+  },
+  "question": "How did a flock of birds beat soldiers with machine guns?",
+  "article": {
+    "title": "Emu War",
+    "url": "https://en.wikipedia.org/wiki/Emu_War",
+    "revision": null,
+    "role": "discovery only"
+  },
+  "retrieved": "2026-11-26T13:30:00+00:00",
+  "rule": "a claim is verified when 2+ independent non-Wikipedia sites carry it in their own text",
+  "sources": [
+    {
+      "id": "S1",
+      "url": "https://www.nationalgeographic.com/history/article/australian-emu-war-history",
+      "site": "nationalgeographic.com",
+      "ok": true
+    },
+    {
+      "id": "S2",
+      "url": "https://www.britannica.com/topic/Emu-War",
+      "site": "britannica.com",
+      "ok": true
+    },
+    {
+      "id": "S3",
+      "url": "https://australiangeographic.com.au/?p=23036",
+      "site": "australiangeographic.com.au",
+      "ok": true
+    },
+    {
+      "id": "S4",
+      "url": "https://www.historyhit.com/the-great-emu-war/",
+      "site": "historyhit.com",
+      "ok": true
+    },
+    {
+      "id": "S5",
+      "url": "https://www.scientificamerican.com/blog/running-ponies/the-great-emu-war-in-which-some-large-flightless-birds-unwittingly-foiled-the-australian-army/",
+      "site": "scientificamerican.com",
+      "ok": true
+    },
+    {
+      "id": "S6",
+      "url": "https://www.mentalfloss.com/history/when-australia-went-war-its-emus",
+      "site": "mentalfloss.com",
+      "ok": true
+    },
+    {
+      "id": "S7",
+      "url": "https://themeateater.com/conservation/wildlife-management/the-great-emu-war-of-1932",
+      "site": "themeateater.com",
+      "ok": true
+    },
+    {
+      "id": "S8",
+      "url": "https://www.aol.com/articles/army-flightless-birds-defeated-australian-155210195.html",
+      "site": "aol.com",
+      "ok": true
+    },
+    {
+      "id": "S9",
+      "url": "https://allthatsinteresting.com/?p=116561",
+      "site": "allthatsinteresting.com",
+      "ok": true
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "role": "hook",
+      "text": "In 1932, Australia sent soldiers with machine guns after emus.",
+      "wiki_quote": null,
+      "support": [
+        {
+          "source": "S1",
+          "site": "nationalgeographic.com",
+          "quote": "In 1932, the government dispatched soldiers armed with machine guns to eliminate more than 20,000 emus, expecting a swift victory.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S9",
+          "site": "allthatsinteresting.com",
+          "quote": "In 1932, Australia went to war against an enemy like none it had ever faced before: the emu.",
+          "how": "checked by the developer against the page text"
+        }
+      ],
+      "conflicts": [],
+      "sites": [
+        "allthatsinteresting.com",
+        "nationalgeographic.com"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "C2",
+      "role": "mystery",
+      "text": "The soldiers were sent against roughly 20,000 emus.",
+      "wiki_quote": null,
+      "support": [
+        {
+          "source": "S1",
+          "site": "nationalgeographic.com",
+          "quote": "In 1932, the government dispatched soldiers armed with machine guns to eliminate more than 20,000 emus, expecting a swift victory.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S2",
+          "site": "britannica.com",
+          "quote": "Three members of the Royal Australian Artillery were assigned to cull roughly 20,000 emus using machine guns.",
+          "how": "checked by the developer against the page text"
+        }
+      ],
+      "conflicts": [],
+      "sites": [
+        "britannica.com",
+        "nationalgeographic.com"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "C3",
+      "role": "background",
+      "text": "They had two Lewis machine guns and 10,000 rounds of ammunition.",
+      "wiki_quote": null,
+      "support": [
+        {
+          "source": "S2",
+          "site": "britannica.com",
+          "quote": "The group had two Lewis automatic machine guns and 10,000 rounds of ammunition.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S3",
+          "site": "australiangeographic.com.au",
+          "quote": "There they unpacked two Lewis automatic machine guns and 10,000 rounds of ammunition.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S4",
+          "site": "historyhit.com",
+          "quote": "They were equipped with two Lewis light machine guns and 10,000 rounds of ammunition.",
+          "how": "checked by the developer against the page text"
+        }
+      ],
+      "conflicts": [],
+      "sites": [
+        "australiangeographic.com.au",
+        "britannica.com",
+        "historyhit.com"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "C4",
+      "role": "background",
+      "text": "The mission was to protect the farmers' wheat crops from the emus.",
+      "wiki_quote": null,
+      "support": [
+        {
+          "source": "S8",
+          "site": "aol.com",
+          "quote": "The assignment was straightforward: reduce the emu population, which is threatening wheat production in the Campion district.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S1",
+          "site": "nationalgeographic.com",
+          "quote": "The mission seemed simple: eliminate the emus and protect the crops.",
+          "how": "checked by the developer against the page text"
+        }
+      ],
+      "conflicts": [],
+      "sites": [
+        "aol.com",
+        "nationalgeographic.com"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "C5",
+      "role": "mystery",
+      "text": "When the soldiers tried an ambush, the emus split up and scattered.",
+      "wiki_quote": null,
+      "support": [
+        {
+          "source": "S4",
+          "site": "historyhit.com",
+          "quote": "On 2 November, locals tried to herd emus towards an ambush, but they split into small groups.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S2",
+          "site": "britannica.com",
+          "quote": "However, one of the guns jammed after just a few rounds, and the emus quickly scattered.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S5",
+          "site": "scientificamerican.com",
+          "quote": "The emus scattered once again,",
+          "how": "checked by the developer against the page text"
+        }
+      ],
+      "conflicts": [],
+      "sites": [
+        "britannica.com",
+        "historyhit.com",
+        "scientificamerican.com"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "C6",
+      "role": "escalation",
+      "text": "Each emu pack seemed to have its own leader.",
+      "wiki_quote": null,
+      "support": [
+        {
+          "source": "S4",
+          "site": "historyhit.com",
+          "quote": "An army observer noted of the emu that 'each pack seems to have its own leader now'",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S5",
+          "site": "scientificamerican.com",
+          "quote": "Each mob has its leader, always an enormous black-plumed bird standing fully six-feet high,",
+          "how": "checked by the developer against the page text"
+        }
+      ],
+      "conflicts": [],
+      "sites": [
+        "historyhit.com",
+        "scientificamerican.com"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "C7",
+      "role": "escalation",
+      "text": "A gun mounted on a truck did not work: the truck was too slow and too rough to aim from.",
+      "wiki_quote": null,
+      "support": [
+        {
+          "source": "S4",
+          "site": "historyhit.com",
+          "quote": "The truck was too slow, and the ride was so rough that the gunner couldn’t fire anyway.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S5",
+          "site": "scientificamerican.com",
+          "quote": "The army tried gunning them down in moving trucks, but found they couldn't aim properly at their speedy foes.",
+          "how": "checked by the developer against the page text"
+        }
+      ],
+      "conflicts": [],
+      "sites": [
+        "historyhit.com",
+        "scientificamerican.com"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "C8",
+      "role": "escalation",
+      "text": "By 8 November the soldiers had fired 2,500 rounds.",
+      "wiki_quote": null,
+      "support": [
+        {
+          "source": "S6",
+          "site": "mentalfloss.com",
+          "quote": "By November 8, a total of 2500 rounds of ammunition had been fired—resulting in as few as 50 birds being culled, according to some reports.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S5",
+          "site": "scientificamerican.com",
+          "quote": "On 8 November, it was reported that Major Meredith's party had used 2,500 rounds of ammunition",
+          "how": "checked by the developer against the page text"
+        }
+      ],
+      "conflicts": [],
+      "sites": [
+        "mentalfloss.com",
+        "scientificamerican.com"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "C9",
+      "role": "escalation",
+      "text": "On 8 November the troops were withdrawn.",
+      "wiki_quote": null,
+      "support": [
+        {
+          "source": "S2",
+          "site": "britannica.com",
+          "quote": "Meredith and his team withdrew on November 8, but local farmers demanded their return.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S4",
+          "site": "historyhit.com",
+          "quote": "On 8 November, an embarrassed Sir George Pearce withdrew the troops from the front line.",
+          "how": "checked by the developer against the page text"
+        }
+      ],
+      "conflicts": [],
+      "sites": [
+        "britannica.com",
+        "historyhit.com"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "C10",
+      "role": "payoff",
+      "text": "Major Meredith reported 986 emus killed.",
+      "wiki_quote": null,
+      "support": [
+        {
+          "source": "S2",
+          "site": "britannica.com",
+          "quote": "Meredith later reported that 986 emus were killed between November 12 and December 10, with an additional 2,500 later dying of their injuries.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S7",
+          "site": "themeateater.com",
+          "quote": "When the wheat crops had finally been harvested and the Great Emu War ended on December 10, 1932, Meredith reported the enemy casualties at 986 birds.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S6",
+          "site": "mentalfloss.com",
+          "quote": "The Second Emu War lasted until early December, and was initially more successful that the first: Meredith claimed that a total of 986 birds had been killed and more than 2000 wounded",
+          "how": "checked by the developer against the page text"
+        }
+      ],
+      "conflicts": [],
+      "sites": [
+        "britannica.com",
+        "mentalfloss.com",
+        "themeateater.com"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "C11",
+      "role": "payoff",
+      "text": "It took about 10 bullets for every emu killed.",
+      "wiki_quote": null,
+      "support": [
+        {
+          "source": "S4",
+          "site": "historyhit.com",
+          "quote": "But it was at a huge cost in ammunition, which Meredith claimed was exactly 10 rounds per confirmed kill.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S5",
+          "site": "scientificamerican.com",
+          "quote": "Meredith did the maths and found that it took 10 bullets to bring down every one emu, which was a pretty dismal effort.",
+          "how": "checked by the developer against the page text"
+        }
+      ],
+      "conflicts": [],
+      "sites": [
+        "historyhit.com",
+        "scientificamerican.com"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "C12",
+      "role": "payoff",
+      "text": "Meredith said the emus could face machine guns with the invulnerability of tanks.",
+      "wiki_quote": null,
+      "support": [
+        {
+          "source": "S1",
+          "site": "nationalgeographic.com",
+          "quote": "The lead officer, Gwynydd Purves Wynne-Aubrey Meredith, famously said, “[Emus] could face machine guns with the invulnerability of tanks.”",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S4",
+          "site": "historyhit.com",
+          "quote": "They can face machine guns with the invulnerability of tanks.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S5",
+          "site": "scientificamerican.com",
+          "quote": "They can face machine guns with the invulnerability of tanks.",
+          "how": "checked by the developer against the page text"
+        }
+      ],
+      "conflicts": [],
+      "sites": [
+        "historyhit.com",
+        "nationalgeographic.com",
+        "scientificamerican.com"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "C13",
+      "role": "detail",
+      "text": "In 1934, farmers claimed 57,034 emu bounties over six months.",
+      "wiki_quote": null,
+      "support": [
+        {
+          "source": "S4",
+          "site": "historyhit.com",
+          "quote": "By contrast, farmers managed to claim 57,034 bounties over six months in 1934.",
+          "how": "checked by the developer against the page text"
+        },
+        {
+          "source": "S5",
+          "site": "scientificamerican.com",
+          "quote": "some 57,034 emu lives were claimed over six months in 1934.",
+          "how": "checked by the developer against the page text"
+        }
+      ],
+      "conflicts": [],
+      "sites": [
+        "historyhit.com",
+        "scientificamerican.com"
+      ],
+      "status": "verified"
+    }
+  ],
+  "dropped": [],
+  "extracted_by": "sample assembled during development (not by the production pipeline)",
+  "verified_count": 13,
+  "verdict": "accepted",
+  "note": "Bundled TEST-MODE sample. Quotes were copied from the listed pages while building the repo; production videos are researched by flatframe/research.py on every run."
+}

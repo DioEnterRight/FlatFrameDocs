@@ -1,0 +1,14 @@
+# generated at run time
+/models/
+/out/
+engine/node_modules/
+engine/public/projects/
+__pycache__/
+*.pyc
+.pytest_cache/
+# secrets: never commit
+.env
+.env.*
+client_secret*.json
+*.pem
+*.key

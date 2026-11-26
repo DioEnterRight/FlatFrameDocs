@@ -1,0 +1,175 @@
+{
+  "script": {
+    "title": "The Australian Army Lost a War to Emus",
+    "hero_object": "a Lewis machine gun",
+    "written_by": "sample (developer-written for test mode)",
+    "lines": [
+      {
+        "section": "hook",
+        "speaker": "narrator",
+        "text": "In 1932, Australia sent machine guns after birds.",
+        "claims": [
+          "C1"
+        ],
+        "card": false
+      },
+      {
+        "section": "suspense",
+        "speaker": "narrator",
+        "text": "Two Lewis guns. 10,000 rounds of ammunition.",
+        "claims": [
+          "C3"
+        ],
+        "card": false
+      },
+      {
+        "section": "suspense",
+        "speaker": "narrator",
+        "text": "The enemy? Roughly 20,000 emus.",
+        "claims": [
+          "C2"
+        ],
+        "card": false
+      },
+      {
+        "section": "suspense",
+        "speaker": "narrator",
+        "text": "And the birds would not cooperate.",
+        "claims": [
+          "C5"
+        ],
+        "card": true
+      },
+      {
+        "section": "build",
+        "speaker": "narrator",
+        "text": "The emus were raiding the farmers' wheat.",
+        "claims": [
+          "C4"
+        ],
+        "card": false
+      },
+      {
+        "section": "build",
+        "speaker": "narrator",
+        "text": "So the soldiers planned an ambush.",
+        "claims": [
+          "C5"
+        ],
+        "card": false
+      },
+      {
+        "section": "build",
+        "speaker": "A",
+        "text": "Guns ready?",
+        "claims": [],
+        "card": false
+      },
+      {
+        "section": "build",
+        "speaker": "B",
+        "text": "Ready.",
+        "claims": [],
+        "card": false
+      },
+      {
+        "section": "build",
+        "speaker": "A",
+        "text": "Where are the emus?",
+        "claims": [],
+        "card": false
+      },
+      {
+        "section": "build",
+        "speaker": "B",
+        "text": "Everywhere.",
+        "claims": [],
+        "card": false
+      },
+      {
+        "section": "escalation",
+        "speaker": "narrator",
+        "text": "The emus split up and scattered.",
+        "claims": [
+          "C5"
+        ],
+        "card": true
+      },
+      {
+        "section": "escalation",
+        "speaker": "narrator",
+        "text": "Each pack seemed to have its own leader.",
+        "claims": [
+          "C6"
+        ],
+        "card": false
+      },
+      {
+        "section": "escalation",
+        "speaker": "narrator",
+        "text": "A gun on a truck? Too slow. Too bumpy.",
+        "claims": [
+          "C7"
+        ],
+        "card": false
+      },
+      {
+        "section": "escalation",
+        "speaker": "narrator",
+        "text": "By 8 November, 2,500 rounds were gone.",
+        "claims": [
+          "C8"
+        ],
+        "card": false
+      },
+      {
+        "section": "escalation",
+        "speaker": "narrator",
+        "text": "The troops were pulled out.",
+        "claims": [
+          "C9"
+        ],
+        "card": false
+      },
+      {
+        "section": "reveal",
+        "speaker": "narrator",
+        "text": "Major Meredith's final count: 986 emus.",
+        "claims": [
+          "C10"
+        ],
+        "card": false
+      },
+      {
+        "section": "reveal",
+        "speaker": "narrator",
+        "text": "About 10 bullets for every single bird.",
+        "claims": [
+          "C11"
+        ],
+        "card": true
+      },
+      {
+        "section": "reveal",
+        "speaker": "narrator",
+        "text": "He said they faced machine guns like tanks.",
+        "claims": [
+          "C12"
+        ],
+        "card": false
+      },
+      {
+        "section": "ending",
+        "speaker": "narrator",
+        "text": "The machine guns went home. The emus didn't.",
+        "claims": [
+          "C9"
+        ],
+        "card": false
+      }
+    ]
+  },
+  "review": {
+    "note": "sample script, reviewed by the developer"
+  }
+}

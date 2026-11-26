@@ -1,0 +1,35 @@
+{
+  "name": "flatframedocs-engine",
+  "version": "1.0.0",
+  "description": "FlatFrameDocs 2D documentary engine (Remotion + layered SVG, 1080x1920)",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "studio": "remotion studio src/index.ts"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.547",
+    "@remotion/cli": "4.0.547",
+    "@remotion/renderer": "4.0.547",
+    "d3-geo": "3.1.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.547",
+    "topojson-client": "3.1.0",
+    "world-atlas": "2.0.2"
+  },
+  "devDependencies": {
+    "@fontsource/caveat": "5.3.0",
+    "@fontsource/patrick-hand": "5.3.0",
+    "@fontsource/permanent-marker": "5.3.0",
+    "@types/d3-geo": "3.1.1",
+    "@types/geojson": "7946.0.16",
+    "@types/react": "19.3.3",
+    "@types/topojson-client": "3.1.5",
+    "typescript": "5.9.3"
+  }
+}

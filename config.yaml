@@ -1,0 +1,185 @@
+# ============================================================
+#  FLATFRAMEDOCS — the only file you normally edit.
+#  Every value is checked when a run starts (flatframe/config_check.py); a typo stops the run with a clear message.
+# ============================================================
+
+paused: false                 # emergency stop: true = nothing is made or posted
+
+channel:
+  name: FlatFrameDocs
+  language: en                # narration + metadata language (only "en" ships prompts today: prompts/*.md)
+
+# ------------------------------------------------------------
+#  VIDEO — vertical Shorts / Reels
+# ------------------------------------------------------------
+video:
+  width: 1080
+  height: 1920
+  fps: 30
+  target_seconds: 45
+  min_seconds: 40             # narration outside 40-50 s is rewritten once, then the topic is rejected
+  max_seconds: 50             # (narration is never sped up to fit)
+
+# ------------------------------------------------------------
+#  SCHEDULE — India time (Asia/Kolkata). GitHub cron is UTC; the gate converts.
+# ------------------------------------------------------------
+schedule:
+  every_minutes: 180          # one slot every 3 h = 8 a day
+  first: "01:30"              # first slot of the day (IST); the rest follow every_minutes
+  make_ahead: 2               # keep the next 2 slots covered by ready videos
+  make_per_run: 1             # each Make run produces at most 1 video
+  late_minutes: 90            # a slot can still be posted this long after its time; older slots are skipped, never bunched
+
+# ------------------------------------------------------------
+#  VOICE — edge-tts (free Microsoft read-aloud service) first, Kokoro (offline, Apache-2.0) as the fallback.
+# ------------------------------------------------------------
+voice:
+  engine: edge                # edge (falls back to Kokoro by itself) | kokoro
+  narrator:
+    edge_voice: en-US-AndrewNeural
+    edge_rate: "+0%"          # natural pace; the duration is fixed by the script, never by speeding up
+    kokoro_voice: am_michael
+    kokoro_speed: 0.95        # same voices and pace as shorts-bot (edge-tts AndrewNeural +0%, Kokoro am_michael 0.95)
+  skit_voices:                # deadpan skit lines: a different, flatter voice per speaker
+    - {edge_voice: en-US-BrianNeural, edge_rate: "-4%", kokoro_voice: am_adam, kokoro_speed: 0.95}
+    - {edge_voice: en-US-EmmaNeural, edge_rate: "-4%", kokoro_voice: af_bella, kokoro_speed: 0.95}
+  gap_seconds: 0.22           # pause between lines
+  min_gap: 0.12               # the fitter may move gaps inside this range (never the speech itself)
+  max_gap: 0.45
+  card_pause: 0.30            # extra beat after a [CARD] line and before the reveal
+  edge_retries: 5
+  edge_pause: 1.0
+
+# ------------------------------------------------------------
+#  BRAND — corner tag on every frame, captions, and the last-3-seconds follow outro
+# ------------------------------------------------------------
+brand:
+  corner_handle: "@outrichguy"          # top-right on every frame
+  captions: true                        # word-by-word captions in the lower third (not on black cards / the outro)
+  outro_seconds: 3                      # added AFTER the 40-50 s story
+  outro_text: "Follow FlatFrameDocs and @outrichguy"          # on screen
+  outro_spoken: "Follow Flat Frame Docs, and at out rich guy!"  # what the main character says (TTS-friendly)
+
+# ------------------------------------------------------------
+#  IDEAS
+# ------------------------------------------------------------
+ideas:
+  candidates: 10              # concepts pitched per brainstorm (good unused ones are banked in data/ideas.json)
+  research_attempts: 3        # shortlisted ideas tried in research before the run gives up
+  min_score: 7.0              # weighted critic score (1-10) an idea needs before research
+  similarity_threshold: 0.42  # 0-1 word overlap with past titles/questions above which an idea counts as a repeat
+  recent_categories_blocked: 2  # do not reuse the category of the last N videos
+  weights: {curiosity: 1.4, uniqueness: 1.2, hook: 1.3, suspense: 1.1, visual: 1.0, payoff: 1.3, reliability: 1.6, variety: 0.8}
+  categories:
+    - strange but documented historical events
+    - unbelievable inventions and discoveries
+    - forgotten stories that changed the world
+    - weird business decisions and their consequences
+    - unusual economic events
+    - scientific mysteries with surprising explanations
+    - strange real-world coincidences
+    - engineering failures and successes
+    - hidden systems behind everyday objects
+    - unusual human behaviour
+    - unexpected origins of familiar things
+    - historical misunderstandings
+    - strange laws and documented incidents
+    - unusual survival and achievement stories
+    - events that seemed impossible but have a factual explanation
+
+# ------------------------------------------------------------
+#  RESEARCH — every fact on screen or in the narration comes from here
+# ------------------------------------------------------------
+research:
+  wikipedia_lang: en
+  min_verified_claims: 7      # fewer verified claims = topic rejected
+  min_sources_per_claim: 2    # independent sources (different sites) whose exact text supports the claim
+  max_source_fetches: 14      # cited pages fetched per topic
+  max_source_chars: 60000
+  request_timeout: 20
+  user_agent: "FlatFrameDocsBot/1.0 (https://github.com/DioEnterRight/FlatFrameDocs; research for fact-checked documentaries)"
+
+# ------------------------------------------------------------
+#  SCRIPT
+# ------------------------------------------------------------
+writing:
+  words_min: 100              # ~40-50 s at a natural 150-165 wpm
+  words_max: 138
+  hook_max_words: 9           # the first line must land in ~2 s
+  max_sentence_words: 16
+  good_enough: 8.0            # critic score (1-10) at which no rewrite is made
+  rewrite_rounds: 2
+
+# ------------------------------------------------------------
+#  QUALITY GATES — a video failing a gate is repaired or rejected, never published
+# ------------------------------------------------------------
+quality:
+  min_script_score: 7.0
+  min_story_score: 7.0        # judge on the contact sheet (vision model); skipped if no free vision model is ready
+  max_static_seconds: 3.5     # longest run of near-identical frames allowed
+  min_mean_brightness: 55     # 0-255 (the skill's target is 90-110 for scenes; cards pull the mean down)
+  max_mean_brightness: 150
+  voice_lufs: [-18.0, -12.0]  # integrated loudness of the final mix
+  music_under_voice_db: 18    # the skill's rule: music at least 18 dB under the voice
+  max_true_peak: -1.0
+
+# ------------------------------------------------------------
+#  RENDER (Remotion + SVG on the runner's Chrome, no GPU needed for flat sets)
+# ------------------------------------------------------------
+render:
+  concurrency: 4
+  timeout_minutes: 75
+  crf: 18
+
+# ------------------------------------------------------------
+#  FREE MODELS (FreeLLMAPI started inside each run from the FREELLMAPI_KEYS secret — see FREE_MODELS.md)
+#  Each role ranks the READY models by `prefer` (name fragments, best first) and rotates the top `rotate_top`
+#  between videos. `deny` fragments are never called and a reply routed to one is discarded.
+# ------------------------------------------------------------
+freellm:
+  roles:
+    ideator:  {prefer: ["gemini-2.5-pro", "deepseek-r1", "deepseek-v3", "qwen3-235b", "kimi-k2", "gpt-oss-120b", "llama-3.3-70b", "gemini-2.5-flash"], rotate_top: 4, temperature: 1.0}
+    critic:   {prefer: ["gemini-2.5-pro", "deepseek-r1", "qwen3-235b", "gpt-oss-120b", "kimi-k2", "llama-3.3-70b", "gemini-2.5-flash"], rotate_top: 3, temperature: 0.2}
+    research: {prefer: ["gemini-2.5-flash", "gemini-2.5-pro", "deepseek-v3", "qwen3-235b", "gpt-oss-120b", "llama-3.3-70b"], rotate_top: 2, temperature: 0.0}
+    writer:   {prefer: ["gemini-2.5-pro", "deepseek-r1", "deepseek-v3", "kimi-k2", "qwen3-235b", "gpt-oss-120b", "llama-3.3-70b"], rotate_top: 3, temperature: 0.85}
+    director: {prefer: ["gemini-2.5-pro", "gemini-2.5-flash", "deepseek-v3", "qwen3-235b", "gpt-oss-120b", "kimi-k2"], rotate_top: 3, temperature: 0.5}
+    judge:    {prefer: ["gemini-2.5-flash", "gemini-2.5-pro", "gemini-2.0-flash", "llama-4", "qwen2.5-vl", "pixtral"], rotate_top: 2, temperature: 0.1, vision: true}
+  deny: ["claude", "anthropic", "gpt-4o", "gpt-4.1", "gpt-5", "o1-", "o3-", "o4-"]   # never paid / never Claude
+  max_tokens: 8000
+  timeout_seconds: 240
+  max_calls_per_video: 32     # hard cap on requests for one video, all roles together
+  max_tokens_per_video: 400000
+  monthly_token_cap: 50000000 # counted in data/freellm_usage.json; past it no model is called until next month
+  monthly_request_cap: 6000
+
+# ------------------------------------------------------------
+#  PUBLISHING
+# ------------------------------------------------------------
+disclosure:
+  youtube_synthetic: false    # stylised cartoon: YouTube's altered/synthetic flag is for realistic content
+  instagram_ai_label: true    # synthetic narrator voice: keep Meta's AI label on
+
+publish:
+  instagram: true
+  instagram_daily_cap: 8      # successful Reels per rolling 24 h (Meta's API allows more; this is our own limit)
+  instagram_max_attempts: 2   # then a "post it by hand" issue and the queue moves on
+
+  # YouTube safety controller (flatframe/yt_guard.py). See SECURITY.md "YouTube upload safety".
+  youtube_mode: api           # api | manual (issue with file + title) | off
+  youtube_channel_id: ""      # optional: the UC... id this repo may upload to; any other authenticated channel = refuse
+  youtube_channel_daily_cap: 1          # successful uploads per rolling 24 h. Conservative start, NOT YouTube's official limit.
+  youtube_api_daily_insert_cap: 100     # videos.insert calls per Pacific-time day (Google's default allowance, Nov 2026)
+  youtube_pause_on_upload_limit: true   # must stay true
+  youtube_pause_hours: 24               # at least 24
+  youtube_retry_upload_limit: false     # must stay false: uploadLimitExceeded is never retried
+  youtube_require_quota_clearance: true # after quotaExceeded wait for the next Pacific-time quota day
+  youtube_candidate_max_age_hours: 48   # YouTube gets the best QA-passed video of this window; older ones are skipped
+  youtube_max_attempts: 2               # non-limit errors per video before a manual-upload issue
+
+# ------------------------------------------------------------
+#  RETENTION
+# ------------------------------------------------------------
+retention:
+  keep_releases_days: 14      # finished videos stay downloadable in Releases this long after both platforms are done
+  history_max_videos: 1000
+  ledger_days: 30             # YouTube/Instagram ledger entries older than this are pruned

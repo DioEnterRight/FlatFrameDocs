@@ -1,0 +1,1 @@
+{"id":"demo","fps":30,"width":1080,"height":1920,"durationInFrames":60,"seed":1,"accent":"#8FD23F","cast":[],"hero":{"kind":"lightbulb"},"shots":[{"from":0,"dur":60,"kind":"card","card":{"text":"Demo plan","typeFrom":0,"cps":19},"camera":{"move":"still","timing":"creep","framing":"wide","focus":[0.5,0.5]}}]}
