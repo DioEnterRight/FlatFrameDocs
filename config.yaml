@@ -65,7 +65,7 @@ brand:
 # ------------------------------------------------------------
 ideas:
   candidates: 10              # concepts pitched per brainstorm (good unused ones are banked in data/ideas.json)
-  research_attempts: 3        # shortlisted ideas tried in research before the run gives up
+  research_attempts: 4        # shortlisted ideas tried in research before the run gives up
   min_score: 7.0              # weighted critic score (1-10) an idea needs before research
   similarity_threshold: 0.42  # 0-1 word overlap with past titles/questions above which an idea counts as a repeat
   recent_categories_blocked: 2  # do not reuse the category of the last N videos
@@ -92,9 +92,9 @@ ideas:
 # ------------------------------------------------------------
 research:
   wikipedia_lang: en
-  min_verified_claims: 7      # fewer verified claims = topic rejected
+  min_verified_claims: 5      # fewer verified claims = topic rejected (each one still needs 2+ independent sites)
   min_sources_per_claim: 2    # independent sources (different sites) whose exact text supports the claim
-  max_source_fetches: 14      # cited pages fetched per topic
+  max_source_fetches: 24      # cited pages read per topic (no model cost; more pages = more claims verified)
   max_source_chars: 60000
   request_timeout: 20
   user_agent: "FlatFrameDocsBot/1.0 (https://github.com/DioEnterRight/FlatFrameDocs; research for fact-checked documentaries)"
@@ -138,12 +138,12 @@ render:
 # ------------------------------------------------------------
 freellm:
   roles:
-    ideator:  {prefer: ["gemini-2.5-pro", "deepseek-r1", "deepseek-v3", "qwen3-235b", "kimi-k2", "gpt-oss-120b", "llama-3.3-70b", "gemini-2.5-flash"], rotate_top: 4, temperature: 1.0}
-    critic:   {prefer: ["gemini-2.5-pro", "deepseek-r1", "qwen3-235b", "gpt-oss-120b", "kimi-k2", "llama-3.3-70b", "gemini-2.5-flash"], rotate_top: 3, temperature: 0.2}
-    research: {prefer: ["gemini-2.5-flash", "gemini-2.5-pro", "deepseek-v3", "qwen3-235b", "gpt-oss-120b", "llama-3.3-70b"], rotate_top: 2, temperature: 0.0}
-    writer:   {prefer: ["gemini-2.5-pro", "deepseek-r1", "deepseek-v3", "kimi-k2", "qwen3-235b", "gpt-oss-120b", "llama-3.3-70b"], rotate_top: 3, temperature: 0.85}
-    director: {prefer: ["gemini-2.5-pro", "gemini-2.5-flash", "deepseek-v3", "qwen3-235b", "gpt-oss-120b", "kimi-k2"], rotate_top: 3, temperature: 0.5}
-    judge:    {prefer: ["gemini-2.5-flash", "gemini-2.5-pro", "gemini-2.0-flash", "llama-4", "qwen2.5-vl", "pixtral"], rotate_top: 2, temperature: 0.1, vision: true}
+    ideator:  {prefer: ["gemini-3", "qwen3", "glm-5", "gemini-2.5-pro", "deepseek-r1", "deepseek-v3", "qwen3-235b", "kimi-k2", "gpt-oss-120b", "llama-3.3-70b", "gemini-2.5-flash"], rotate_top: 4, temperature: 1.0}
+    critic:   {prefer: ["gemini-3", "qwen3", "glm-5", "gemini-2.5-pro", "deepseek-r1", "qwen3-235b", "gpt-oss-120b", "kimi-k2", "llama-3.3-70b", "gemini-2.5-flash"], rotate_top: 3, temperature: 0.2}
+    research: {prefer: ["gemini-3", "glm-5", "qwen3", "mistral-small", "gemini-2.5-flash", "gemini-2.5-pro", "deepseek-v3", "qwen3-235b", "gpt-oss-120b", "llama-3.3-70b"], rotate_top: 2, temperature: 0.0}
+    writer:   {prefer: ["gemini-3", "qwen3", "glm-5", "gemini-2.5-pro", "deepseek-r1", "deepseek-v3", "kimi-k2", "qwen3-235b", "gpt-oss-120b", "llama-3.3-70b"], rotate_top: 3, temperature: 0.85}
+    director: {prefer: ["gemini-3", "qwen3", "glm-5", "gemini-2.5-pro", "gemini-2.5-flash", "deepseek-v3", "qwen3-235b", "gpt-oss-120b", "kimi-k2"], rotate_top: 3, temperature: 0.5}
+    judge:    {prefer: ["gemini-3", "gemini-2.5-flash", "gemini-2.5-pro", "gemini-2.0-flash", "llama-4", "qwen2.5-vl", "pixtral"], rotate_top: 2, temperature: 0.1, vision: true}
   deny: ["claude", "anthropic", "gpt-4o", "gpt-4.1", "gpt-5", "o1-", "o3-", "o4-"]   # never paid / never Claude
   max_tokens: 8000
   timeout_seconds: 240

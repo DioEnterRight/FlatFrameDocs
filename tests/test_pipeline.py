@@ -100,9 +100,9 @@ ARTICLE = ("In 1932 the army sent soldiers with two machine guns against emus in
 def test_research_verifies_only_with_two_independent_sites(cfg):
     cfg["research"]["min_verified_claims"] = 2
     pages = {
-        "https://a.com/1": "Long page. " * 50 + "By 8 November the soldiers had fired 2,500 rounds at the emus. Meredith reported that 986 emus were killed.",
-        "https://b.org/2": "Other page. " * 50 + "Around 8 November, soldiers had fired 2,500 rounds. The emus scattered into small groups whenever the guns fired.",
-        "https://c.net/3": "Third. " * 50 + "Meredith reported 986 emus killed in the campaign. The emus scattered into small groups when the guns fired.",
+        "https://a.com/1": "Long page. " * 150 + "By 8 November the soldiers had fired 2,500 rounds at the emus. Meredith reported that 986 emus were killed.",
+        "https://b.org/2": "Other page. " * 150 + "Around 8 November, soldiers had fired 2,500 rounds. The emus scattered into small groups whenever the guns fired.",
+        "https://c.net/3": "Third. " * 250 + "Meredith reported 986 emus killed in the campaign. The emus scattered into small groups when the guns fired.",
     }
     claims = [
         {"text": "The soldiers fired 2,500 rounds by 8 November.", "role": "escalation", "wiki_quote": "The soldiers fired 2,500 rounds by 8 November."},
@@ -318,3 +318,18 @@ def test_html_served_as_pdf_is_not_parsed_as_pdf(cfg, monkeypatch):
     monkeypatch.setattr(w.s, "get", lambda *a, **k: R())
     with pytest.raises(ValueError, match="not one"):
         w.fetch_text("https://example.com/report.pdf")
+
+
+def test_fact_split_over_two_sentences_is_found():
+    from flatframe import facts
+    src = "Filler sentence about nothing at all here. In August 1976 the soldiers arrived at the bridge. They cut down the poplar tree in 42 minutes."
+    assert facts.best_support("Soldiers cut down the poplar tree at the bridge in August 1976.", src)
+
+
+def test_junk_and_duplicate_sources_are_skipped(cfg):
+    assert not sources.usable_source("https://tools.wmflabs.org/x") and not sources.usable_source("https://x.toolforge.org/y")
+    assert not sources.usable_source("https://podcasts.apple.com/us/podcast/1")
+    text = "A real page with a lot of words in it. " * 60
+    pages = {"https://a.com/1": text, "https://b.com/2": text, "https://c.com/3": "tiny"}
+    got = sources.fetch_sources(FakeWeb("", pages), list(pages), 10)
+    assert [s["ok"] for s in got] == [True, False, False]

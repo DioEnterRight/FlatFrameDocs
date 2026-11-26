@@ -137,10 +137,16 @@ def supports(claim, sentence, min_overlap=0.5):
     return len(shared) >= min(3, len(terms)) and len(shared) / len(terms) >= min_overlap
 
 
+def windows(text):
+    """Every sentence, plus every pair of neighbouring sentences (a fact is often split: 'In 1859 ... . It ...')."""
+    sents = sentences(text)
+    return sents + [a + " " + b for a, b in zip(sents, sents[1:]) if len(a) + len(b) <= 700]
+
+
 def best_support(claim, text, min_overlap=0.5):
     best, score = None, 0.0
     terms = key_terms(claim)
-    for s in sentences(text):
+    for s in windows(text):
         if supports(claim, s, min_overlap):
             sc = len(terms & key_terms(s)) / max(1, len(terms))
             if sc > score:

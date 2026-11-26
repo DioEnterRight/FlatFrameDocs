@@ -3,8 +3,10 @@
 Nothing here needs a key. Requests carry an identifying User-Agent (Wikimedia API etiquette), a timeout and a size
 limit; failures are recorded, never retried in a loop.
 """
+import hashlib
 import html
 import io
+import logging
 import re
 import urllib.parse
 
@@ -12,11 +14,14 @@ import requests
 
 from .common import log
 
-WIKI_MIRRORS = ("wikipedia.org", "wikimedia.org", "wikiwand.com", "wikidata.org", "dbpedia.org", "everybodywiki.com",
+logging.getLogger("pypdf").setLevel(logging.ERROR)   # font-encoding chatter from scanned PDFs is not an error
+MIN_SOURCE_CHARS = 1500   # below this a "source" is a landing page, a paywall stub or a podcast listing
+
+WIKI_MIRRORS = ("wikipedia.org", "wikimedia.org", "toolforge.org", "wmflabs.org", "wmcloud.org", "wikiwand.com", "wikidata.org", "dbpedia.org", "everybodywiki.com",
                 "wikizero", "wiki2.org", "justapedia", "infogalactic", "alchetron.com", "wikiless", "fandom.com")
 SKIP_HOSTS = ("books.google.", "google.com/books", "jstor.org", "worldcat.org", "doi.org/10.2307", "youtube.com",
               "facebook.com", "twitter.com", "x.com", "instagram.com", "tiktok.com", "reddit.com", "amazon.", "ebay.",
-              "imdb.com", "ancestry.", "newspapers.com", "proquest.com")
+              "imdb.com", "ancestry.", "newspapers.com", "proquest.com", "podcasts.apple.com", "spotify.com")
 TWO_PART_TLDS = ("co.uk", "org.uk", "ac.uk", "gov.uk", "com.au", "org.au", "gov.au", "net.au", "edu.au", "co.nz", "govt.nz",
                  "co.in", "gov.in", "co.jp", "ne.jp", "or.jp", "ac.jp", "com.br", "gov.br", "co.za", "gov.za", "com.cn",
                  "gc.ca", "com.sg", "gov.sg", "com.mx")
@@ -118,7 +123,7 @@ def pdf_text(raw):
 
 def fetch_sources(web, links, limit):
     """Fetch up to `limit` usable cited pages, at most 2 per site. -> [{id, url, site, ok, text|error}]"""
-    out, per_site = [], {}
+    out, per_site, seen = [], {}, set()
     for url in links:
         if len([s for s in out if s["ok"]]) >= limit or len(out) >= limit * 2:
             break
@@ -131,8 +136,12 @@ def fetch_sources(web, links, limit):
         sid = f"S{len(out) + 1}"
         try:
             text = web.fetch_text(url)
-            if len(text) < 400:
+            if len(text) < MIN_SOURCE_CHARS:
                 raise ValueError("page has almost no text")
+            digest = hashlib.sha1(text[:5000].encode("utf-8", "replace")).hexdigest()
+            if digest in seen:
+                raise ValueError("same text as another source")
+            seen.add(digest)
             out.append({"id": sid, "url": url, "site": site, "ok": True, "text": text})
             log(f"source {sid}: {site} ({len(text):,} chars)")
         except Exception as e:  # noqa: BLE001  (a dead link is normal; it is recorded, not fatal)

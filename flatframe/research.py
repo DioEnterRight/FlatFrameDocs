@@ -29,10 +29,10 @@ def _trim_article(text, limit=16000):
     return (text[:cut] if cut > 0 else text)[:limit]
 
 
-def candidate_passages(claim, src_text, n=2):
+def candidate_passages(claim, src_text, n=3):
     terms = facts.key_terms(claim)
     scored = []
-    for s in facts.sentences(src_text):
+    for s in facts.windows(src_text):
         shared = len(terms & facts.key_terms(s))
         if terms and shared / len(terms) >= 0.34:
             scored.append((shared, s))
@@ -76,7 +76,7 @@ def corroborate(session, claims, srcs, need):
     weak = [c for c in claims if len({x["site"] for x in c["support"]}) < need]
     if weak and session is not None:
         items = []
-        for c in weak[:14]:
+        for c in weak:
             passages = []
             for s in ok_srcs:
                 if any(x["site"] == s["site"] for x in c["support"]):
@@ -84,33 +84,11 @@ def corroborate(session, claims, srcs, need):
                 for p in candidate_passages(c["text"], s["text"]):
                     passages.append({"source": s["id"], "passage": p})
             if passages:
-                items.append({"claim_id": c["id"], "claim": c["text"], "passages": passages[:6]})
-        if items:
-            try:
-                obj, model = session.json("research", prompt("research_system.md"),
-                                          fill(prompt("research_verify.md"), items=json.dumps(items, ensure_ascii=False, indent=1)),
-                                          max_tokens=5000)
-                by_id = {c["id"]: c for c in claims}
-                src_by_id = {s["id"]: s for s in ok_srcs}
-                sent = {(it["claim_id"], p["source"]): p["passage"] for it in items for p in it["passages"]}
-                for v in obj.get("verdicts") or []:
-                    c, s = by_id.get(v.get("claim_id")), src_by_id.get(v.get("source"))
-                    q = str(v.get("quote", ""))
-                    if not (c and s and v.get("supports") is True):
-                        continue
-                    # models retype quotes with tiny slips: when it is (almost) the passage we showed, keep the
-                    # source's own sentence, never the model's wording
-                    shown = sent.get((c["id"], s["id"]))
-                    if shown and not facts.quote_in(q, s["text"]) and facts.near_copy(q, shown):
-                        q = shown
-                    if any(x["site"] == s["site"] for x in c["support"]):
-                        continue
-                    nums_ok = facts.numbers(c["text"]) <= facts.numbers(q)
-                    overlap = len(facts.key_terms(c["text"]) & facts.key_terms(q)) / max(1, len(facts.key_terms(c["text"])))
-                    if facts.quote_in(q, s["text"]) and nums_ok and overlap >= 0.34:
-                        c["support"].append({"source": s["id"], "site": s["site"], "quote": q, "how": f"quoted by {model}, checked"})
-            except Exception as e:  # noqa: BLE001  (the strict matcher result stands on its own)
-                log(f"research: model verification skipped ({str(e)[:150]})", "WARN")
+                items.append({"claim_id": c["id"], "claim": c["text"], "passages": passages[:8]})
+        # small batches: the free models that answer are often small, and long lists get half-answered
+        for k in range(0, len(items), VERIFY_BATCH):
+            if not _verify_batch(session, claims, ok_srcs, items[k:k + VERIFY_BATCH]):
+                break
     for c in claims:
         for s in ok_srcs:
             c["conflicts"] += [{"source": s["id"], "site": s["site"], "sentence": x} for x in facts.conflicting(c["text"], s["text"])]
@@ -119,6 +97,46 @@ def corroborate(session, claims, srcs, need):
         c["status"] = ("disputed" if c["conflicts"] and len(sites) < need + 1 else
                        "verified" if len(sites) >= need else "unverified")
     return claims
+
+
+VERIFY_BATCH = 4
+
+
+def _verify_batch(session, claims, ok_srcs, items):
+    """One model call for a few claims; every quote it returns is re-checked against the real source text.
+    -> False when the models are out (stop asking), True otherwise."""
+    try:
+        obj, model = session.json("research", prompt("research_system.md"),
+                                  fill(prompt("research_verify.md"), items=json.dumps(items, ensure_ascii=False, indent=1)),
+                                  max_tokens=3000)
+    except Exception as e:  # noqa: BLE001  (the strict matcher result stands on its own)
+        log(f"research: model verification skipped ({str(e)[:150]})", "WARN")
+        return False
+    by_id = {c["id"]: c for c in claims}
+    src_by_id = {s["id"]: s for s in ok_srcs}
+    sent = {(it["claim_id"], p["source"]): [] for it in items for p in it["passages"]}
+    for it in items:
+        for p in it["passages"]:
+            sent[(it["claim_id"], p["source"])].append(p["passage"])
+    for v in obj.get("verdicts") or []:
+        c, s = by_id.get(v.get("claim_id")), src_by_id.get(v.get("source"))
+        q = str(v.get("quote", ""))
+        if not (c and s and v.get("supports") is True):
+            continue
+        if any(x["site"] == s["site"] for x in c["support"]):
+            continue
+        # models retype quotes with tiny slips: when it is (almost) a passage we showed, keep the source's own
+        # words, never the model's
+        if not facts.quote_in(q, s["text"]):
+            shown = [p for p in sent.get((c["id"], s["id"]), []) if facts.near_copy(q, p)]
+            if not shown:
+                continue
+            q = shown[0]
+        nums_ok = facts.numbers(c["text"]) <= facts.numbers(q)
+        overlap = len(facts.key_terms(c["text"]) & facts.key_terms(q)) / max(1, len(facts.key_terms(c["text"])))
+        if nums_ok and overlap >= 0.34:
+            c["support"].append({"source": s["id"], "site": s["site"], "quote": q, "how": f"quoted by {model}, checked"})
+    return True
 
 
 def research(cfg, session, idea, web=None):
