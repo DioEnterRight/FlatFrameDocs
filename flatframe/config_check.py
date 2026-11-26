@@ -64,6 +64,7 @@ def validate(cfg):
     i = cfg["ideas"]
     _num(i, "candidates", 4, 20, "ideas")
     _num(i, "research_attempts", 1, 5, "ideas")
+    _need(i.get("curated", "fallback") in ("fallback", "first", "off"), "ideas.curated must be fallback, first or off")
     _num(i, "min_score", 1, 10, "ideas")
     _num(i, "similarity_threshold", 0.1, 0.9, "ideas")
     _need(isinstance(i.get("categories"), list) and len(i["categories"]) >= 3, "ideas.categories needs 3 or more")

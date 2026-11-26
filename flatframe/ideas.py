@@ -112,9 +112,13 @@ def shortlist(cfg, session, history):
     bank = read_json(BANK, {"bank": []})
     fresh_cut = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=21)).isoformat()
     banked = [i for i in bank["bank"] if i.get("banked_at", "") >= fresh_cut and not filter_reason(cfg, i, p)]
-    banked += curated(cfg, p, bank)
+    mode = cfg["ideas"].get("curated", "fallback")
+    library = curated(cfg, p, bank) if mode != "off" else []
+    if mode == "first":
+        banked += library
     pool, model = [], None
-    if len(banked) < int(cfg["ideas"]["research_attempts"]):
+    attempts = int(cfg["ideas"]["research_attempts"])
+    if mode == "fallback" or len(banked) < attempts:
         raw, model = generate(cfg, session, history, p["titles"] + [i["title"] for i in banked])
         seen = []
         for i in raw:
@@ -129,15 +133,21 @@ def shortlist(cfg, session, history):
         i["scores"]["variety"] = variety_score(i, p)
         i["score"] = weighted(cfg, i["scores"])
     ranked = sorted((i for i in pool + banked if i["score"] >= float(cfg["ideas"]["min_score"])), key=lambda i: -i["score"])
+    if mode == "fallback" and library:
+        # the models' own ideas come first; one hand-picked topic waits in the last research slot as a safety net
+        for i in library:
+            i["scores"]["variety"] = variety_score(i, p)
+            i["score"] = weighted(cfg, i["scores"])
+        ranked = ranked[:max(1, attempts - 1)] + library[:1] + ranked[max(1, attempts - 1):]
     for i in ranked[:6]:
-        log(f"idea {i['score']:.1f}: {i['title']} [{i['category']}]")
+        log(f"idea {i['score']:.1f}: {i['title']} [{i['category']}]" + (" (hand-picked backup)" if i.get("pitched_by") == "curated" else ""))
     return ranked
 
 
 def curated(cfg, p, bank):
     """Hand-picked, well-documented topics (prompts/curated_topics.json) that were not made or rejected before.
     They skip the brainstorm, never research: every fact is still verified like any other idea."""
-    if not cfg["ideas"].get("use_curated", True) or not CURATED.exists():
+    if not CURATED.exists():
         return []
     gone = {r["title"] for r in bank.get("rejected", [])} | {i["title"] for i in bank["bank"]}
     out = []

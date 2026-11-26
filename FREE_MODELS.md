@@ -59,6 +59,8 @@ the exact image, checks `/api/ping`, and opens a PR. See SECURITY.md.
 ## Hand-picked topics
 
 `prompts/curated_topics.json` holds ~40 hand-picked documentary stories, chosen because each has its own Wikipedia
-article and wide independent coverage (so research can verify it). The idea stage uses them before brainstorming
-(`ideas.use_curated`). They get no shortcut: research verifies every fact exactly like a brainstormed idea, and a topic
-that fails is never tried again. When the list runs out, the free models brainstorm as before.
+article and wide independent coverage (so research can verify it). With `ideas.curated: fallback` (default) the free
+models still pitch, score, write, storyboard and judge everything themselves every run; one hand-picked topic only waits
+in the last research slot in case all the models' ideas fail verification. `first` uses the list before brainstorming,
+`off` never uses it. A hand-picked topic gets no shortcut: research verifies every fact like any other idea, and one that
+fails is never tried again.

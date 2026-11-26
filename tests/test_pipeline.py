@@ -346,6 +346,7 @@ def test_wikipedia_outage_rejects_the_topic_instead_of_crashing(cfg):
 
 def test_curated_topics_are_valid_and_used_before_brainstorming(cfg, monkeypatch, tmp_path):
     from flatframe import ideas
+    cfg["ideas"]["curated"] = "first"
     data = json.loads(ideas.CURATED.read_text(encoding="utf-8"))
     p = ideas.past({"videos": []})
     assert len(data["topics"]) >= 30
@@ -360,3 +361,22 @@ def test_curated_topics_are_valid_and_used_before_brainstorming(cfg, monkeypatch
     assert len(ranked) >= int(cfg["ideas"]["research_attempts"]) and ranked[0]["pitched_by"] == "curated"
     used = {"videos": [{"title": ranked[0]["title"], "question": ranked[0]["question"], "article": ranked[0]["wikipedia_title"]}]}
     assert ranked[0]["title"] not in [i["title"] for i in ideas.shortlist(cfg, NoModel(), used)]
+
+
+def test_models_pitch_their_own_ideas_and_curated_is_only_the_last_try(cfg, monkeypatch, tmp_path):
+    from flatframe import ideas
+    monkeypatch.setattr(ideas, "BANK", tmp_path / "ideas.json")
+    topics = [("Volcano", "lava swallowed fishing villages"), ("Lighthouse", "keepers vanished overnight"),
+              ("Glacier", "ancient arrows melted free"), ("Canal", "engineers moved mountains"), ("Comet", "tails frightened sailors")]
+    own = [{"title": f"The {a} Where {b}", "question": f"How {b}?", "hook": "A strange thing happened once.",
+            "payoff": "Because of a reason.", "category": f"cat {a}", "wikipedia_title": f"{a} article"} for a, b in topics]
+
+    class Models:
+        def json(self, role, system, user, **k):
+            if role == "ideator":
+                return {"ideas": [dict(i) for i in own]}, "model-a"
+            return {"scores": [{"n": n, **{c: 9 for c in ideas.CRITERIA}} for n in range(len(own))]}, "model-b"
+    ranked = ideas.shortlist(cfg, Models(), {"videos": []})
+    k = int(cfg["ideas"]["research_attempts"])
+    assert all(i["pitched_by"] == "model-a" for i in ranked[:k - 1])
+    assert ranked[k - 1]["pitched_by"] == "curated"

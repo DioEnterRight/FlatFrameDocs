@@ -66,7 +66,8 @@ brand:
 ideas:
   candidates: 10              # concepts pitched per brainstorm (good unused ones are banked in data/ideas.json)
   research_attempts: 4        # shortlisted ideas tried in research before the run gives up
-  use_curated: true           # try the hand-picked topics in prompts/curated_topics.json before brainstorming
+  curated: fallback           # prompts/curated_topics.json: fallback = the free models pitch their own ideas every run and
+                              # one hand-picked topic is the last research try; first = hand-picked before brainstorming; off = never
   min_score: 7.0              # weighted critic score (1-10) an idea needs before research
   similarity_threshold: 0.42  # 0-1 word overlap with past titles/questions above which an idea counts as a repeat
   recent_categories_blocked: 2  # do not reuse the category of the last N videos
