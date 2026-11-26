@@ -21,11 +21,11 @@ jobs:
       contents: write          # download releases, temporary media branch for Instagram, save data/
       issues: write            # pause / manual-post notices
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.12"
           cache: pip
@@ -33,7 +33,13 @@ jobs:
 
       - name: Anything to do? (idle runs stop here)
         id: gate
+        env:
+          HAS_KEYS: ${{ secrets.FREELLMAPI_KEYS != '' }}
         run: |
+          if [ "$HAS_KEYS" != "true" ]; then
+            echo "::notice::FREELLMAPI_KEYS is not set yet (python tools/add_tokens.py): no videos can exist, so nothing to post."
+            echo "due=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
           pip install -q pyyaml==6.0.4
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then echo "due=true" >> "$GITHUB_OUTPUT"; else python -m flatframe.gate post; fi
 
