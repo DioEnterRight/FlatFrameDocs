@@ -267,3 +267,25 @@ def test_voice_appends_spoken_outro(cfg, tmp_path, monkeypatch):
     assert seen[-1]["spoken"] == cfg["brand"]["outro_spoken"] and seen[-1]["speaker"] == "outro"
     assert t["outro"]["start"] == t["narration_end"] and t["duration"] >= t["narration_end"] + cfg["brand"]["outro_seconds"] - 0.05
     assert len(t["lines"]) == 18
+
+
+def test_volume_jump_check_ignores_speech_onsets_but_catches_bursts(tmp_path):
+    import wave
+
+    import numpy as np
+    from flatframe import qa
+
+    def wav(path, x):
+        with wave.open(str(path), "wb") as w:
+            w.setnchannels(1), w.setsampwidth(2), w.setframerate(16000)
+            w.writeframes((np.clip(x, -1, 1) * 32767).astype("<i2").tobytes())
+
+    t = np.arange(32000) / 16000
+    bed = 0.015 * np.sin(2 * np.pi * 220 * t)                          # music bed around -40 dB
+    speech = np.where(t >= 1.0, 0.3 * np.sin(2 * np.pi * 150 * t), 0)  # voice comes back after a pause
+    wav(tmp_path / "voice.wav", speech)
+    wav(tmp_path / "speech.wav", bed + speech)
+    assert qa.short_term_jumps(tmp_path / "speech.wav", tmp_path / "voice.wav") < 22
+    wav(tmp_path / "quiet.wav", np.zeros_like(t))
+    wav(tmp_path / "burst.wav", bed + np.where(t >= 1.0, 0.4 * np.sin(2 * np.pi * 90 * t), 0))  # a boom over the bed
+    assert qa.short_term_jumps(tmp_path / "burst.wav", tmp_path / "quiet.wav") > 22

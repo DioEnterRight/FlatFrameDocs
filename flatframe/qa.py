@@ -33,16 +33,21 @@ def _frame_stats(paths):
     return out
 
 
-def short_term_jumps(path):
-    """Largest rise of 400 ms loudness between neighbouring windows (dB), ignoring silence."""
+def _window_db(path, win=6400):
     raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-f", "f32le", "-ac", "1", "-ar", "16000", "pipe:1"],
                          capture_output=True, check=True).stdout
     x = np.frombuffer(raw, dtype=np.float32)
-    win = 6400
-    n = len(x) // win
-    db = np.array([20 * np.log10(np.sqrt(np.mean(x[i * win:(i + 1) * win] ** 2)) + 1e-9) for i in range(n)])
-    loud = db > -45
-    jumps = [db[i] - db[i - 1] for i in range(1, n) if loud[i] and loud[i - 1]]
+    return np.array([20 * np.log10(np.sqrt(np.mean(x[i * win:(i + 1) * win] ** 2)) + 1e-9) for i in range(len(x) // win)])
+
+
+def short_term_jumps(path, voice_path):
+    """Largest rise of 400 ms loudness between neighbouring windows (dB), ignoring silence and speech onsets.
+    The voice coming back after a pause is meant to stand ~20 dB over the music bed (the skill's rule), so a window
+    where the voice itself rises by 10+ dB is not a harsh jump; a sudden sfx or music burst is."""
+    db, vdb = _window_db(path), _window_db(voice_path)
+    n = min(len(db), len(vdb))
+    jumps = [db[i] - db[i - 1] for i in range(1, n)
+             if db[i] > -45 and db[i - 1] > -45 and vdb[i] - vdb[i - 1] < 10]
     return float(max(jumps)) if jumps else 0.0
 
 
@@ -74,7 +79,7 @@ def check(cfg, plan, timing, mix_report, final, project_dir, story_audit, judge_
     add("loudness", mix_report["integrated_lufs"] is not None and lo <= mix_report["integrated_lufs"] <= hi, f"{mix_report['integrated_lufs']} LUFS")
     add("true peak", mix_report["true_peak_db"] is not None and mix_report["true_peak_db"] <= float(q["max_true_peak"]) + 0.6, f"{mix_report['true_peak_db']} dBTP")
     add("music under voice", mix_report["music_vs_voice_db"] <= -float(q["music_under_voice_db"]), f"{mix_report['music_vs_voice_db']} dB")
-    jump = short_term_jumps(final)
+    jump = short_term_jumps(final, project_dir / "voice.wav")
     add("no harsh volume jumps", jump <= 22, f"largest 400 ms rise {jump:.1f} dB")
 
     frames = render.frames_from_video(final, project_dir / "qa_frames", every=0.5)
