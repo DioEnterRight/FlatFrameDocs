@@ -75,6 +75,11 @@ def instagram_step(cfg, history, now, force):
     if not p["instagram"]:
         v["ig_state"] = "skipped"
         return None
+    if not (os.environ.get("IG_USER_ID", "").strip() and os.environ.get("IG_PAGE_TOKEN", "").strip()):
+        log("Instagram secrets are not set (python tools/add_tokens.py); this video is not posted to Instagram", "WARN")
+        v["ig_state"] = "skipped"
+        save_history(history)
+        return None
     if ig_posts_24h(history, now) >= int(p["instagram_daily_cap"]):
         log("Instagram daily cap reached; this slot stays unposted on Instagram")
         v["ig_state"] = "skipped"

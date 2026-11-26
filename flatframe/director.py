@@ -55,9 +55,15 @@ def direct(cfg, session, script, timing, claims, history, seed, video_id):
             board["directed_by"] = model
         except LLMUnavailable as e:
             log(f"director unavailable ({e}); using the offline director", "WARN")
+    if board is not None:
+        try:
+            plan, report = beats.compile_plan(cfg, script, timing, board, claims, seed, video_id)
+        except Exception as e:  # noqa: BLE001  (a malformed board from a model must not end the video)
+            log(f"storyboard from {board.get('directed_by')} could not be compiled ({str(e)[:120]}); offline director", "WARN")
+            board = None
     if board is None:
         board = offline_board(script, timing, claims)
-    plan, report = beats.compile_plan(cfg, script, timing, board, claims, seed, video_id)
+        plan, report = beats.compile_plan(cfg, script, timing, board, claims, seed, video_id)
     if report["violations"] and session is not None and not board.get("offline"):
         log(f"storyboard has {len(report['violations'])} violation(s); one revision", "WARN")
         try:
@@ -68,8 +74,14 @@ def direct(cfg, session, script, timing, claims, history, seed, video_id):
             plan2, report2 = beats.compile_plan(cfg, script, timing, board2, claims, seed, video_id)
             if len(report2["violations"]) < len(report["violations"]):
                 plan, board, report = plan2, board2, report2
-        except LLMUnavailable as e:
-            log(f"director revision skipped: {e}", "WARN")
+        except Exception as e:  # noqa: BLE001  (models out, or a malformed revision)
+            log(f"director revision skipped: {str(e)[:150]}", "WARN")
+    if report["violations"] and not board.get("offline"):
+        off = offline_board(script, timing, claims)
+        plan3, report3 = beats.compile_plan(cfg, script, timing, off, claims, seed, video_id)
+        if len(report3["violations"]) < len(report["violations"]):
+            log("the model storyboard still breaks rules; using the offline director's storyboard", "WARN")
+            plan, board, report = plan3, off, report3
     log(f"storyboard: {report['metrics']['shots']} shots, avg {report['metrics']['avg_shot']}s, "
         f"{report['metrics']['builds']} builds, {len(report['repairs'])} repairs, {len(report['violations'])} violations")
     return plan, board, report

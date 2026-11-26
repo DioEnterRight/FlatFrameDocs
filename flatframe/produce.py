@@ -169,6 +169,12 @@ def produce_real(cfg, args):
         except llm.LLMUnavailable as e:
             print(f"::warning::Free models ran out mid-video ({e}); stopping without publishing. Saved stages: {P}")
             return 0
+        except Exception as e:  # noqa: BLE001  (a bug or bad model output on one topic: log it, try the next topic)
+            import traceback
+            log(f"topic failed with an error: {idea['title']}: {e!r}\n{traceback.format_exc()[-1500:]}", "ERROR")
+            history.setdefault("rejected", []).append({"title": idea["title"], "why": f"error: {e!r}"[:300], "at": now.isoformat(timespec="minutes")})
+            history["rejected"] = history["rejected"][-100:]
+            save_history(history)
     print("::warning::No topic survived research and quality control this run; the slot is skipped (by design).")
     return 0
 

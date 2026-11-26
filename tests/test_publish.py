@@ -17,6 +17,8 @@ class LimitError(Exception):
 
 @pytest.fixture
 def fakes(monkeypatch, tmp_path):
+    monkeypatch.setenv("IG_USER_ID", "1789")
+    monkeypatch.setenv("IG_PAGE_TOKEN", "t" * 30)
     calls = {"upload": 0, "ig": 0, "issues": []}
     monkeypatch.setattr(publish, "fetch", lambda v: (tmp_path / "f.mp4", {"title": v["title"], "caption": "c " + v["id"], "description": "d", "hashtags": ["#x"]}))
     monkeypatch.setattr(publish, "open_issue_once", lambda t, b: calls["issues"].append(t))
@@ -118,3 +120,10 @@ def test_manual_youtube_mode_opens_a_post_issue_and_never_calls_the_api(cfg, fak
     monkeypatch.setattr(publish.youtube, "client", lambda: (_ for _ in ()).throw(AssertionError("API used in manual mode")))
     assert publish.youtube_step(cfg, h, dt.datetime(2026, 11, 26, 10, 0, tzinfo=IST)) is None
     assert len(notes) == 1 and h["videos"][0]["yt_state"] == "manual_notified"
+
+
+def test_missing_instagram_secrets_skip_instead_of_crashing(cfg, fakes, monkeypatch):
+    monkeypatch.delenv("IG_USER_ID")
+    h = hist(1)
+    assert publish.instagram_step(cfg, h, dt.datetime(2026, 11, 26, 10, 40, tzinfo=IST), False) is None
+    assert fakes["ig"] == 0 and h["videos"][0]["ig_state"] == "skipped"

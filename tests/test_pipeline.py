@@ -419,3 +419,33 @@ def test_model_marks_passages_by_id_and_the_source_text_is_kept(cfg):
               "passages": [{"source": "S1", "passage": "According to Major Meredith, 986 birds were killed by the guns."}]}]
     assert research._verify_batch(Judge(), claims, srcs, items)
     assert claims[0]["support"] and claims[0]["support"][0]["quote"].startswith("According to Major Meredith")
+
+
+def test_garbage_storyboard_from_a_model_falls_back_to_the_offline_director(cfg, sample):
+    from flatframe import director
+    sc = sample["script"]["script"]
+    t = fake_timing(sc)
+
+    class Garbage:
+        def json(self, *a, **k):
+            return {"cast": "not a list", "locations": 7, "beats": [{"nonsense": True}]}, "bad-model"
+    plan, board, rep = director.direct(cfg, Garbage(), sc, t, research.verified_claims(sample["research"]), {"videos": []}, 3, "t")
+    assert board.get("offline") and rep["violations"] == []
+
+
+def test_tidy_fixes_only_mechanics(sample):
+    import copy
+    from flatframe import writer
+    claims = research.verified_claims(sample["research"])
+    sc = copy.deepcopy(sample["script"]["script"])
+    for l in sc["lines"]:
+        l["card"] = False
+    sc["lines"][1]["section"] = "hook"                     # two hook lines
+    sc["lines"][2]["claims"] = ["C999"]                     # unknown claim id
+    sc["lines"] = sc["lines"][::-1]                         # sections out of order
+    out = writer.tidy(sc, claims)
+    order = [l["section"] for l in out["lines"]]
+    assert order.count("hook") == 1 and order == sorted(order, key=list(script_check.SECTIONS).index)
+    assert all("C999" not in l["claims"] for l in out["lines"])
+    assert 2 <= sum(l["card"] for l in out["lines"]) <= 4
+    assert [l["text"] for l in out["lines"]].count(sample["script"]["script"]["lines"][3]["text"]) == 1   # no text changed or lost

@@ -111,7 +111,7 @@ writing:
   hook_max_words: 9           # the first line must land in ~2 s
   max_sentence_words: 16
   good_enough: 8.0            # critic score (1-10) at which no rewrite is made
-  rewrite_rounds: 2
+  rewrite_rounds: 3
 
 # ------------------------------------------------------------
 #  QUALITY GATES — a video failing a gate is repaired or rejected, never published

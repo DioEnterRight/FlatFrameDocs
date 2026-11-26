@@ -31,6 +31,36 @@ def _draft(cfg, session, idea, claims, fixes=None, previous=None, avoid=()):
     return obj
 
 
+def tidy(script, claims):
+    """Mechanical fixes that change no fact: section order, one hook line, unknown claim ids dropped, 2-4 short [CARD]
+    lines. Everything with meaning (facts, skit, reveal) stays with the writer and the rules."""
+    order = list(script_check.SECTIONS)
+    lines = [l for l in script.get("lines", []) if str(l.get("text", "")).strip()]
+    for l in lines:
+        if l.get("section") not in order:
+            l["section"] = "build"
+    lines.sort(key=lambda l: order.index(l["section"]))          # stable: keeps the writer's order inside a section
+    for l in [l for l in lines if l["section"] == "hook"][1:]:
+        l["section"] = "suspense"
+    known = {c["id"] for c in claims}
+    for l in lines:
+        l["claims"] = [c for c in l.get("claims") or [] if c in known]
+        words = len(str(l["text"]).split())
+        if l.get("card") and (words > 9 or l.get("speaker", "narrator") != "narrator" or l["section"] == "hook"):
+            l["card"] = False
+    cards = [l for l in lines if l.get("card")]
+    for l in cards[4:]:
+        l["card"] = False
+    if len(cards) < 2:
+        spare = sorted((l for l in lines if not l.get("card") and l.get("speaker", "narrator") == "narrator"
+                        and l["section"] in ("suspense", "build", "escalation") and len(str(l["text"]).split()) <= 9),
+                       key=lambda l: len(str(l["text"]).split()))
+        for l in spare[: 2 - len(cards)]:
+            l["card"] = True
+    script["lines"] = lines
+    return script
+
+
 def _critique(cfg, session, script, claims, avoid):
     obj, model = session.json("critic", lessons.system("critic_system.md", "script_critic"),
                               fill(prompt("script_critic.md"), script=json.dumps(script, ensure_ascii=False, indent=1),
@@ -50,7 +80,7 @@ def write(cfg, session, idea, claims):
     w = cfg["writing"]
     best, best_key, draft, fixes = None, None, None, None
     for rnd in range(int(w["rewrite_rounds"]) + 1):
-        draft = _draft(cfg, session, idea, claims, fixes, draft)
+        draft = tidy(_draft(cfg, session, idea, claims, fixes, draft), claims)
         probs = script_check.check(cfg, draft, claims)
         review = _critique(cfg, session, draft, claims, avoid=(draft["written_by"],))
         log(f"script round {rnd + 1}: {script_check.word_count(draft)} words, critic {review['overall']} "
