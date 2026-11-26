@@ -1,16 +1,20 @@
 {
   "2026-11": {
-    "calls": 3,
-    "prompt_tokens": 19556,
-    "completion_tokens": 19308,
+    "calls": 8,
+    "prompt_tokens": 40121,
+    "completion_tokens": 36202,
     "by_model": {
       "fusion(gemini-robotics-er-2-preview+nvidia/nemotron-3-ultra-550b-a55b+kilo-auto/free+nvidia/nemotron-3.5-lightning:free -> google/gemini-robotics-er-2-preview)": 1,
-      "google/gemini-robotics-er-2-preview": 2
+      "google/gemini-robotics-er-2-preview": 2,
+      "fusion(Qwen3.8-27B+gemini-robotics-er-2-preview -> google/gemini-flash-lite-latest)": 1,
+      "ovh/Meta-Llama-3_3-70B-Instruct": 1,
+      "ovh/gpt-oss-120b": 1,
+      "google/gemini-flash-lite-latest": 2
     },
     "by_role": {
-      "ideator": 1,
-      "critic": 1,
-      "research": 1
+      "ideator": 2,
+      "critic": 2,
+      "research": 4
     }
   }
 }
