@@ -33,22 +33,6 @@
   ],
   "rejected": [
     {
-      "title": "The Wave of Syrup That Flooded Boston",
-      "why": "rejected: only 4 verified claims (need 5); the payoff (the answer) is not verified"
-    },
-    {
-      "title": "The Night Los Angeles Fought the Sky",
-      "why": "script failed the rules after rewrites: 88 words; needs 100-138 for 40-50 seconds; a [CARD] line must be 9 words or fewer (one unwrapped line on screen); line 1 gives away the answer before the reveal"
-    },
-    {
-      "title": "The Deadly Wave of Molasses That Hit Boston",
-      "why": "script failed the rules after rewrites: line 10 gives away the answer before the reveal; line 11 gives away the answer before the reveal; line 6 has facts no cited claim supports: name 'us'"
-    },
-    {
-      "title": "The Plutonium Sphere That Killed Its Own Creators",
-      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
       "title": "The Sky That Rains Fish Every Single Year",
       "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified"
     },
@@ -271,6 +255,22 @@
     {
       "title": "The War Named After a Sailor's Ear",
       "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
+    },
+    {
+      "title": "The Most Dangerous Lake In The World",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
+    },
+    {
+      "title": "How A False Signal Saved A Nation",
+      "why": "script scored 4.43 (< 7.0) after rewrites"
+    },
+    {
+      "title": "The Man Who Sold The Eiffel Tower",
+      "why": "script failed the rules after rewrites: 66 words; needs 100-138 for 40-50 seconds"
+    },
+    {
+      "title": "The Pig That Almost Started a War",
+      "why": "script failed the rules after rewrites: 79 words; needs 100-138 for 40-50 seconds; the skit's punchline (last line) should be its shortest; line 4 has facts no cited claim supports: number 0"
     }
   ]
 }

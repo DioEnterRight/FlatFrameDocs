@@ -485,6 +485,26 @@
       "title": "The War Named After a Sailor's Ear",
       "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
       "at": "2026-11-28T03:45+05:30"
+    },
+    {
+      "title": "The Most Dangerous Lake In The World",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
+      "at": "2026-11-28T04:44+05:30"
+    },
+    {
+      "title": "How A False Signal Saved A Nation",
+      "why": "script scored 4.43 (< 7.0) after rewrites",
+      "at": "2026-11-28T04:44+05:30"
+    },
+    {
+      "title": "The Man Who Sold The Eiffel Tower",
+      "why": "script failed the rules after rewrites: 66 words; needs 100-138 for 40-50 seconds",
+      "at": "2026-11-28T04:44+05:30"
+    },
+    {
+      "title": "The Pig That Almost Started a War",
+      "why": "script failed the rules after rewrites: 79 words; needs 100-138 for 40-50 seconds; the skit's punchline (last line) should be its shortest; line 4 has facts no cited claim supports: number 0",
+      "at": "2026-11-28T04:44+05:30"
     }
   ]
 }
