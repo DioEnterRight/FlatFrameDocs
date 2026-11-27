@@ -1,15 +1,15 @@
 {
   "2026-11": {
-    "calls": 350,
-    "prompt_tokens": 1448941,
-    "completion_tokens": 441507,
+    "calls": 363,
+    "prompt_tokens": 1490820,
+    "completion_tokens": 461153,
     "by_model": {
       "fusion(gemini-robotics-er-2-preview+nvidia/nemotron-3-ultra-550b-a55b+kilo-auto/free+nvidia/nemotron-3.5-lightning:free -> google/gemini-robotics-er-2-preview)": 1,
       "google/gemini-robotics-er-2-preview": 26,
       "fusion(Qwen3.8-27B+gemini-robotics-er-2-preview -> google/gemini-flash-lite-latest)": 1,
       "ovh/Meta-Llama-3_3-70B-Instruct": 1,
       "ovh/gpt-oss-120b": 1,
-      "google/gemini-flash-lite-latest": 75,
+      "google/gemini-flash-lite-latest": 80,
       "google/gemini-3-flash-preview": 14,
       "ovh/Qwen3.6-27B": 1,
       "google/gemini-3.1-flash-lite": 37,
@@ -20,7 +20,7 @@
       "google/gemini-3.1-flash-lite-preview": 33,
       "fusion(gemini-3.1-flash-lite-preview+z-ai/glm-5.3-flash+nvidia/nemotron-3-ultra-550b-a55b:free+gemini-robotics-er-2-preview -> google/gemini-3.1-flash-lite-preview)": 1,
       "google/gemini-3.5-flash": 6,
-      "nvidia/nvidia/nemotron-3-ultra-550b-a55b": 10,
+      "nvidia/nvidia/nemotron-3-ultra-550b-a55b": 14,
       "fusion(gemini-3.6-flash+Qwen3.8-27B+nvidia/nemotron-3-ultra-550b-a55b+gemini-robotics-er-2-preview -> google/gemini-3.1-flash-lite-preview)": 1,
       "fusion(nvidia/nemotron-3-ultra-550b-a55b+Qwen3.6-27B+nvidia/nemotron-3.5-lightning:free+gemini-robotics-er-2-preview -> google/gemini-3.1-flash-lite-preview)": 1,
       "fusion(z-ai/glm-5.3-flash+nvidia/nemotron-3-ultra-550b-a55b:free)": 1,
@@ -28,9 +28,9 @@
       "fusion(nvidia/nemotron-3-ultra-550b-a55b:free+Qwen3.5-397B-A17B+gemini-robotics-er-2-preview+gemini-3.5-flash-lite -> google/gemini-robotics-er-2-preview)": 1,
       "fusion(gemini-3.5-flash-lite+nvidia/nemotron-3-ultra-550b-a55b:free+nvidia/ising-calibration-1.5-31b+nvidia/nemotron-3.5-lightning:free -> google/gemini-3.5-flash-lite)": 1,
       "fusion(gemini-3.5-flash-lite+nvidia/nemotron-3-ultra-550b-a55b:free+nvidia/nemotron-3.5-lightning:free+nvidia/ising-calibration-1.5-31b -> google/gemini-3.5-flash-lite)": 2,
-      "google/gemini-3.6-flash": 15,
+      "google/gemini-3.6-flash": 16,
       "fusion(gemini-flash-lite-latest+nvidia/nemotron-3-ultra-550b-a55b:free+google/gemma-4-31b-it:free+Qwen3.5-397B-A17B -> google/gemini-flash-lite-latest)": 1,
-      "ovh/Qwen3.5-397B-A17B": 2,
+      "ovh/Qwen3.5-397B-A17B": 3,
       "fusion(gemini-3-flash-preview+Qwen3.6-27B+gemini-3.5-flash+gemini-robotics-er-2-preview -> google/gemini-3.5-flash-lite)": 1,
       "fusion(poolside/laguna-xs-2.1+gemini-3.1-flash-lite+nvidia/nemotron-3-ultra-550b-a55b:free+Qwen3.6-27B -> nvidia/poolside/laguna-xs-2.1)": 1,
       "fusion(gemini-3.1-flash-lite+poolside/laguna-xs-2.1+nvidia/nemotron-3-ultra-550b-a55b:free+Qwen3.5-9B -> google/gemini-3.5-flash-lite)": 1,
@@ -41,13 +41,14 @@
       "fusion(gemini-robotics-er-2-preview+poolside/laguna-xs-2.1+nvidia/nemotron-3.5-lightning:free+nvidia/nemotron-3-ultra-550b-a55b:free -> google/gemini-robotics-er-2-preview)": 1,
       "fusion(gemini-3-flash-preview+nvidia/nemotron-3-ultra-550b-a55b+Qwen3.6-27B+kilo-auto/free -> google/gemini-3.5-flash-lite)": 1,
       "fusion(gemini-3-flash-preview+Qwen3.8-27B -> google/gemini-3-flash-preview)": 1,
-      "nvidia/nvidia/ising-calibration-1.5-31b": 1
+      "nvidia/nvidia/ising-calibration-1.5-31b": 1,
+      "google/gemma-4-26b-a4b-it": 2
     },
     "by_role": {
-      "ideator": 16,
-      "critic": 104,
-      "research": 132,
-      "writer": 92,
+      "ideator": 17,
+      "critic": 110,
+      "research": 134,
+      "writer": 96,
       "judge": 2,
       "director": 3
     }

@@ -33,10 +33,6 @@
   ],
   "rejected": [
     {
-      "title": "The Pope Put on Trial After Death",
-      "why": "rejected: only 0 verified claims (need 7); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
       "title": "The Paper Balloons That Crossed the Pacific",
       "why": "rejected: only 0 verified claims (need 7); the payoff (the answer) is not verified; nothing verified for the hook"
     },
@@ -271,6 +267,10 @@
     {
       "title": "The War Fought Over A Wooden Bucket",
       "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
+    },
+    {
+      "title": "When One Flower Bulb Cost a House",
+      "why": "script failed the rules after rewrites: 90 words; needs 100-138 for 40-50 seconds; hook is 13 words; max 9 (it must land in 2 seconds); line 9 gives away the answer before the reveal; line 10 gives aw"
     }
   ]
 }
