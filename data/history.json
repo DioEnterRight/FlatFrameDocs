@@ -145,6 +145,31 @@
       "title": "The Giant Wave of Beer That Destroyed London Streets",
       "why": "script failed the rules after rewrites: section build needs at least 2 line(s); 87 words; needs 100-138 for 40-50 seconds; hook is 10 words; max 9 (it must land in 2 seconds)",
       "at": "2026-11-27T08:47+05:30"
+    },
+    {
+      "title": "The African Lake That Suffocated Thousands of People Overnight",
+      "why": "script failed the rules after rewrites: 99 words; needs 100-138 for 40-50 seconds; line 5 gives away the answer before the reveal",
+      "at": "2026-11-27T10:01+05:30"
+    },
+    {
+      "title": "The WWII Missiles Guided by Real Living Pigeons",
+      "why": "rejected: only 3 verified claims (need 4); nothing verified for the hook",
+      "at": "2026-11-27T10:01+05:30"
+    },
+    {
+      "title": "The Soda Company With the Worlds Sixth Largest Navy",
+      "why": "rejected: only 1 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
+      "at": "2026-11-27T10:01+05:30"
+    },
+    {
+      "title": "The Tiny Drill Bit That Swallowed an Entire Lake",
+      "why": "rejected: nothing verified for the hook",
+      "at": "2026-11-27T10:01+05:30"
+    },
+    {
+      "title": "The Explosion That Flattened a City Before the Bomb",
+      "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified",
+      "at": "2026-11-27T10:01+05:30"
     }
   ]
 }
