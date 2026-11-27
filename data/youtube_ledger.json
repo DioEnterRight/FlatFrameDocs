@@ -1,7 +1,14 @@
 {
   "version": 1,
   "channel_id": null,
-  "uploads": [],
+  "uploads": [
+    {
+      "ts": "2026-11-27T16:06:32+00:00",
+      "video_id": "manual:20261127-204525-the-slowest-disaster-that-killed",
+      "local_id": "20261127-204525-the-slowest-disaster-that-killed",
+      "source": "manual issue"
+    }
+  ],
   "insert_calls": [],
   "attempts": [],
   "rejected": [],

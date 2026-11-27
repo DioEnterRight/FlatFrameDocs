@@ -73,7 +73,8 @@
         "calls_left": 5,
         "tokens_left": 266482
       },
-      "words": 103
+      "words": 103,
+      "yt_state": "manual_notified"
     }
   ],
   "missed_slots": [
