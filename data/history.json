@@ -5,7 +5,7 @@
       "id": "20261127-204525-the-slowest-disaster-that-killed",
       "tag": "doc-20261127-204525-the-slowest-disaster-that-killed",
       "created": "2026-11-27T21:14+05:30",
-      "status": "queued",
+      "status": "published",
       "title": "The Deadliest Wave Of Thick Sticky Syrup",
       "question": "How did a wave of sticky molasses travel fast enough to crush buildings?",
       "category": "engineering failures and successes",
@@ -76,7 +76,9 @@
       "words": 103,
       "yt_state": "manual_notified",
       "slot": "2026-11-27 22:30",
-      "ig_attempts": 1
+      "ig_attempts": 2,
+      "ig_state": "manual_notified",
+      "published_at": "2026-11-27T23:55+05:30"
     }
   ],
   "missed_slots": [
