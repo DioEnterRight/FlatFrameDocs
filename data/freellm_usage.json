@@ -1,26 +1,26 @@
 {
   "2026-11": {
-    "calls": 312,
-    "prompt_tokens": 1327261,
-    "completion_tokens": 407504,
+    "calls": 350,
+    "prompt_tokens": 1448941,
+    "completion_tokens": 441507,
     "by_model": {
       "fusion(gemini-robotics-er-2-preview+nvidia/nemotron-3-ultra-550b-a55b+kilo-auto/free+nvidia/nemotron-3.5-lightning:free -> google/gemini-robotics-er-2-preview)": 1,
       "google/gemini-robotics-er-2-preview": 26,
       "fusion(Qwen3.8-27B+gemini-robotics-er-2-preview -> google/gemini-flash-lite-latest)": 1,
       "ovh/Meta-Llama-3_3-70B-Instruct": 1,
       "ovh/gpt-oss-120b": 1,
-      "google/gemini-flash-lite-latest": 58,
+      "google/gemini-flash-lite-latest": 75,
       "google/gemini-3-flash-preview": 14,
       "ovh/Qwen3.6-27B": 1,
       "google/gemini-3.1-flash-lite": 37,
-      "nvidia/z-ai/glm-5.3-flash": 6,
-      "nvidia/poolside/laguna-xs-2.1": 31,
-      "google/gemini-3.5-flash-lite": 71,
+      "nvidia/z-ai/glm-5.3-flash": 7,
+      "nvidia/poolside/laguna-xs-2.1": 32,
+      "google/gemini-3.5-flash-lite": 73,
       "ovh/Mistral-Small-3.2-24B-Instruct-2506": 1,
-      "google/gemini-3.1-flash-lite-preview": 21,
+      "google/gemini-3.1-flash-lite-preview": 33,
       "fusion(gemini-3.1-flash-lite-preview+z-ai/glm-5.3-flash+nvidia/nemotron-3-ultra-550b-a55b:free+gemini-robotics-er-2-preview -> google/gemini-3.1-flash-lite-preview)": 1,
       "google/gemini-3.5-flash": 6,
-      "nvidia/nvidia/nemotron-3-ultra-550b-a55b": 5,
+      "nvidia/nvidia/nemotron-3-ultra-550b-a55b": 10,
       "fusion(gemini-3.6-flash+Qwen3.8-27B+nvidia/nemotron-3-ultra-550b-a55b+gemini-robotics-er-2-preview -> google/gemini-3.1-flash-lite-preview)": 1,
       "fusion(nvidia/nemotron-3-ultra-550b-a55b+Qwen3.6-27B+nvidia/nemotron-3.5-lightning:free+gemini-robotics-er-2-preview -> google/gemini-3.1-flash-lite-preview)": 1,
       "fusion(z-ai/glm-5.3-flash+nvidia/nemotron-3-ultra-550b-a55b:free)": 1,
@@ -44,12 +44,12 @@
       "nvidia/nvidia/ising-calibration-1.5-31b": 1
     },
     "by_role": {
-      "ideator": 15,
-      "critic": 93,
-      "research": 119,
-      "writer": 81,
-      "judge": 1,
-      "director": 2
+      "ideator": 16,
+      "critic": 104,
+      "research": 132,
+      "writer": 92,
+      "judge": 2,
+      "director": 3
     }
   }
 }
