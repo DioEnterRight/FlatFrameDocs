@@ -1,36 +1,6 @@
 {
   "bank": [
     {
-      "title": "The Massive Military Operation to Trim One Tree",
-      "question": "Why did the US and South Korea launch a massive military operation to cut down a tree?",
-      "hook": "The US sent an army to trim one tree.",
-      "hook_pattern": "contradiction",
-      "payoff": "After North Korean soldiers killed two US officers over the tree, the US responded with 800 soldiers and 27 helicopters.",
-      "category": "strange but documented historical events",
-      "wikipedia_title": "Korean axe murder incident",
-      "search": "Operation Paul Bunyan tree cutting",
-      "why_visual": "Dozens of helicopters hovering over a single, small tree while soldiers brandish chainsaws.",
-      "visual_metaphors": [
-        "a tiny bonsai tree guarded by a tank",
-        "a giant pair of scissors held by an army"
-      ],
-      "pitched_by": "google/gemini-3-flash-preview",
-      "scores": {
-        "curiosity": 9.0,
-        "uniqueness": 9.0,
-        "hook": 10.0,
-        "suspense": 9.0,
-        "visual": 10.0,
-        "payoff": 9.0,
-        "reliability": 10.0,
-        "variety": 10.0
-      },
-      "critic_note": "This is the strongest entry due to the sheer absurdity of the escalation and the clear, verifiable military contrast.",
-      "scored_by": "fusion(gemini-3-flash-preview+Qwen3.8-27B -> google/gemini-3-flash-preview)",
-      "score": 9.48,
-      "banked_at": "2026-11-27T15:44:50+00:00"
-    },
-    {
       "title": "The Oil Rig That Swallowed an Entire Lake",
       "question": "How did a small drilling error drain an entire lake into a salt mine?",
       "hook": "A tiny drill hole swallowed an entire lake.",
@@ -299,6 +269,22 @@
     {
       "title": "The Video Game Virus That Taught Real Scientists",
       "why": "script failed the rules after rewrites: 90 words; needs 100-138 for 40-50 seconds; hook is 11 words; max 9 (it must land in 2 seconds); line 1 has facts no cited claim supports: number 20, number 5"
+    },
+    {
+      "title": "The Massive Military Operation to Trim One Tree",
+      "why": "rejected: only 2 verified claims (need 4); nothing verified for the hook"
+    },
+    {
+      "title": "The Top Secret Missiles Guided by Live Pigeons",
+      "why": "script failed the rules after rewrites: 60 words; needs 100-138 for 40-50 seconds"
+    },
+    {
+      "title": "The Volcanic Eruption That Canceled Summer for Everyone",
+      "why": "rejected: the payoff (the answer) is not verified"
+    },
+    {
+      "title": "The Smell That Forced London to Rebuild",
+      "why": "rejected: only 1 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
     }
   ]
 }
