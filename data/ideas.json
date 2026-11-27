@@ -144,6 +144,26 @@
     {
       "title": "The Blast That Flattened a Forest With No Crater",
       "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified"
+    },
+    {
+      "title": "The Giant Whirlpool That Swallowed a Whole Lake",
+      "why": "quality control failed: visual judge"
+    },
+    {
+      "title": "The Island Tribe That Worships a Ghost Pilot",
+      "why": "rejected: the payoff (the answer) is not verified"
+    },
+    {
+      "title": "The Year When Summer Never Actually Happened",
+      "why": "rejected: only 3 verified claims (need 4)"
+    },
+    {
+      "title": "The Most Dangerous Kids Toy Ever Sold",
+      "why": "rejected: the payoff (the answer) is not verified"
+    },
+    {
+      "title": "The Year Summer Never Came",
+      "why": "rejected: only 3 verified claims (need 4)"
     }
   ]
 }
