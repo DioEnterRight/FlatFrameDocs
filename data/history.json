@@ -74,7 +74,9 @@
         "tokens_left": 266482
       },
       "words": 103,
-      "yt_state": "manual_notified"
+      "yt_state": "manual_notified",
+      "slot": "2026-11-27 22:30",
+      "ig_attempts": 1
     }
   ],
   "missed_slots": [
