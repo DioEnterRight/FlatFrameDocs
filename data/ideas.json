@@ -124,6 +124,26 @@
     {
       "title": "The Explosion That Flattened a City Before the Bomb",
       "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified"
+    },
+    {
+      "title": "The Small Drill That Drained a Giant Lake",
+      "why": "script failed the rules after rewrites: 92 words; needs 100-138 for 40-50 seconds; line 1 gives away the answer before the reveal; line 9 gives away the answer before the reveal; line 10 gives away th"
+    },
+    {
+      "title": "The Strangest Race in Olympic History",
+      "why": "script failed the rules after rewrites: hook is 11 words; max 9 (it must land in 2 seconds); line 4 gives away the answer before the reveal; line 6 has facts no cited claim supports: name 'disaster', "
+    },
+    {
+      "title": "The Most Dangerous Inventor in Human History",
+      "why": "script failed the rules after rewrites: 99 words; needs 100-138 for 40-50 seconds; line 11 gives away the answer before the reveal; title must be about the verified story (it shares no word with the c"
+    },
+    {
+      "title": "The Year the World Forgot to Have Summer",
+      "why": "rejected: only 3 verified claims (need 4); the payoff (the answer) is not verified"
+    },
+    {
+      "title": "The Blast That Flattened a Forest With No Crater",
+      "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified"
     }
   ]
 }
