@@ -1,5 +1,96 @@
 {
-  "bank": [],
+  "bank": [
+    {
+      "title": "The Massive Military Operation to Trim One Tree",
+      "question": "Why did the US and South Korea launch a massive military operation to cut down a tree?",
+      "hook": "The US sent an army to trim one tree.",
+      "hook_pattern": "contradiction",
+      "payoff": "After North Korean soldiers killed two US officers over the tree, the US responded with 800 soldiers and 27 helicopters.",
+      "category": "strange but documented historical events",
+      "wikipedia_title": "Korean axe murder incident",
+      "search": "Operation Paul Bunyan tree cutting",
+      "why_visual": "Dozens of helicopters hovering over a single, small tree while soldiers brandish chainsaws.",
+      "visual_metaphors": [
+        "a tiny bonsai tree guarded by a tank",
+        "a giant pair of scissors held by an army"
+      ],
+      "pitched_by": "google/gemini-3-flash-preview",
+      "scores": {
+        "curiosity": 9.0,
+        "uniqueness": 9.0,
+        "hook": 10.0,
+        "suspense": 9.0,
+        "visual": 10.0,
+        "payoff": 9.0,
+        "reliability": 10.0,
+        "variety": 10.0
+      },
+      "critic_note": "This is the strongest entry due to the sheer absurdity of the escalation and the clear, verifiable military contrast.",
+      "scored_by": "fusion(gemini-3-flash-preview+Qwen3.8-27B -> google/gemini-3-flash-preview)",
+      "score": 9.48,
+      "banked_at": "2026-11-27T15:44:50+00:00"
+    },
+    {
+      "title": "The Oil Rig That Swallowed an Entire Lake",
+      "question": "How did a small drilling error drain an entire lake into a salt mine?",
+      "hook": "A tiny drill hole swallowed an entire lake.",
+      "hook_pattern": "unexpected consequence",
+      "payoff": "A miscalculation caused a drill to puncture a salt mine underneath, creating a whirlpool that sucked in the entire lake.",
+      "category": "engineering failures and successes",
+      "wikipedia_title": "Lake Peigneur",
+      "search": "Lake Peigneur drilling disaster",
+      "why_visual": "A giant whirlpool in a shallow lake sucking down barges and trees like a bathtub drain.",
+      "visual_metaphors": [
+        "a lake being sucked through a tiny straw",
+        "a salt shaker turning into a giant vacuum"
+      ],
+      "pitched_by": "google/gemini-3-flash-preview",
+      "scores": {
+        "curiosity": 9.0,
+        "uniqueness": 8.0,
+        "hook": 9.0,
+        "suspense": 9.0,
+        "visual": 10.0,
+        "payoff": 9.0,
+        "reliability": 10.0,
+        "variety": 10.0
+      },
+      "critic_note": "The Lake Peigneur disaster offers the strongest visual potential, though the 'oil rig' was actually a small drilling barge.",
+      "scored_by": "fusion(gemini-3-flash-preview+Qwen3.8-27B -> google/gemini-3-flash-preview)",
+      "score": 9.23,
+      "banked_at": "2026-11-27T15:44:50+00:00"
+    },
+    {
+      "title": "The Video Game Virus That Taught Real Scientists",
+      "question": "How did a glitch in World of Warcraft help epidemiologists study real-world pandemics?",
+      "hook": "A digital plague escaped into the real world.",
+      "hook_pattern": "unexpected consequence",
+      "payoff": "The 'Corrupted Blood' glitch behaved exactly like a real virus, showing how human behavior impacts the spread of disease.",
+      "category": "scientific mysteries with surprising explanations",
+      "wikipedia_title": "Corrupted Blood incident",
+      "search": "World of Warcraft Corrupted Blood incident",
+      "why_visual": "Digital avatars in a fantasy city coughing red sparkles and falling over in piles.",
+      "visual_metaphors": [
+        "a computer monitor leaking green slime into a hospital",
+        "a knight wearing a surgical mask"
+      ],
+      "pitched_by": "google/gemini-3-flash-preview",
+      "scores": {
+        "curiosity": 8.0,
+        "uniqueness": 9.0,
+        "hook": 8.0,
+        "suspense": 8.0,
+        "visual": 8.0,
+        "payoff": 9.0,
+        "reliability": 10.0,
+        "variety": 10.0
+      },
+      "critic_note": "This is a highly unique crossover of gaming and science, though the 'escaped into the real world' hook is slightly misleading.",
+      "scored_by": "fusion(gemini-3-flash-preview+Qwen3.8-27B -> google/gemini-3-flash-preview)",
+      "score": 8.75,
+      "banked_at": "2026-11-27T15:44:50+00:00"
+    }
+  ],
   "rejected": [
     {
       "title": "The Pope Put on Trial After Death",
@@ -196,6 +287,18 @@
     {
       "title": "The Glowing Paint That Poisoned Its Painters",
       "why": "script failed the rules after rewrites: 73 words; needs 100-138 for 40-50 seconds; line 1 gives away the answer before the reveal; line 6 gives away the answer before the reveal; line 7 gives away the"
+    },
+    {
+      "title": "The Massive Military Operation to Trim One Tree",
+      "why": "rejected: only 1 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
+    },
+    {
+      "title": "The Oil Rig That Swallowed an Entire Lake",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
+    },
+    {
+      "title": "The Video Game Virus That Taught Real Scientists",
+      "why": "script failed the rules after rewrites: 90 words; needs 100-138 for 40-50 seconds; hook is 11 words; max 9 (it must land in 2 seconds); line 1 has facts no cited claim supports: number 20, number 5"
     }
   ]
 }

@@ -1,6 +1,81 @@
 {
   "version": 1,
-  "videos": [],
+  "videos": [
+    {
+      "id": "20261127-204525-the-slowest-disaster-that-killed",
+      "tag": "doc-20261127-204525-the-slowest-disaster-that-killed",
+      "created": "2026-11-27T21:14+05:30",
+      "status": "queued",
+      "title": "The Deadliest Wave Of Thick Sticky Syrup",
+      "question": "How did a wave of sticky molasses travel fast enough to crush buildings?",
+      "category": "engineering failures and successes",
+      "hook_pattern": "impossible situation",
+      "article": "Great Molasses Flood",
+      "hero": "clock_wall",
+      "locations": [
+        "courtroom",
+        "harbor",
+        "street",
+        "workshop"
+      ],
+      "qa": {
+        "passed": true,
+        "score": 10.0
+      },
+      "verified_claims": 8,
+      "models": {
+        "used": {
+          "ideator": [
+            "google/gemini-3-flash-preview"
+          ],
+          "critic": [
+            "fusion(gemini-3-flash-preview+Qwen3.8-27B -> google/gemini-3-flash-preview)",
+            "google/gemini-3.5-flash-lite",
+            "google/gemini-robotics-er-2-preview",
+            "google/gemini-3-flash-preview",
+            "google/gemini-3.1-flash-lite",
+            "google/gemini-3.5-flash-lite",
+            "google/gemini-3.5-flash-lite",
+            "google/gemini-flash-lite-latest",
+            "google/gemini-3.5-flash-lite"
+          ],
+          "research": [
+            "nvidia/nvidia/ising-calibration-1.5-31b",
+            "google/gemini-3-flash-preview",
+            "google/gemini-3.5-flash-lite",
+            "google/gemini-3.1-flash-lite",
+            "google/gemini-3.5-flash-lite",
+            "google/gemini-3.5-flash-lite",
+            "google/gemini-3.5-flash-lite",
+            "google/gemini-3.5-flash-lite"
+          ],
+          "writer": [
+            "google/gemini-3.1-flash-lite",
+            "google/gemini-3.1-flash-lite",
+            "nvidia/poolside/laguna-xs-2.1",
+            "google/gemini-3.5-flash-lite",
+            "google/gemini-3.5-flash-lite",
+            "google/gemini-3.5-flash-lite",
+            "google/gemini-3.5-flash-lite",
+            "google/gemini-3.5-flash-lite"
+          ],
+          "director": [
+            "google/gemini-3.5-flash-lite"
+          ]
+        },
+        "tokens": {
+          "ideator": 3620,
+          "critic": 54515,
+          "research": 21870,
+          "writer": 41635,
+          "director": 11878
+        },
+        "calls_left": 5,
+        "tokens_left": 266482
+      },
+      "words": 103
+    }
+  ],
   "missed_slots": [
     "2026-11-25 22:30",
     "2026-11-26 01:30",
@@ -264,6 +339,21 @@
       "title": "The Glowing Paint That Poisoned Its Painters",
       "why": "script failed the rules after rewrites: 73 words; needs 100-138 for 40-50 seconds; line 1 gives away the answer before the reveal; line 6 gives away the answer before the reveal; line 7 gives away the answer before the reveal",
       "at": "2026-11-27T17:43+05:30"
+    },
+    {
+      "title": "The Massive Military Operation to Trim One Tree",
+      "why": "rejected: only 1 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
+      "at": "2026-11-27T20:45+05:30"
+    },
+    {
+      "title": "The Oil Rig That Swallowed an Entire Lake",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
+      "at": "2026-11-27T20:45+05:30"
+    },
+    {
+      "title": "The Video Game Virus That Taught Real Scientists",
+      "why": "script failed the rules after rewrites: 90 words; needs 100-138 for 40-50 seconds; hook is 11 words; max 9 (it must land in 2 seconds); line 1 has facts no cited claim supports: number 20, number 5",
+      "at": "2026-11-27T20:45+05:30"
     }
   ]
 }
