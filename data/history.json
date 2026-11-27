@@ -460,6 +460,31 @@
       "title": "The Fake Skull That Fooled Science for Forty Years",
       "why": "script failed the rules after rewrites: 80 words; needs 100-138 for 40-50 seconds; line 4 gives away the answer before the reveal; title must be about the verified story (it shares no word with the claims)",
       "at": "2026-11-28T02:45+05:30"
+    },
+    {
+      "title": "The Posthumous Trial of a Dead Pope",
+      "why": "script failed the rules after rewrites: 92 words; needs 100-138 for 40-50 seconds",
+      "at": "2026-11-28T03:45+05:30"
+    },
+    {
+      "title": "The Army Sent Warships to Cut Down a Tree",
+      "why": "script failed the rules after rewrites: 91 words; needs 100-138 for 40-50 seconds; line 4 has facts no cited claim supports: number 5; line 5 has facts no cited claim supports: number 6; line 6 has facts no cited claim supports: number 7",
+      "at": "2026-11-28T03:45+05:30"
+    },
+    {
+      "title": "The Wave of Beer That Destroyed a Neighborhood",
+      "why": "script failed the rules after rewrites: 86 words; needs 100-138 for 40-50 seconds; the skit's punchline (last line) should be its shortest",
+      "at": "2026-11-28T03:45+05:30"
+    },
+    {
+      "title": "The World Record Festival That Paralyzed a City",
+      "why": "rejected: only 1 verified claims (need 4); the payoff (the answer) is not verified",
+      "at": "2026-11-28T03:45+05:30"
+    },
+    {
+      "title": "The War Named After a Sailor's Ear",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
+      "at": "2026-11-28T03:45+05:30"
     }
   ]
 }

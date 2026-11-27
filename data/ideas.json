@@ -33,26 +33,6 @@
   ],
   "rejected": [
     {
-      "title": "The deadly border war started by a runaway stray dog",
-      "why": "rejected: only 0 verified claims (need 5); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
-      "title": "The mysterious contagious laughter outbreak that closed fourteen schools",
-      "why": "rejected: only 0 verified claims (need 5); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
-      "title": "The Pope Who Put a Corpse on Trial",
-      "why": "rejected: only 2 verified claims (need 5); the payoff (the answer) is not verified"
-    },
-    {
-      "title": "The Peaceful Lake That Smothered a Valley",
-      "why": "rejected: only 2 verified claims (need 5); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
-      "title": "The Man Who Conned Investors With a Fictional Country",
-      "why": "rejected: only 0 verified claims (need 5); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
       "title": "The Wave of Syrup That Flooded Boston",
       "why": "rejected: only 4 verified claims (need 5); the payoff (the answer) is not verified"
     },
@@ -271,6 +251,26 @@
     {
       "title": "The Fake Skull That Fooled Science for Forty Years",
       "why": "script failed the rules after rewrites: 80 words; needs 100-138 for 40-50 seconds; line 4 gives away the answer before the reveal; title must be about the verified story (it shares no word with the cl"
+    },
+    {
+      "title": "The Posthumous Trial of a Dead Pope",
+      "why": "script failed the rules after rewrites: 92 words; needs 100-138 for 40-50 seconds"
+    },
+    {
+      "title": "The Army Sent Warships to Cut Down a Tree",
+      "why": "script failed the rules after rewrites: 91 words; needs 100-138 for 40-50 seconds; line 4 has facts no cited claim supports: number 5; line 5 has facts no cited claim supports: number 6; line 6 has fa"
+    },
+    {
+      "title": "The Wave of Beer That Destroyed a Neighborhood",
+      "why": "script failed the rules after rewrites: 86 words; needs 100-138 for 40-50 seconds; the skit's punchline (last line) should be its shortest"
+    },
+    {
+      "title": "The World Record Festival That Paralyzed a City",
+      "why": "rejected: only 1 verified claims (need 4); the payoff (the answer) is not verified"
+    },
+    {
+      "title": "The War Named After a Sailor's Ear",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
     }
   ]
 }
