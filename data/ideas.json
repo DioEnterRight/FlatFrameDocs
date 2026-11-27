@@ -176,6 +176,26 @@
     {
       "title": "The Man Who Sold the Eiffel Tower Twice",
       "why": "script failed the rules after rewrites: 97 words; needs 100-138 for 40-50 seconds; the skit's punchline (last line) should be its shortest; line 4 gives away the answer before the reveal; line 10 give"
+    },
+    {
+      "title": "The Most Expensive Tree Cutting in Military History",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
+    },
+    {
+      "title": "The Drill That Accidentally Emptied an Entire Lake",
+      "why": "script failed the rules after rewrites: 83 words; needs 100-138 for 40-50 seconds"
+    },
+    {
+      "title": "The Soda Company With the World's Sixth Largest Navy",
+      "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified"
+    },
+    {
+      "title": "The Most Chaotic Olympic Marathon in History",
+      "why": "rejected: only 3 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
+    },
+    {
+      "title": "The Glowing Paint That Poisoned Its Painters",
+      "why": "script failed the rules after rewrites: 73 words; needs 100-138 for 40-50 seconds; line 1 gives away the answer before the reveal; line 6 gives away the answer before the reveal; line 7 gives away the"
     }
   ]
 }
