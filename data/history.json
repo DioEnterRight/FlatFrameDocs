@@ -222,6 +222,21 @@
       "title": "The Year Summer Never Came",
       "why": "rejected: only 3 verified claims (need 4)",
       "at": "2026-11-27T14:09+05:30"
+    },
+    {
+      "title": "The Texaco Drill That Swallowed a Whole Lake",
+      "why": "script scored 5.0 (< 7.0) after rewrites",
+      "at": "2026-11-27T15:53+05:30"
+    },
+    {
+      "title": "The Deadly Wave of Syrup in Boston",
+      "why": "script failed the rules after rewrites: hook is 10 words; max 9 (it must land in 2 seconds); median sentence is 10 words; keep it near 6 (max 9); line 5 has facts no cited claim supports: number 2e+06; line 11 has facts no cited claim supports: number 5",
+      "at": "2026-11-27T15:53+05:30"
+    },
+    {
+      "title": "The Man Who Sold the Eiffel Tower Twice",
+      "why": "script failed the rules after rewrites: 97 words; needs 100-138 for 40-50 seconds; the skit's punchline (last line) should be its shortest; line 4 gives away the answer before the reveal; line 10 gives away the answer before the reveal",
+      "at": "2026-11-27T15:53+05:30"
     }
   ]
 }
