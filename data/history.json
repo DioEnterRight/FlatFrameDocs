@@ -130,6 +130,21 @@
       "title": "The Summer When People Danced Until They Collapsed",
       "why": "rejected: the payoff (the answer) is not verified",
       "at": "2026-11-27T05:42+05:30"
+    },
+    {
+      "title": "The Most Chaotic Olympic Race in Human History",
+      "why": "duration rewrite broke the script rules: line 12 has facts no cited claim supports: name 'hicks', name 'thomas'; title must be about the verified story (it shares no word with the claims)",
+      "at": "2026-11-27T08:47+05:30"
+    },
+    {
+      "title": "The One Man Who Accidentally Damaged the Entire Atmosphere",
+      "why": "script failed the rules after rewrites: 91 words; needs 100-138 for 40-50 seconds",
+      "at": "2026-11-27T08:47+05:30"
+    },
+    {
+      "title": "The Giant Wave of Beer That Destroyed London Streets",
+      "why": "script failed the rules after rewrites: section build needs at least 2 line(s); 87 words; needs 100-138 for 40-50 seconds; hook is 10 words; max 9 (it must land in 2 seconds)",
+      "at": "2026-11-27T08:47+05:30"
     }
   ]
 }
