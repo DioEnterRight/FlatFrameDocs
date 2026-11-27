@@ -1,20 +1,20 @@
 {
   "2026-11": {
-    "calls": 50,
-    "prompt_tokens": 295113,
-    "completion_tokens": 167611,
+    "calls": 68,
+    "prompt_tokens": 375533,
+    "completion_tokens": 192639,
     "by_model": {
       "fusion(gemini-robotics-er-2-preview+nvidia/nemotron-3-ultra-550b-a55b+kilo-auto/free+nvidia/nemotron-3.5-lightning:free -> google/gemini-robotics-er-2-preview)": 1,
-      "google/gemini-robotics-er-2-preview": 4,
+      "google/gemini-robotics-er-2-preview": 6,
       "fusion(Qwen3.8-27B+gemini-robotics-er-2-preview -> google/gemini-flash-lite-latest)": 1,
       "ovh/Meta-Llama-3_3-70B-Instruct": 1,
       "ovh/gpt-oss-120b": 1,
-      "google/gemini-flash-lite-latest": 3,
-      "google/gemini-3-flash-preview": 2,
+      "google/gemini-flash-lite-latest": 14,
+      "google/gemini-3-flash-preview": 3,
       "ovh/Qwen3.6-27B": 1,
       "google/gemini-3.1-flash-lite": 1,
       "nvidia/z-ai/glm-5.3-flash": 6,
-      "nvidia/poolside/laguna-xs-2.1": 5,
+      "nvidia/poolside/laguna-xs-2.1": 6,
       "google/gemini-3.5-flash-lite": 10,
       "ovh/Mistral-Small-3.2-24B-Instruct-2506": 1,
       "google/gemini-3.1-flash-lite-preview": 9,
@@ -27,13 +27,16 @@
       "fusion(Qwen3.8-27B+nvidia/nemotron-3-ultra-550b-a55b:free -> nvidia/nvidia/ising-calibration-1.5-31b)": 1,
       "fusion(nvidia/nemotron-3-ultra-550b-a55b:free+Qwen3.5-397B-A17B+gemini-robotics-er-2-preview+gemini-3.5-flash-lite -> google/gemini-robotics-er-2-preview)": 1,
       "fusion(gemini-3.5-flash-lite+nvidia/nemotron-3-ultra-550b-a55b:free+nvidia/ising-calibration-1.5-31b+nvidia/nemotron-3.5-lightning:free -> google/gemini-3.5-flash-lite)": 1,
-      "fusion(gemini-3.5-flash-lite+nvidia/nemotron-3-ultra-550b-a55b:free+nvidia/nemotron-3.5-lightning:free+nvidia/ising-calibration-1.5-31b -> google/gemini-3.5-flash-lite)": 2
+      "fusion(gemini-3.5-flash-lite+nvidia/nemotron-3-ultra-550b-a55b:free+nvidia/nemotron-3.5-lightning:free+nvidia/ising-calibration-1.5-31b -> google/gemini-3.5-flash-lite)": 2,
+      "google/gemini-3.6-flash": 1,
+      "fusion(gemini-flash-lite-latest+nvidia/nemotron-3-ultra-550b-a55b:free+google/gemma-4-31b-it:free+Qwen3.5-397B-A17B -> google/gemini-flash-lite-latest)": 1,
+      "ovh/Qwen3.5-397B-A17B": 1
     },
     "by_role": {
-      "ideator": 6,
-      "critic": 10,
-      "research": 29,
-      "writer": 4
+      "ideator": 7,
+      "critic": 15,
+      "research": 37,
+      "writer": 8
     }
   }
 }

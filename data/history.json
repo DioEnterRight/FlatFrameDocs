@@ -104,6 +104,31 @@
       "title": "The Night Los Angeles Fought the Sky",
       "why": "script failed the rules after rewrites: 88 words; needs 100-138 for 40-50 seconds; a [CARD] line must be 9 words or fewer (one unwrapped line on screen); line 1 gives away the answer before the reveal; line 8 gives away the answer before the reveal",
       "at": "2026-11-27T04:52+05:30"
+    },
+    {
+      "title": "The Deadly Wave of Molasses That Hit Boston",
+      "why": "script failed the rules after rewrites: line 10 gives away the answer before the reveal; line 11 gives away the answer before the reveal; line 6 has facts no cited claim supports: name 'us'",
+      "at": "2026-11-27T05:42+05:30"
+    },
+    {
+      "title": "The Plutonium Sphere That Killed Its Own Creators",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
+      "at": "2026-11-27T05:42+05:30"
+    },
+    {
+      "title": "The Sky That Rains Fish Every Single Year",
+      "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified",
+      "at": "2026-11-27T05:42+05:30"
+    },
+    {
+      "title": "The Most Chaotic Olympic Marathon Ever Run",
+      "why": "rejected: nothing verified for the hook",
+      "at": "2026-11-27T05:42+05:30"
+    },
+    {
+      "title": "The Summer When People Danced Until They Collapsed",
+      "why": "rejected: the payoff (the answer) is not verified",
+      "at": "2026-11-27T05:42+05:30"
     }
   ]
 }
