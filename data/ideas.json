@@ -33,26 +33,6 @@
   ],
   "rejected": [
     {
-      "title": "The Paper Balloons That Crossed the Pacific",
-      "why": "rejected: only 0 verified claims (need 7); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
-      "title": "The War Over Fish That Humiliated Britain",
-      "why": "rejected: only 0 verified claims (need 7); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
-      "title": "The Dead Pope on a court trial",
-      "why": "rejected: only 2 verified claims (need 7); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
-      "title": "The drilling error that drained a lake",
-      "why": "rejected: only 1 verified claims (need 7); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
-      "title": "The military operation to trim one tree",
-      "why": "rejected: only 2 verified claims (need 7); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
       "title": "The Pepsi Navy That Almost Happened",
       "why": "rejected: only 0 verified claims (need 7); the payoff (the answer) is not verified; nothing verified for the hook"
     },
@@ -271,6 +251,26 @@
     {
       "title": "When One Flower Bulb Cost a House",
       "why": "script failed the rules after rewrites: 90 words; needs 100-138 for 40-50 seconds; hook is 13 words; max 9 (it must land in 2 seconds); line 9 gives away the answer before the reveal; line 10 gives aw"
+    },
+    {
+      "title": "The Most Expensive Tree Cutting in Military History",
+      "why": "script failed the rules after rewrites: 73 words; needs 100-138 for 40-50 seconds; line 6 gives away the answer before the reveal; line 7 gives away the answer before the reveal; line 8 gives away the"
+    },
+    {
+      "title": "The Secret Japanese Paper Balloons That Attacked America",
+      "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified"
+    },
+    {
+      "title": "The Deadly Wave of Fermented Beer in London",
+      "why": "rejected: the payoff (the answer) is not verified"
+    },
+    {
+      "title": "The International Border War Sparked by a Single Pig",
+      "why": "script scored 5.0 (< 7.0) after rewrites"
+    },
+    {
+      "title": "The Soda Company That Changed Its Recipe and Panicked",
+      "why": "script failed the rules after rewrites: section build needs at least 2 line(s); 71 words; needs 100-138 for 40-50 seconds; 1 sentence(s) longer than 16 words"
     }
   ]
 }
