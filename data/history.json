@@ -106,31 +106,6 @@
   ],
   "rejected": [
     {
-      "title": "The million-dollar CIA spy cat stopped by a taxi",
-      "why": "rejected: only 2 verified claims (need 5); the payoff (the answer) is not verified",
-      "at": "2026-11-27T03:54+05:30"
-    },
-    {
-      "title": "The massive military operation launched to trim one single tree",
-      "why": "rejected: only 0 verified claims (need 5); the payoff (the answer) is not verified; nothing verified for the hook",
-      "at": "2026-11-27T03:54+05:30"
-    },
-    {
-      "title": "The deadly border war started by a runaway stray dog",
-      "why": "rejected: only 0 verified claims (need 5); the payoff (the answer) is not verified; nothing verified for the hook",
-      "at": "2026-11-27T03:54+05:30"
-    },
-    {
-      "title": "The mysterious contagious laughter outbreak that closed fourteen schools",
-      "why": "rejected: only 0 verified claims (need 5); the payoff (the answer) is not verified; nothing verified for the hook",
-      "at": "2026-11-27T03:54+05:30"
-    },
-    {
-      "title": "The Pope Who Put a Corpse on Trial",
-      "why": "rejected: only 2 verified claims (need 5); the payoff (the answer) is not verified",
-      "at": "2026-11-27T04:16+05:30"
-    },
-    {
       "title": "The Peaceful Lake That Smothered a Valley",
       "why": "rejected: only 2 verified claims (need 5); the payoff (the answer) is not verified; nothing verified for the hook",
       "at": "2026-11-27T04:16+05:30"
@@ -604,6 +579,31 @@
       "title": "The Blast That Flattened a Forest With No Crater",
       "why": "rejected: only 3 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
       "at": "2026-11-28T14:38+05:30"
+    },
+    {
+      "title": "The Charity Event That Paralyzed an Entire City",
+      "why": "script failed the rules after rewrites: line 12 gives away the answer before the reveal; line 13 gives away the answer before the reveal; line 16 has facts no cited claim supports: name 'canada'",
+      "at": "2026-11-28T15:37+05:30"
+    },
+    {
+      "title": "The Secret Project Training Pigeons to Fly Missiles",
+      "why": "rejected: nothing verified for the hook",
+      "at": "2026-11-28T15:37+05:30"
+    },
+    {
+      "title": "The Unluckiest Man Who Survived Two Atomic Bombs",
+      "why": "script failed the rules after rewrites: 94 words; needs 100-138 for 40-50 seconds; line 6 gives away the answer before the reveal",
+      "at": "2026-11-28T15:37+05:30"
+    },
+    {
+      "title": "The Volcanic Eruption That Erased Summer for a Year",
+      "why": "rejected: only 3 verified claims (need 4)",
+      "at": "2026-11-28T15:37+05:30"
+    },
+    {
+      "title": "The Year Summer Never Came",
+      "why": "rejected: only 3 verified claims (need 4)",
+      "at": "2026-11-28T15:37+05:30"
     }
   ]
 }

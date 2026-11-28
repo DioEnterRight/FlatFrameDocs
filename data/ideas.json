@@ -33,26 +33,6 @@
   ],
   "rejected": [
     {
-      "title": "The Glowing Paint That Poisoned Its Painters",
-      "why": "script failed the rules after rewrites: 73 words; needs 100-138 for 40-50 seconds; line 1 gives away the answer before the reveal; line 6 gives away the answer before the reveal; line 7 gives away the"
-    },
-    {
-      "title": "The Massive Military Operation to Trim One Tree",
-      "why": "rejected: only 1 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
-      "title": "The Oil Rig That Swallowed an Entire Lake",
-      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
-      "title": "The Video Game Virus That Taught Real Scientists",
-      "why": "script failed the rules after rewrites: 90 words; needs 100-138 for 40-50 seconds; hook is 11 words; max 9 (it must land in 2 seconds); line 1 has facts no cited claim supports: number 20, number 5"
-    },
-    {
-      "title": "The Massive Military Operation to Trim One Tree",
-      "why": "rejected: only 2 verified claims (need 4); nothing verified for the hook"
-    },
-    {
       "title": "The Top Secret Missiles Guided by Live Pigeons",
       "why": "script failed the rules after rewrites: 60 words; needs 100-138 for 40-50 seconds"
     },
@@ -271,6 +251,26 @@
     {
       "title": "The Blast That Flattened a Forest With No Crater",
       "why": "rejected: only 3 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
+    },
+    {
+      "title": "The Charity Event That Paralyzed an Entire City",
+      "why": "script failed the rules after rewrites: line 12 gives away the answer before the reveal; line 13 gives away the answer before the reveal; line 16 has facts no cited claim supports: name 'canada'"
+    },
+    {
+      "title": "The Secret Project Training Pigeons to Fly Missiles",
+      "why": "rejected: nothing verified for the hook"
+    },
+    {
+      "title": "The Unluckiest Man Who Survived Two Atomic Bombs",
+      "why": "script failed the rules after rewrites: 94 words; needs 100-138 for 40-50 seconds; line 6 gives away the answer before the reveal"
+    },
+    {
+      "title": "The Volcanic Eruption That Erased Summer for a Year",
+      "why": "rejected: only 3 verified claims (need 4)"
+    },
+    {
+      "title": "The Year Summer Never Came",
+      "why": "rejected: only 3 verified claims (need 4)"
     }
   ]
 }
