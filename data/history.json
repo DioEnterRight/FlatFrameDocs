@@ -107,26 +107,6 @@
   ],
   "rejected": [
     {
-      "title": "The Peaceful Lake That Smothered a Valley",
-      "why": "rejected: only 2 verified claims (need 5); the payoff (the answer) is not verified; nothing verified for the hook",
-      "at": "2026-11-27T04:16+05:30"
-    },
-    {
-      "title": "The Man Who Conned Investors With a Fictional Country",
-      "why": "rejected: only 0 verified claims (need 5); the payoff (the answer) is not verified; nothing verified for the hook",
-      "at": "2026-11-27T04:16+05:30"
-    },
-    {
-      "title": "The Wave of Syrup That Flooded Boston",
-      "why": "rejected: only 4 verified claims (need 5); the payoff (the answer) is not verified",
-      "at": "2026-11-27T04:16+05:30"
-    },
-    {
-      "title": "The Night Los Angeles Fought the Sky",
-      "why": "script failed the rules after rewrites: 88 words; needs 100-138 for 40-50 seconds; a [CARD] line must be 9 words or fewer (one unwrapped line on screen); line 1 gives away the answer before the reveal; line 8 gives away the answer before the reveal",
-      "at": "2026-11-27T04:52+05:30"
-    },
-    {
       "title": "The Deadly Wave of Molasses That Hit Boston",
       "why": "script failed the rules after rewrites: line 10 gives away the answer before the reveal; line 11 gives away the answer before the reveal; line 6 has facts no cited claim supports: name 'us'",
       "at": "2026-11-27T05:42+05:30"
@@ -605,6 +585,26 @@
       "title": "The Year Summer Never Came",
       "why": "rejected: only 3 verified claims (need 4)",
       "at": "2026-11-28T15:37+05:30"
+    },
+    {
+      "title": "The Silent Lake That Smothered An Entire Village",
+      "why": "rejected: the payoff (the answer) is not verified",
+      "at": "2026-11-28T16:34+05:30"
+    },
+    {
+      "title": "The Tsunami Of Beer That Leveled London Homes",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
+      "at": "2026-11-28T16:34+05:30"
+    },
+    {
+      "title": "The Darkest Material That Erases Three Dimensions",
+      "why": "rejected: nothing verified for the hook",
+      "at": "2026-11-28T16:34+05:30"
+    },
+    {
+      "title": "The Glowing Paint That Poisoned Its Painters",
+      "why": "rejected: nothing verified for the hook",
+      "at": "2026-11-28T16:34+05:30"
     }
   ]
 }
