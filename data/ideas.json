@@ -33,26 +33,6 @@
   ],
   "rejected": [
     {
-      "title": "The Year When Summer Never Actually Happened",
-      "why": "rejected: only 3 verified claims (need 4)"
-    },
-    {
-      "title": "The Most Dangerous Kids Toy Ever Sold",
-      "why": "rejected: the payoff (the answer) is not verified"
-    },
-    {
-      "title": "The Year Summer Never Came",
-      "why": "rejected: only 3 verified claims (need 4)"
-    },
-    {
-      "title": "The Texaco Drill That Swallowed a Whole Lake",
-      "why": "script scored 5.0 (< 7.0) after rewrites"
-    },
-    {
-      "title": "The Deadly Wave of Syrup in Boston",
-      "why": "script failed the rules after rewrites: hook is 10 words; max 9 (it must land in 2 seconds); median sentence is 10 words; keep it near 6 (max 9); line 5 has facts no cited claim supports: number 2e+06"
-    },
-    {
       "title": "The Man Who Sold the Eiffel Tower Twice",
       "why": "script failed the rules after rewrites: 97 words; needs 100-138 for 40-50 seconds; the skit's punchline (last line) should be its shortest; line 4 gives away the answer before the reveal; line 10 give"
     },
@@ -271,6 +251,26 @@
     {
       "title": "The Summer When People Danced Until They Collapsed",
       "why": "script failed the rules after rewrites: 88 words; needs 100-138 for 40-50 seconds; the ending must call back to the opening image (reuse a word from the hook or the hero object)"
+    },
+    {
+      "title": "The Massive Military Operation to Trim a Tree",
+      "why": "rejected: only 3 verified claims (need 4); nothing verified for the hook"
+    },
+    {
+      "title": "The Charity Event That Paralyzed an American City",
+      "why": "rejected: only 3 verified claims (need 4); nothing verified for the hook"
+    },
+    {
+      "title": "The Most Chaotic Olympic Marathon Ever Run",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
+    },
+    {
+      "title": "The Soviet Officer Who Ignored a Nuclear Alarm",
+      "why": "script failed the rules after rewrites: 88 words; needs 100-138 for 40-50 seconds; line 1 has facts no cited claim supports: number 5; line 4 has facts no cited claim supports: number 102; line 11 has"
+    },
+    {
+      "title": "The Explosion That Flattened a City Before the Bomb",
+      "why": "rejected: the payoff (the answer) is not verified"
     }
   ]
 }

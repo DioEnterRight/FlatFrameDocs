@@ -104,26 +104,6 @@
   ],
   "rejected": [
     {
-      "title": "The Pope Put on Trial After Death",
-      "why": "rejected: only 0 verified claims (need 7); the payoff (the answer) is not verified; nothing verified for the hook",
-      "at": "2026-11-27T01:52+05:30"
-    },
-    {
-      "title": "The Paper Balloons That Crossed the Pacific",
-      "why": "rejected: only 0 verified claims (need 7); the payoff (the answer) is not verified; nothing verified for the hook",
-      "at": "2026-11-27T02:51+05:30"
-    },
-    {
-      "title": "The War Over Fish That Humiliated Britain",
-      "why": "rejected: only 0 verified claims (need 7); the payoff (the answer) is not verified; nothing verified for the hook",
-      "at": "2026-11-27T02:51+05:30"
-    },
-    {
-      "title": "The Dead Pope on a court trial",
-      "why": "rejected: only 2 verified claims (need 7); the payoff (the answer) is not verified; nothing verified for the hook",
-      "at": "2026-11-27T03:20+05:30"
-    },
-    {
       "title": "The drilling error that drained a lake",
       "why": "rejected: only 1 verified claims (need 7); the payoff (the answer) is not verified; nothing verified for the hook",
       "at": "2026-11-27T03:20+05:30"
@@ -597,6 +577,31 @@
       "title": "The Summer When People Danced Until They Collapsed",
       "why": "script failed the rules after rewrites: 88 words; needs 100-138 for 40-50 seconds; the ending must call back to the opening image (reuse a word from the hook or the hero object)",
       "at": "2026-11-28T09:45+05:30"
+    },
+    {
+      "title": "The Massive Military Operation to Trim a Tree",
+      "why": "rejected: only 3 verified claims (need 4); nothing verified for the hook",
+      "at": "2026-11-28T10:50+05:30"
+    },
+    {
+      "title": "The Charity Event That Paralyzed an American City",
+      "why": "rejected: only 3 verified claims (need 4); nothing verified for the hook",
+      "at": "2026-11-28T10:50+05:30"
+    },
+    {
+      "title": "The Most Chaotic Olympic Marathon Ever Run",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
+      "at": "2026-11-28T10:50+05:30"
+    },
+    {
+      "title": "The Soviet Officer Who Ignored a Nuclear Alarm",
+      "why": "script failed the rules after rewrites: 88 words; needs 100-138 for 40-50 seconds; line 1 has facts no cited claim supports: number 5; line 4 has facts no cited claim supports: number 102; line 11 has facts no cited claim supports: name 'one'",
+      "at": "2026-11-28T10:50+05:30"
+    },
+    {
+      "title": "The Explosion That Flattened a City Before the Bomb",
+      "why": "rejected: the payoff (the answer) is not verified",
+      "at": "2026-11-28T10:50+05:30"
     }
   ]
 }
