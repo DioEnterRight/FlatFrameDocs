@@ -107,16 +107,6 @@
   ],
   "rejected": [
     {
-      "title": "The Summer When People Danced Until They Collapsed",
-      "why": "rejected: the payoff (the answer) is not verified",
-      "at": "2026-11-27T05:42+05:30"
-    },
-    {
-      "title": "The Most Chaotic Olympic Race in Human History",
-      "why": "duration rewrite broke the script rules: line 12 has facts no cited claim supports: name 'hicks', name 'thomas'; title must be about the verified story (it shares no word with the claims)",
-      "at": "2026-11-27T08:47+05:30"
-    },
-    {
       "title": "The One Man Who Accidentally Damaged the Entire Atmosphere",
       "why": "script failed the rules after rewrites: 91 words; needs 100-138 for 40-50 seconds",
       "at": "2026-11-27T08:47+05:30"
@@ -605,6 +595,16 @@
       "title": "The Smell That Forced London to Rebuild",
       "why": "rejected: only 1 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
       "at": "2026-11-28T17:31+05:30"
+    },
+    {
+      "title": "The Dead Pope Put on Trial",
+      "why": "script failed the rules after rewrites: 75 words; needs 100-138 for 40-50 seconds; line 12 gives away the answer before the reveal",
+      "at": "2026-11-28T18:48+05:30"
+    },
+    {
+      "title": "The Missile Guided by Trained Pigeons",
+      "why": "script failed the rules after rewrites: 77 words; needs 100-138 for 40-50 seconds; line 5 gives away the answer before the reveal; line 6 gives away the answer before the reveal; line 7 gives away the answer before the reveal",
+      "at": "2026-11-28T18:48+05:30"
     }
   ]
 }
