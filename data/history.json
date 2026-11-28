@@ -531,6 +531,26 @@
       "title": "The Ship Found Sailing With Nobody Aboard",
       "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified",
       "at": "2026-11-28T05:36+05:30"
+    },
+    {
+      "title": "The Forest That Grows Without Seeds",
+      "why": "script failed the rules after rewrites: line 3 gives away the answer before the reveal; the ending must call back to the opening image (reuse a word from the hook or the hero object)",
+      "at": "2026-11-28T07:03+05:30"
+    },
+    {
+      "title": "The Company That Sold the Eiffel Tower",
+      "why": "script failed the rules after rewrites: 92 words; needs 100-138 for 40-50 seconds",
+      "at": "2026-11-28T07:03+05:30"
+    },
+    {
+      "title": "The Most Successful Pirate in History",
+      "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
+      "at": "2026-11-28T07:03+05:30"
+    },
+    {
+      "title": "The Soldier Who Fought with a Sword",
+      "why": "script failed the rules after rewrites: 77 words; needs 100-138 for 40-50 seconds; line 10 has facts no cited claim supports: name 'wilfred'",
+      "at": "2026-11-28T07:03+05:30"
     }
   ]
 }

@@ -33,22 +33,6 @@
   ],
   "rejected": [
     {
-      "title": "The Giant Wave of Beer That Destroyed London Streets",
-      "why": "script failed the rules after rewrites: section build needs at least 2 line(s); 87 words; needs 100-138 for 40-50 seconds; hook is 10 words; max 9 (it must land in 2 seconds)"
-    },
-    {
-      "title": "The African Lake That Suffocated Thousands of People Overnight",
-      "why": "script failed the rules after rewrites: 99 words; needs 100-138 for 40-50 seconds; line 5 gives away the answer before the reveal"
-    },
-    {
-      "title": "The WWII Missiles Guided by Real Living Pigeons",
-      "why": "rejected: only 3 verified claims (need 4); nothing verified for the hook"
-    },
-    {
-      "title": "The Soda Company With the Worlds Sixth Largest Navy",
-      "why": "rejected: only 1 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
-    },
-    {
       "title": "The Tiny Drill Bit That Swallowed an Entire Lake",
       "why": "rejected: nothing verified for the hook"
     },
@@ -271,6 +255,22 @@
     {
       "title": "The Ship Found Sailing With Nobody Aboard",
       "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified"
+    },
+    {
+      "title": "The Forest That Grows Without Seeds",
+      "why": "script failed the rules after rewrites: line 3 gives away the answer before the reveal; the ending must call back to the opening image (reuse a word from the hook or the hero object)"
+    },
+    {
+      "title": "The Company That Sold the Eiffel Tower",
+      "why": "script failed the rules after rewrites: 92 words; needs 100-138 for 40-50 seconds"
+    },
+    {
+      "title": "The Most Successful Pirate in History",
+      "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
+    },
+    {
+      "title": "The Soldier Who Fought with a Sword",
+      "why": "script failed the rules after rewrites: 77 words; needs 100-138 for 40-50 seconds; line 10 has facts no cited claim supports: name 'wilfred'"
     }
   ]
 }
