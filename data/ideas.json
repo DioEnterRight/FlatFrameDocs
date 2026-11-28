@@ -33,26 +33,6 @@
   ],
   "rejected": [
     {
-      "title": "The Sky That Rains Fish Every Single Year",
-      "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified"
-    },
-    {
-      "title": "The Most Chaotic Olympic Marathon Ever Run",
-      "why": "rejected: nothing verified for the hook"
-    },
-    {
-      "title": "The Summer When People Danced Until They Collapsed",
-      "why": "rejected: the payoff (the answer) is not verified"
-    },
-    {
-      "title": "The Most Chaotic Olympic Race in Human History",
-      "why": "duration rewrite broke the script rules: line 12 has facts no cited claim supports: name 'hicks', name 'thomas'; title must be about the verified story (it shares no word with the claims)"
-    },
-    {
-      "title": "The One Man Who Accidentally Damaged the Entire Atmosphere",
-      "why": "script failed the rules after rewrites: 91 words; needs 100-138 for 40-50 seconds"
-    },
-    {
       "title": "The Giant Wave of Beer That Destroyed London Streets",
       "why": "script failed the rules after rewrites: section build needs at least 2 line(s); 87 words; needs 100-138 for 40-50 seconds; hook is 10 words; max 9 (it must land in 2 seconds)"
     },
@@ -271,6 +251,26 @@
     {
       "title": "The Pig That Almost Started a War",
       "why": "script failed the rules after rewrites: 79 words; needs 100-138 for 40-50 seconds; the skit's punchline (last line) should be its shortest; line 4 has facts no cited claim supports: number 0"
+    },
+    {
+      "title": "The Nuclear Reactor Found in Africa",
+      "why": "rejected: the payoff (the answer) is not verified"
+    },
+    {
+      "title": "The Nuclear Bomb Powered by Dead Pigeons",
+      "why": "script failed the rules after rewrites: 79 words; needs 100-138 for 40-50 seconds; line 6 gives away the answer before the reveal; line 7 gives away the answer before the reveal; line 8 gives away the"
+    },
+    {
+      "title": "The Accidental Invention of Artificial Sweetener",
+      "why": "rejected: only 3 verified claims (need 4); nothing verified for the hook"
+    },
+    {
+      "title": "The War Fought Over a Stolen Bucket",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook"
+    },
+    {
+      "title": "The Ship Found Sailing With Nobody Aboard",
+      "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified"
     }
   ]
 }

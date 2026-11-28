@@ -506,6 +506,31 @@
       "title": "The Pig That Almost Started a War",
       "why": "script failed the rules after rewrites: 79 words; needs 100-138 for 40-50 seconds; the skit's punchline (last line) should be its shortest; line 4 has facts no cited claim supports: number 0",
       "at": "2026-11-28T04:44+05:30"
+    },
+    {
+      "title": "The Nuclear Reactor Found in Africa",
+      "why": "rejected: the payoff (the answer) is not verified",
+      "at": "2026-11-28T05:36+05:30"
+    },
+    {
+      "title": "The Nuclear Bomb Powered by Dead Pigeons",
+      "why": "script failed the rules after rewrites: 79 words; needs 100-138 for 40-50 seconds; line 6 gives away the answer before the reveal; line 7 gives away the answer before the reveal; line 8 gives away the answer before the reveal",
+      "at": "2026-11-28T05:36+05:30"
+    },
+    {
+      "title": "The Accidental Invention of Artificial Sweetener",
+      "why": "rejected: only 3 verified claims (need 4); nothing verified for the hook",
+      "at": "2026-11-28T05:36+05:30"
+    },
+    {
+      "title": "The War Fought Over a Stolen Bucket",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
+      "at": "2026-11-28T05:36+05:30"
+    },
+    {
+      "title": "The Ship Found Sailing With Nobody Aboard",
+      "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified",
+      "at": "2026-11-28T05:36+05:30"
     }
   ]
 }
