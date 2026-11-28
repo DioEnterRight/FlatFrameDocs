@@ -572,6 +572,31 @@
       "title": "The Modern Gym Equipment Invented to Torture Prisoners",
       "why": "rejected: the payoff (the answer) is not verified",
       "at": "2026-11-28T08:39+05:30"
+    },
+    {
+      "title": "The Radioactive Medicine That Killed A Socialite",
+      "why": "rejected: only 1 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
+      "at": "2026-11-28T09:45+05:30"
+    },
+    {
+      "title": "The Year The Sun Refused To Rise",
+      "why": "rejected: nothing verified for the hook",
+      "at": "2026-11-28T09:45+05:30"
+    },
+    {
+      "title": "The War Fought Over A Missing Wooden Bucket",
+      "why": "rejected: only 0 verified claims (need 4); the payoff (the answer) is not verified; nothing verified for the hook",
+      "at": "2026-11-28T09:45+05:30"
+    },
+    {
+      "title": "The Biggest Fraud In History Happened With Mail",
+      "why": "rejected: nothing verified for the hook",
+      "at": "2026-11-28T09:45+05:30"
+    },
+    {
+      "title": "The Summer When People Danced Until They Collapsed",
+      "why": "script failed the rules after rewrites: 88 words; needs 100-138 for 40-50 seconds; the ending must call back to the opening image (reuse a word from the hook or the hero object)",
+      "at": "2026-11-28T09:45+05:30"
     }
   ]
 }
