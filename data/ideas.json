@@ -33,22 +33,6 @@
   ],
   "rejected": [
     {
-      "title": "The Tiny Drill Bit That Swallowed an Entire Lake",
-      "why": "rejected: nothing verified for the hook"
-    },
-    {
-      "title": "The Explosion That Flattened a City Before the Bomb",
-      "why": "rejected: only 2 verified claims (need 4); the payoff (the answer) is not verified"
-    },
-    {
-      "title": "The Small Drill That Drained a Giant Lake",
-      "why": "script failed the rules after rewrites: 92 words; needs 100-138 for 40-50 seconds; line 1 gives away the answer before the reveal; line 9 gives away the answer before the reveal; line 10 gives away th"
-    },
-    {
-      "title": "The Strangest Race in Olympic History",
-      "why": "script failed the rules after rewrites: hook is 11 words; max 9 (it must land in 2 seconds); line 4 gives away the answer before the reveal; line 6 has facts no cited claim supports: name 'disaster', "
-    },
-    {
       "title": "The Most Dangerous Inventor in Human History",
       "why": "script failed the rules after rewrites: 99 words; needs 100-138 for 40-50 seconds; line 11 gives away the answer before the reveal; title must be about the verified story (it shares no word with the c"
     },
@@ -271,6 +255,22 @@
     {
       "title": "The Soldier Who Fought with a Sword",
       "why": "script failed the rules after rewrites: 77 words; needs 100-138 for 40-50 seconds; line 10 has facts no cited claim supports: name 'wilfred'"
+    },
+    {
+      "title": "The Castle Where American and German Soldiers Fought Together",
+      "why": "script failed the rules after rewrites: line 1 gives away the answer before the reveal; line 3 gives away the answer before the reveal"
+    },
+    {
+      "title": "The War on Birds That Caused a Massive Famine",
+      "why": "script failed the rules after rewrites: 87 words; needs 100-138 for 40-50 seconds; line 10 gives away the answer before the reveal"
+    },
+    {
+      "title": "The Glowing Factory Workers Who Painted With Poison",
+      "why": "script failed the rules after rewrites: 70 words; needs 100-138 for 40-50 seconds; line 9 gives away the answer before the reveal; line 1 has facts no cited claim supports: number 1918"
+    },
+    {
+      "title": "The Modern Gym Equipment Invented to Torture Prisoners",
+      "why": "rejected: the payoff (the answer) is not verified"
     }
   ]
 }

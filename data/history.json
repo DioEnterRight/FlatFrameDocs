@@ -552,6 +552,26 @@
       "title": "The Soldier Who Fought with a Sword",
       "why": "script failed the rules after rewrites: 77 words; needs 100-138 for 40-50 seconds; line 10 has facts no cited claim supports: name 'wilfred'",
       "at": "2026-11-28T07:03+05:30"
+    },
+    {
+      "title": "The Castle Where American and German Soldiers Fought Together",
+      "why": "script failed the rules after rewrites: line 1 gives away the answer before the reveal; line 3 gives away the answer before the reveal",
+      "at": "2026-11-28T08:39+05:30"
+    },
+    {
+      "title": "The War on Birds That Caused a Massive Famine",
+      "why": "script failed the rules after rewrites: 87 words; needs 100-138 for 40-50 seconds; line 10 gives away the answer before the reveal",
+      "at": "2026-11-28T08:39+05:30"
+    },
+    {
+      "title": "The Glowing Factory Workers Who Painted With Poison",
+      "why": "script failed the rules after rewrites: 70 words; needs 100-138 for 40-50 seconds; line 9 gives away the answer before the reveal; line 1 has facts no cited claim supports: number 1918",
+      "at": "2026-11-28T08:39+05:30"
+    },
+    {
+      "title": "The Modern Gym Equipment Invented to Torture Prisoners",
+      "why": "rejected: the payoff (the answer) is not verified",
+      "at": "2026-11-28T08:39+05:30"
     }
   ]
 }
